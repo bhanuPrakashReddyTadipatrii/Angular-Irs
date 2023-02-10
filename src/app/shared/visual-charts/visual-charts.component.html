@@ -1,0 +1,3 @@
+<div class="visual-charts-component w-100 h-100" *ngIf="chartOptions && chartOptions?.series?.length">
+    <div class="w-100 h-100" id="uniqueId" echarts [options]="chartOptions" [autoResize]="true" class="chartstyle" (chartInit)="initChart($event)"></div>
+</div>

@@ -1,0 +1,360 @@
+{
+  "status": "success",
+  "message": "",
+  "data": {
+    "headerContent": [
+        {
+            "content": "",
+            "data": [
+                {
+                  "gridWidth": "3",
+                  "key": "project_name",
+                  "label": "Project Name",
+                  "placeholder": "Enter project Name",
+                  "required": true,
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "gridWidth": "3",
+                  "key": "description",
+                  "label": "Description",
+                  "placeholder": "Enter Description",
+                  "required": false,
+                  "type": "textarea",
+                  "value": ""
+                }
+              ],
+            "layoutType": "input",
+            "sectionWidth": "12"
+          },
+          {
+            "content": "",
+            "data": [
+                {
+                  "allowClear": false,
+                  "disabled": false,
+                  "gridWidth": "3",
+                  "key": "service",
+                  "label": "Service",
+                  "options": [
+                    {
+                      "label": "Associated Gas",
+                      "value": "associated_gas"
+                    },
+                    {
+                      "label": "Non Associated Gas",
+                      "value": "non_associated_gas"
+                    }
+                  ],
+                  "placeholder": "Select Service",
+                  "required": true,
+                  "type": "select",
+                  "value": ""
+                },
+                {
+                  "gridWidth": "3",
+                  "key": "company",
+                  "label": "Company",
+                  "placeholder": "Enter company Name",
+                  "required": true,
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "gridWidth": "3",
+                  "key": "contractor",
+                  "label": "Contractor",
+                  "placeholder": "Enter Contractor Name",
+                  "required": false,
+                  "type": "text",
+                  "value": ""
+                }
+              ],
+            "layoutType": "accordianView",
+            "activeAccordianTab": "data1",
+            "accordionView": true,
+            "subTitle": "Service Information",
+            "sectionWidth": "12"
+          },
+          {
+            "content": "",
+                "data": [
+                    {
+                      "gridWidth": "3",
+                      "key": "pipeline_name",
+                      "label": "Pipeline Name",
+                      "placeholder": "Enter Pipeline Name",
+                      "required": true,
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "allowClear": false,
+                      "disabled": false,
+                      "gridWidth": "3",
+                      "key": "pipeline_type",
+                      "label": "Type of Pipeline",
+                      "options": [
+                        {
+                          "label": "Gas",
+                          "value": "gas"
+                        },
+                        {
+                          "label": "Oil",
+                          "value": "oil"
+                        },
+                        {
+                          "label": "Water",
+                          "value": "water"
+                        }
+                      ],
+                      "placeholder": "Select Type",
+                      "required": false,
+                      "type": "select",
+                      "value": ""
+                    },
+                    {
+                      "allowClear": false,
+                      "disabled": false,
+                      "gridWidth": "3",
+                      "key": "commissioning_year",
+                      "label": "Year of Commissioning",
+                      "options": [
+                        {
+                          "label": "1 LPE",
+                          "value": "1lpe"
+                        },
+                        {
+                          "label": "2 LPE",
+                          "value": "2lpe"
+                        },
+                        {
+                          "label": "3 LPE",
+                          "value": "3lpe"
+                        },
+                        {
+                          "label": "4 LPE",
+                          "value": "4lpe"
+                        },
+                        {
+                          "label": "5 LPE",
+                          "value": "5lpe"
+                        }
+                      ],
+                      "placeholder": "Select Year",
+                      "required": false,
+                      "type": "select",
+                      "value": ""
+                    },
+                    {
+                          "gridWidth": "3",
+                      "key": "design_life",
+                      "label": "Design Life",
+                      "placeholder": "Enter Design Life",
+                      "required": false,
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "gridWidth": "3",
+                      "key": "length",
+                      "label": "Length",
+                      "placeholder": "Enter Length",
+                      "required": false,
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "gridWidth": "3",
+                      "key": "diameter",
+                      "label": "Diameter",
+                      "placeholder": "Enter Diameter",
+                      "required": false,
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "gridWidth": "3",
+                      "key": "line_pipe_grade",
+                      "label": "Line Pipe Grade",
+                      "placeholder": "Enter Pipe Grade",
+                      "required": false,
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "gridWidth": "3",
+                      "key": "pipe_thickness",
+                      "label": "Pipe Thickness",
+                      "placeholder": "Enter Pipe Thickness",
+                      "required": false,
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "allowClear": false,
+                      "disabled": false,
+                      "gridWidth": "3",
+                      "key": "external_coating",
+                      "label": "External Coating",
+                      "options": [
+                        {
+                          "label": "Habshan",
+                          "value": "habshan"
+                        },
+                        {
+                          "label": "Habshan",
+                          "value": "habshan"
+                        },
+                        {
+                          "label": "Habshan",
+                          "value": "habshan"
+                        },
+                        {
+                          "label": "Habshan",
+                          "value": "habshan"
+                        },
+                        {
+                          "label": "Habshan",
+                          "value": "habshan"
+                        }
+                      ],
+                      "placeholder": "Select External Coating",
+                      "required": false,
+                      "type": "select",
+                      "value": ""
+                    },
+                    {
+                      "allowClear": false,
+                      "disabled": false,
+                      "gridWidth": "3",
+                      "key": "line_pipe_type",
+                      "label": "Line Pipe Type",
+                      "options": [
+                        {
+                          "label": "Longitudinal SAW",
+                          "value": "longitudinal"
+                        },
+                        {
+                          "label": "Latitudinal SAW",
+                          "value": "latitudinal"
+                        }
+                      ],
+                      "placeholder": "Select Line Pipe",
+                      "required": false,
+                      "type": "select",
+                      "value": ""
+                    },
+                    {
+                      "gridWidth": "3",
+                      "key": "design_code",
+                      "label": "Design Code",
+                      "placeholder": "Enter Design Code",
+                      "required": false,
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "gridWidth": "3",
+                      "key": "operating_temperature",
+                      "label": "Operating Temperature",
+                      "placeholder": "Enter Operating Temperature",
+                      "required": false,
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "gridWidth": "3",
+                      "key": "corrosion_allowance",
+                      "label": "Corrosion Allowance",
+                      "placeholder": "Enter Corrosion Allowance",
+                      "required": false,
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "allowClear": false,
+                      "disabled": false,
+                      "gridWidth": "3",
+                      "key": "corrosion_protection",
+                      "label": "Corrosion Protection",
+                      "options": [
+                        {
+                          "label": "Habshan",
+                          "value": "habshan"
+                        },
+                        {
+                          "label": "Not Habshan",
+                          "value": "not_habshan"
+                        }
+                      ],
+                      "placeholder": "Select Corrosion Protection",
+                      "required": false,
+                      "type": "select",
+                      "value": ""
+                    },
+                    {
+                      "allowClear": false,
+                      "disabled": false,
+                      "gridWidth": "3",
+                      "key": "burial_status",
+                      "label": "Burial Status",
+                      "options": [
+                        {
+                          "label": "Buried",
+                          "value": "buried"
+                        },
+                        {
+                          "label": "Not Buried",
+                          "value": "not_buried"
+                        }
+                      ],
+                      "placeholder": "Select Burial Status",
+                      "required": false,
+                      "type": "select",
+                      "value": ""
+                    },
+                    {
+                      "gridWidth": "3",
+                      "key": "pig_ability",
+                      "label": "Pigg Ability",
+                      "required": false,
+                      "type": "switch",
+                      "value": "",
+                      "isLabel": true,
+                      "checkedLabel": "Yes",
+                      "UnCheckedLabel": ""
+                    },
+                    {
+                      "gridWidth": "3",
+                      "required": false,
+                      "type": "custom_text_button",
+                      "text_label": "Chainages",
+                      "key": "chainages",
+                      "sub_label": "Add or remove pipeline chainages",
+                      "button_label": "Set up chainages...",
+                      "emitChanges": true
+                    },
+                    {
+                      "gridWidth": "3",
+                      "required": false,
+                      "type": "custom_text_button",
+                      "text_label": "Limits",
+                      "key": "limits",
+                      "sub_label": "Set Lemets to Parameter",
+                      "button_label": "Set up limits...",
+                      "emitChanges": true
+                    }
+                  ],
+            "layoutType": "accordianView",
+            "activeAccordianTab": "data2",
+            "accordionView": true,
+            "subTitle": "Pipeline Information",
+            "sectionWidth": "12"
+          }
+    ],
+    "bodyContent": {},
+    "userActions": {}
+  }
+}

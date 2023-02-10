@@ -1,0 +1,365 @@
+<header class="app-header app-header-dark">
+    <div class="top-bar">
+      <div class="top-bar-brand w-auto">
+        <label class="mt-2 inter-medium header-title">Unified Cathodic Protection</label>
+      </div>
+      <div class="top-bar-list">
+        <div class="top-bar-item px-2 d-md-none d-lg-none d-xl-none">
+          <button class="hamburger hamburger-squeeze" type="button" data-toggle="aside" aria-label="toggle menu"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button> <!-- /toggle menu -->
+        </div>
+        <div class="top-bar-item top-bar-item-full">
+          <ul class="header-nav nav  d-none d-md-flex">
+            <li class="nav-item dropdown header-nav-dropdown">
+              <a class="nav-link has-badge px-1 d-flex" href="javascript:void(0)" *ngIf="getProjectDetails('project_name')" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <img class="icons" src="assets/images/project.svg">
+                <span class="pl-2">{{getProjectDetails('project_name') || ''}}</span><span class="material-icons-outlined">
+                  arrow_drop_down
+                </span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right projects_section">
+                <div class="dropdown-arrow"></div>
+                <h6 class="dropdown-header stop-propagation">
+                  <span>Projects</span>
+                  <span class="add-project">
+                    <a href="javascript:void(0)" (click)="routeTo('app/projects/config-project/new')">
+                      <span class="material-icons-outlined">
+                        add_circle_outline
+                        </span>
+                    </a>
+                    </span>
+                </h6>
+                <div class="dropdown-scroll perfect-scrollbar">
+                  <ng-container *ngFor="let eachProject of projectDetails | slice: 0: 4">
+                    <a href="javascript:void(0)" class="dropdown-item {{ getProjectDetails('project_id') === eachProject?.project_id ?  'active_project' : ''}}"
+                    (click)="changeProject(eachProject?.project_id || '')">
+                      <div class="dropdown-item-body">
+                        <p class="text active_project d-flex w-100">{{eachProject.project_name}}
+                          <span *ngIf="getProjectDetails('project_id') === eachProject?.project_id" class="ml-auto material-icons-two-tone">
+                            check
+                            </span>
+                        </p>
+                        <span class="date active_project">{{eachProject.created_on}}</span>
+                      </div>
+                    </a>
+                  </ng-container>
+                </div>
+                <a href="javascript:void(0)" class="dropdown-footer" (click)="routeTo('app/projects/list')">View all Projects</a>
+              </div>
+            </li>
+          </ul>
+          <ng-container *ngIf="choosenTab">
+            <!-- <div class="tabs-section m-auto  d-none d-md-flex" *ngIf="tabs?.length > 1"> -->
+            <div class="tabs-section m-auto  d-none d-md-flex">
+              <ul class="nav" id="myTab" role="tablist">
+                <li class="nav-item each-info-tab cursor-pointer tab-border"
+                  *ngFor="let eachtab of tabs"
+                  [ngClass]="eachtab.value === choosenTab ? 'active' : ''">
+                  <a class="nav-link active py-0 my-1" title="{{eachtab.label}}" (click)="switchTabs(eachtab)">{{eachtab.label}}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </ng-container>
+        </div>
+        <div class="top-bar-item top-bar-item-right px-0">
+          <ul class="header-nav nav">
+            <li class="nav-item">
+              <span>
+                <span class="material-icons pointer" title="Light Theme" *ngIf="selectedTheme?.theme === 'dark-theme'"  (click)="switchTheme('default-skin')">
+                  light_mode
+                </span>    
+              </span>
+                  <span class="material-icons pointer" title="Dark Theme" *ngIf="selectedTheme?.theme === 'default-skin'"  (click)="switchTheme('dark-theme')">
+                    dark_mode
+                  </span>    
+            </li>
+            <li class="nav-item dropdown header-nav-dropdown">
+              <a class="nav-link px-1" href="javascript:void(0)" (click)="routeTo('app/projects/list')">
+                <span class="material-icons-outlined" title="View all Projects">
+                  source
+                </span>
+              </a>
+            </li>
+            <li class="nav-item dropdown header-nav-dropdown">
+              <a class="nav-link px-1" href="javascript:void(0)" (click)="toggleFullscreen($event)">
+                <span class="material-icons" title="Full Screen" *ngIf="!fullScreenActive">
+                  open_in_full
+                  </span>
+                <span class="material-icons-outlined" *ngIf="fullScreenActive">
+                  close_fullscreen
+                  </span>
+              </a>
+            </li>
+          </ul>
+          <div class="dropdown d-flex">
+            <button class="btn-account d-none d-md-flex" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="user-avatar user-avatar-md">
+                <img [src]="storedUserDetails['profile_url'] || 'assets/images/profile.png'" alt="" onerror="onerror=null; src='assets/images/profile.png'">
+              </span> 
+              <span class="account-summary pr-lg-4 d-none d-lg-block">
+                <span class="account-name">{{storedUserDetails['full_name'] || ''}}</span> 
+                <span class="account-description">{{storedUserDetails['user_role_name'] || ''}}</span>
+              </span>
+            </button>
+            <div class="dropdown-menu">
+              <div class="dropdown-arrow ml-3"></div>
+              <h6 class="dropdown-header d-none d-md-block d-lg-none"> {{storedUserDetails['full_name'] || ''}} </h6>
+              <a class="dropdown-item" href="javascript:void(0)" (click)="fetchUser()">
+                <span class="dropdown-icon oi oi-account-logout"></span> Profile</a>
+                <a class="dropdown-item" href="javascript:void(0)" (click)="changePassword()">
+                  <span class="dropdown-icon oi oi-account-logout"></span> Change Password</a>
+                <a class="dropdown-item" href="javascript:void(0)" (click)="logOut()">
+                  <span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <ng-container *ngIf="loading?.userLogout">
+    <div class="loader-wrapper-submaincontent">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+  </ng-container>
+
+<button class="btn dropdown-toggle action-icon pt-0" hidden data-toggle="modal" data-target="#profileModal"
+   id="profileBtn">
+</button>
+<div class="modal fade right" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-min-width-slider" ucpGlobalSlider [ucpSliderType]="'right-to-left'" role="document"
+    style="min-width: 60% !important;">
+
+    <div class="modal-content">
+      <div class="modal-header" style="border: 0;">
+            <h5>Profile Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeProfile">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height: calc(100vh - 130px);overflow-y: auto;">
+
+        <div class="text-center mb-3">
+          <div class="user-avatar user-avatar-xxl fileinput-button">
+            <div class="fileinput-button-label"> Change photo </div><img [src]="profile_url ? profile_url : (storedUserDetails['profile_url'] || 'assets/images/profile.png')" alt=""> 
+            <input id="fileupload-avatar" type="file" accept=".png, .PNG, .jpg, .JPG, .jpeg, .JPEG, .gif, .GIF" name="file" #changePhoto
+            (click)="changePhoto.value = null" id="changeProfilePic"
+            (change)="fileChangeEvent($event)">
+          </div>
+        </div>
+
+          
+        <div class="row m-0 user-access-fields">
+                    <!-- <ucp-config-user-role class="pl-0" [pageconf]="meta" (userRoleEmitter)="userConfEmitter($event)"></ucp-config-user-role> -->
+           <form [formGroup]="profileForm" class="pl-0">
+            <div class="row col-12 m-0 p-0">
+              <ng-container>
+                <div class="form-group col-4 pl-0">
+                  <label class="form-design required">Name</label>
+                  <input type="text" class="form-control" placeholder="Enter Name" [(ngModel)]="profileData['name']"
+                    formControlName="name" ucpWhiteSpaceRestrictor [ngClass]="{ 'is-invalid': f['name'].dirty && f['name']['errors'] }">
+                    <div *ngIf="f['name']['errors'] && f['name'].dirty" class="invalid-feedback pt-1">
+                        <span *ngIf="f['name']['errors']['required']">
+                            Name is required.
+                        </span>
+                    </div>
+                </div>
+  
+                <div class="form-group col-4 pl-0" *ngIf="userDetails?.user_id">
+                  <label class="form-design required">User ID</label>
+                  <input type="text" class="form-control" placeholder="Enter User ID"
+                    [(ngModel)]="profileData['username']" formControlName="username" ucpWhiteSpaceRestrictor [ngClass]="{ 'is-invalid': f['username'].dirty && f['username']['errors'] }">
+                    <div *ngIf="f['username']['errors'] && f['username'].dirty" class="invalid-feedback pt-1">
+                      <span *ngIf="f['username']['errors']['required']">
+                          User ID is required.
+                      </span>
+                      <span *ngIf="f?.username?.errors?.minlength">
+                          User ID Must be Atleast 5 Characters Long.
+                      </span>
+                  </div>
+
+                </div>
+                <div class="form-group col-4 pl-0">
+                  <label class="form-design required">email</label>
+                  <input type="text" class="form-control" placeholder="Enter email" [(ngModel)]="profileData['email']"
+                    formControlName="email" ucpWhiteSpaceRestrictor [ngClass]="{ 'is-invalid': f['email'].dirty && f['email']['errors'] }">
+                    <div *ngIf="f['email']['errors'] && f['email'].dirty" class="invalid-feedback pt-1">
+                      <span *ngIf="f['email']['errors']['required']">
+                          Email is required.
+                      </span>
+                      <span *ngIf="f?.email?.errors?.pattern">
+                          Enter a valid email pattern.
+                      </span>
+                  </div>
+                </div>
+                <div class="form-group col-4 pl-0">
+                  <label class="form-design required">Phone number</label>
+                  <input type="number" class="form-control" placeholder="Enter Number"
+                    [(ngModel)]="profileData['phonenumber']" formControlName="phonenumber" ucpWhiteSpaceRestrictor [ngClass]="{ 'is-invalid': f['phonenumber'].dirty && f['phonenumber']['errors'] }">
+                    <div *ngIf="f['phonenumber']['errors'] && f['phonenumber'].dirty" class="invalid-feedback pt-1">
+                      <span *ngIf="f['phonenumber']['errors']['required']">
+                          Phone Number is required.
+                      </span>
+                  </div>
+                </div>
+                <div class="form-group col-4 pl-0">
+                    <label class="form-design required">User Role</label>
+                    <ng-select placeholder="Select User Role" bindLabel="role"
+                    [multiple]="false" bindValue="user_role_id" bindLabel="role" class="form-control p-0"
+                    [items]="dropdownData['user-roles']" [(ngModel)]="profileData.userrole"
+                    [ngClass]="{ 'is-invalid': f['userrole'].dirty && f['userrole']['errors'] }"
+                    formControlName="userrole">
+                </ng-select>
+                    <div *ngIf="f['userrole']['errors'] && f['userrole'].dirty" class="invalid-feedback pt-1">
+                        <span *ngIf="f['userrole']['errors']['required']">
+                            User Role is required.
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group col-4 pl-0">
+                  <label class="form-design required">User Group</label>
+                  <ng-select placeholder="Select User Group" bindLabel="access_group"
+                  [multiple]="true" bindValue="access_group_id" class="form-control p-0"
+                  [items]="dropdownData['user-access-groups']" [(ngModel)]="profileData.access_group_ids"
+                  [ngClass]="{ 'is-invalid': f['access_group_ids'].dirty && f['access_group_ids']['errors'] }"
+                  formControlName="access_group_ids">
+              </ng-select>
+                  <div *ngIf="f['access_group_ids']['errors'] && f['access_group_ids'].dirty" class="invalid-feedback pt-1">
+                      <span *ngIf="f['access_group_ids']['errors']['required']">
+                          User Group is required.
+                      </span>
+                  </div>
+              </div>
+            </ng-container>
+            </div>
+          </form>
+        </div>
+
+      </div>
+      <div class="modal-footer p-0">
+        <div class="m-3 float-left">
+          <button type="submit" class="btn btn-primary" (click)="updateProfile()">
+            Save Changes
+          </button>
+          <button class="btn btn-inverse btn-outline-primary mx-2" (click)="openModal('closeProfile')">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<button class="btn dropdown-toggle action-icon pt-0" hidden data-toggle="modal" data-target="#passwordModal"
+   id="passwordBtn">
+</button>
+<div class="modal fade right" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-min-width-slider" ucpGlobalSlider [ucpSliderType]="'right-to-left'" role="document"
+    style="min-width: 60% !important;">
+
+    <div class="modal-content">
+      <div class="modal-header" style="border: 0;">
+            <h5>Change Password </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closePassword">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height: calc(100vh - 130px);overflow-y: auto;">
+        <div class="row m-0 user-access-fields">
+          <form [formGroup]="passwordForm" class="pl-0">
+            <div class="row col-12 m-0 p-0">
+             
+              <ng-container>
+                <div class="row col-12 m-0 p-0">
+                  <div class="form-group col-4 pl-0">
+                    <label class="form-design required">Current password</label>
+                    <input type="password" class="form-control" placeholder="Enter Current Password"
+                      [(ngModel)]="passwordData['password']" formControlName="password"
+                      ucpWhiteSpaceRestrictor [ngClass]="{ 'is-invalid': p['password'].dirty && p['password']['errors'] }">
+                      <div *ngIf="(p['password']['errors'] && p['password'].dirty)" class="invalid-feedback pt-1">
+                        <span *ngIf="p['password']['errors']['required']">
+                           Password is required.
+                        </span>
+                        <span *ngIf="p?.password?.errors?.minlength">
+                          Password Must be Atleast 8 Characters Long.
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group col-4 pl-0">
+                    <label class="form-design required"> New password</label>
+                    <input type="password" class="form-control" placeholder="Enter New Password" autocomplete="off" minlength="8" 
+                    [(ngModel)]="passwordData['newPassword']" formControlName="newPassword" ucpWhiteSpaceRestrictor (ngModelChange)="checkValidation()"                                                    
+                    [ngClass]="{ 'is-invalid': p['newPassword'].dirty && p['newPassword']['errors'] || (metaData['passwordInvalid'] && p['newPassword'].dirty) }">
+
+                    <div *ngIf="p['newPassword'].errors && p['newPassword'].dirty || (metaData['passwordInvalid'] && p['newPassword'].dirty)" class="invalid-feedback pt-1">
+                     <span *ngIf="p['newPassword']['errors']['required']">
+                       New Password is required.</span>
+                        <span *ngIf="metaData['passwordInvalid'] && !p['newPassword']['errors']['required']">
+                          New Password Must be Atleast 8 Characters Long.</span>
+                        </div>
+
+                        <div *ngIf="passwordValidator?.length > 0">
+                          <ul class="validator-list row m-0 pl-0">
+                              <ng-container *ngFor="let eachField of passwordValidator; let ind = index">
+                                  <li class="validator-item pl-0 mt-1 d-flex" [ngClass]="{ 'is-present': eachField['isPresent'] }">
+                                      <span class="material-icons-outlined pr-1 mt-1 color-green fz-1rem" *ngIf="isregexSatisfies(eachField?.regex)">
+                                          done
+                                      </span>
+                                      <span class="material-icons-outlined pr-1 mt-1 color-red fz-1rem" *ngIf="!isregexSatisfies(eachField?.regex)">
+                                          close
+                                      </span>
+                                      <span>{{eachField['label']}}</span>
+                                  </li>
+                              </ng-container>
+                          </ul>
+                          </div> 
+                  </div>
+
+                  <div class="form-group col-4 pl-0">
+                    <label class="form-design required"> Confirm New password</label>
+                      <input type="password" class="form-control"
+                        placeholder="Enter New Password" autocomplete="off" [(ngModel)]="passwordData['confirmPassword']"
+                       formControlName="confirmPassword" ucpWhiteSpaceRestrictor
+                        [ngClass]="{ 'is-invalid': (p['confirmPassword'].dirty && p['confirmPassword']['errors']) 
+                        || (passwordData.newPassword && passwordData?.confirmPassword && passwordData.newPassword !== passwordData.confirmPassword)}">
+                      <div *ngIf="(p['confirmPassword']['errors'] && p['confirmPassword'].dirty) || 
+                      (passwordData.newPassword && passwordData?.confirmPassword && passwordData.newPassword !== passwordData.confirmPassword)" class="invalid-feedback pt-1">
+                        <span *ngIf="passwordData['confirmPassword'] && (passwordData.newPassword != passwordData['confirmPassword'])">
+                          Confirm Password is required.
+                      </span>
+                      <span *ngIf="passwordData['confirmPassword'] && (passwordData.newPassword != passwordData['confirmPassword'])">
+                        Confirm Password is not same as Password.
+                    </span>
+                      </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </form>
+        </div>
+
+      </div>
+      <div class="modal-footer p-0">
+        <div class="m-3 float-left">
+          <button type="submit" class="btn btn-primary" (click)="updatePassword()">
+            Save Changes
+          </button>
+          <button class="btn btn-inverse btn-outline-primary mx-2" (click)="openModal('closePassword')">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

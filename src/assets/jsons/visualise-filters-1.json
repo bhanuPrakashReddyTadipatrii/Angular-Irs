@@ -1,0 +1,96 @@
+{
+  "status": "success",
+  "message": "Fetched visualize default filter successfully",
+  "data": {
+    "headerContent": [
+      {
+        "content": "",
+        "data": [
+          {
+            "allowClear": false,
+            "emitChanges": true,
+            "gridWidth": "12",
+            "key": "survey",
+            "headerTitle": "Survey",
+            "label": "",
+            "hideInput": true,
+            "options": [
+              {
+                "label": "Soil Resistivity Test Survey",
+                "disabled": false,
+                "value": "soil_resistivity"
+              },
+              {
+                "label": "PSP ON / OFF Survey",
+                "value": "psp_on_off_survey",
+                "disabled": false
+              },
+              {
+                "label": "Polarisation Coupons",
+                "value": "polarisation_coupons",
+                "disabled": false
+              },
+              {
+                "label": "DCVG",
+                "value": "dcvg",
+                "disabled": false
+              },
+              {
+                "label": "CIPS",
+                "value": "cips",
+                "disabled": false
+              },
+              {
+                "label": "30_OAG_RAS-AL-QILA",
+                "value": "30_oag_ras-al-qila",
+                "disabled": false
+              },
+              {
+                "label": "KM 15 30 ING OAG CIPS",
+                "value": "km_15_30_ing_oag_cips",
+                "disabled": false
+              }
+            ],
+            "placeholder": "Survey",
+            "required": false,
+            "type": "simpleRadioSelect",
+            "value": ""
+          },
+          {
+            "allowClear": false,
+            "emitChanges": true,
+            "gridWidth": "12",
+            "key": "survey_period",
+            "hideInput": true,
+            "headerTitle": "Survey Period",
+            "label": "",
+            "options": [],
+            "placeholder": "Survey Period",
+            "required": false,
+            "type": "date",
+            "value": ""
+          },
+          {
+            "allowClear": false,
+            "emitChanges": true,
+            "gridWidth": "12",
+            "hideInput": true,
+            "key": "pipeline_segments",
+            "headerTitle": "Pipeline Segments",
+            "label": "",
+            "options": [],
+            "placeholder": "Pipeline Segments",
+            "required": false,
+            "type": "simpleRadioSelect",
+            "value": ""
+          }
+        ],
+        "layoutType": "section",
+        "sectionTitle": "",
+        "sectionWidth": "12"
+      }
+    ],
+    "bodyContent": {},
+    "userActions": {}
+  }
+}

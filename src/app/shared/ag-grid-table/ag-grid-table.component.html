@@ -1,0 +1,20 @@
+<div class="ag-grid-table-component" [ngStyle]="{height:  !agGridOptions?.enableActions && Height ? Height : ''}">
+    <div class="col px-0 d-flex " *ngIf="agGridOptions?.enableActions">
+        <input class="form-control filter-item mobileSearchBar border_0_px" type="text"
+            style="height: 36px; font-family: FontAwesome;" placeholder="Search" [(ngModel)]="search" (ngModelChange)="onGlobalLevelSearch()">
+        <div class="d-flex" style="height: 100%;">
+            <div class="btn_action" style="height: 100%;" *ngFor="let eachdata of agGridOptions?.tableActions?.externalActions">
+                <div class="addbtn">
+                    <button type="button" class="btn btn-primary border_0_px" [ngStyle]="{'width.px': '150'}" (click)="changeActions(eachdata)">
+                        <span>{{eachdata.label}}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ag-grid-angular class="w-100" [ngStyle]="{height: ((!agGridOptions?.enableActions && Height) || (agGridOptions?.enableActions && Height)) ? Height : 'calc(100vh - 510px)'}" *ngIf="agGridOptions?.columnDefs" [style.height]="agGridOptions?.height" [ngClass]="theme || 'ag-theme-alpine'"
+        [gridOptions]="agGridOptions" (gridReady)="onGridReady($event)" [rowModelType]="rowModelType" [overlayLoadingTemplate]="overlayLoadingTemplate"
+        [overlayNoRowsTemplate]="overlayNoRowsTemplate" (firstDataRendered)="onFirstDataRendered($event)"
+        (cellClicked)="onCellClicked($event)" (modelUpdated)="onModelUpdated()">
+    </ag-grid-angular>
+</div>

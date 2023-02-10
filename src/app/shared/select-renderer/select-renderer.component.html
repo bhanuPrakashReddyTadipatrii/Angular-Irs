@@ -1,0 +1,96 @@
+<ng-container *ngIf="params?.node?.data">
+<ng-container *ngIf="settings?.fullObject && settings?.multiple">
+  <ng-select   [items]="settings.dependent ? settings.options[params.node.data[settings.dependentKey]] : settings.options" placeholder="Select" bindLabel="{{ settings?.bindLabel || 'label' }}" [addTag]="settings?.addTag" [addTagText]="settings?.addTagLabel || 'Add New'"
+    [(ngModel)]="params.node.data[settings.headerKey]" multiple="true" appendTo="body" [virtualScroll]="true" [disabled]="settings?.disabled || disableField && disableFunc(params?.node?.data)" [closeOnSelect]="false" [clearable]="settings?.clearable || false"
+    (ngModelChange)="onSelectValueChange()">
+    <ng-template ng-header-tmp>
+      <div>
+        <button class="btn btn-link py-0 px-1" (click)="onSelectAll(true)">Select All</button>
+        <button class="btn btn-link py-0 px-1" (click)="onDeSelectAll()">Clear All</button>
+      </div>
+    </ng-template>
+    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+      <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" [ngModelOptions]="{standalone: true}" />
+      {{item.label || item[settings?.bindLabel]}}
+    </ng-template>
+    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+      <div class="ng-value" *ngFor="let item of items | slice:0:2">
+        <span class="ng-value-icon left" (click)="clear(item)" aria-hidden="true" *ngIf="!item['disabled']">×</span>
+        <span class="ng-value-label">{{item.label || item[settings?.bindLabel]}}</span>
+      </div>
+      <div class="ng-value badge-value" *ngIf="items.length > 2" style="right: 40px !important;">
+        <span class="ng-value-label">+{{items.length - 2}}</span>
+      </div>
+    </ng-template>
+  </ng-select>
+</ng-container>
+
+
+<ng-container *ngIf="!settings?.fullObject && settings?.multiple && !settings?.modelAsStrings">
+  <ng-select  [items]="settings.dependent ? settings.options[params.node.data[settings.dependentKey]] : settings.options" placeholder="Select" bindLabel="{{ settings?.bindLabel || 'label' }}" [addTag]="settings?.addTag" [addTagText]="settings?.addTagLabel || 'Add New'"
+    bindValue="{{ settings?.bindValue || 'value' }}" [(ngModel)]="params.node.data[settings.headerKey]" multiple="true"
+    appendTo="body" [virtualScroll]="true" [disabled]="settings?.disabled || disableField && disableFunc(params?.node?.data)" [closeOnSelect]="false" [clearable]="settings?.clearable || false" (ngModelChange)="onSelectValueChange()">
+    <ng-template ng-header-tmp>
+      <div>
+        <button class="btn btn-link py-0 px-1" (click)="onSelectAll(false)">Select All</button>
+        <button class="btn btn-link py-0 px-1" (click)="onDeSelectAll()">Clear All</button>
+      </div>
+    </ng-template>
+    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+      <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" [ngModelOptions]="{standalone: true}" />
+      {{item.label || item[settings?.bindLabel]}}
+    </ng-template>
+    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+      <div class="ng-value" *ngFor="let item of items | slice:0:2">
+        <span class="ng-value-icon left" (click)="clear(item)" aria-hidden="true" *ngIf="!item['disabled']">×</span>
+        <span class="ng-value-label">{{item.label || item[settings?.bindLabel]}}</span>
+      </div>
+      <div class="ng-value badge-value" *ngIf="items.length > 2" style="right: 40px !important;">
+        <span class="ng-value-label">+{{items.length - 2}}</span>
+      </div>
+    </ng-template>
+  </ng-select>
+</ng-container>
+
+
+<ng-container *ngIf="settings?.fullObject && !settings?.multiple">
+  <ng-select   [items]="settings.dependent ? settings.options[params.node.data[settings.dependentKey]] : settings.options" placeholder="Select" bindLabel="{{ settings?.bindLabel || 'label' }}" [addTag]="settings?.addTag" [addTagText]="settings?.addTagLabel || 'Add New'"
+    [(ngModel)]="params.node.data[settings.headerKey]" appendTo="body" [virtualScroll]="true" [disabled]="settings?.disabled || disableField && disableFunc(params?.node?.data)" [closeOnSelect]="true" [clearable]="settings?.clearable || false"
+    (ngModelChange)="onSelectValueChange()">
+    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+      <span title="{{item[settings.bindLabel] || item.label}}" class="ng-select-item">{{item[settings.bindLabel] || item.label}}</span>
+    </ng-template>
+  </ng-select>
+</ng-container>
+
+
+
+<ng-container *ngIf="!settings?.fullObject && !settings?.multiple && !settings?.modelAsStrings">
+  <ng-select  [items]="settings?.dependent ? settings.options[params.node.data[settings.dependentKey]] : settings?.options" placeholder="Select" bindLabel="{{ settings?.bindLabel || 'label' }}" 
+    bindValue="{{ settings?.bindValue || 'value' }}" [addTag]="settings?.addTag" [addTagText]="settings?.addTagLabel || 'Add New'"
+    [(ngModel)]="params.node.data[settings?.headerKey]" appendTo="body" [virtualScroll]="true" [disabled]="settings?.disabled || disableField && disableFunc(params?.node?.data)"
+    [closeOnSelect]="true" [clearable]="settings?.clearable || false" (ngModelChange)="onSelectValueChange()">
+    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+      <span title="{{item[settings.bindLabel] || item.label}}" class="ng-select-item">{{item[settings.bindLabel] || item.label}}</span>
+    </ng-template>
+  </ng-select>
+</ng-container>
+
+
+<ng-container *ngIf="settings?.multiple && settings?.modelAsStrings">
+  <ng-select   [items]="settings.dependent ? settings.options[params.node.data[settings.dependentKey]] : settings.options" placeholder="Select" [addTag]="settings?.addTag" [addTagText]="settings?.addTagLabel || 'Add New'"
+    [(ngModel)]="params.node.data[settings.headerKey]" appendTo="body"  multiple="true" [virtualScroll]="true" [disabled]="settings?.disabled || disableField && disableFunc(params?.node?.data)" [closeOnSelect]="true" [clearable]="settings?.clearable || false"
+    (ngModelChange)="onSelectValueChange()">
+  </ng-select>
+</ng-container>
+
+
+
+<ng-container *ngIf="!settings?.multiple && settings?.modelAsStrings">
+  <ng-select  [items]="settings.dependent ? settings.options[params.node.data[settings.dependentKey]] : settings.options" placeholder="Select" 
+   [addTag]="settings?.addTag" [addTagText]="settings?.addTagLabel || 'Add New'"
+    [(ngModel)]="params.node.data[settings.headerKey]" appendTo="body" [virtualScroll]="true" [disabled]="settings?.disabled || disableField && disableFunc(params?.node?.data)"
+    [closeOnSelect]="true" [clearable]="settings?.clearable || false" (ngModelChange)="onSelectValueChange()">
+  </ng-select>
+</ng-container>
+</ng-container>

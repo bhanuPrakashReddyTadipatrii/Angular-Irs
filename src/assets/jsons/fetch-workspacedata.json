@@ -1,0 +1,208 @@
+{
+  "status": "success",
+  "message": "WidgetData fetched successfully",
+  "data": [
+    {
+      "cols": 12,
+      "rows": 3,
+      "y": 0,
+      "x": 0,
+      "filterProps": {
+        "filters": {
+          "type_of_test_facility": [
+            "STP/PCTP",
+            "PCTP/PCR",
+            "STP/PCR",
+            "ETP",
+            "IJTP",
+            "FTP",
+            "CMTP",
+            "STP",
+            "BB",
+            "PCR",
+            "EEC",
+            "CMTP/PCTP",
+            "FTP/PCTP",
+            "FPBB",
+            "PCTP",
+            "LCTP/PCTP",
+            "RDX",
+            "ETP/PCTP"
+          ],
+          "chainage": { "min": 0, "max": 94.68 },
+          "survey_period": "jvpxBzQ3bcAPSSH6aFXRVC",
+          "survey": "psp_on_off",
+          "pipeline_segments": [
+            { "min": 0, "max": 94.68, "label": "All Pipes" }
+          ]
+        },
+        "showFilterOptions": true,
+        "filterPinned": true
+      },
+      "mapProps": {
+        "selected_column": "resistivity",
+        "mapOptions": {
+          "show_chainages": true,
+          "show_survey": true,
+          "show_legends": true
+        },
+        "legends": ["resistivity", "psp_on", "psp_off"],
+        "activeMapType": "satellite",
+        "center": { "lat": 24.45, "lng": 54.37 },
+        "zoom": 10,
+        "tilt": 30,
+        "showInMap": {
+          "show_chainages": true,
+          "show_survey": true,
+          "show_legends": true
+        },
+        "tooltipParams": []
+      },
+      "tableProps": {
+        "tableState": []
+      },
+      "chartProps": {
+        "type": "line",
+        "selected_column": [],
+        "markLines": null
+      },
+      "visualType": "map",
+      "wName": "Soil Resistivity Jan 2021",
+      "wId": "DKL38874pndsjhd"
+    },
+    {
+      "cols": 12,
+      "rows": 3,
+      "y": 0,
+      "x": 0,
+      "filterProps": {
+        "filters": {
+            "type_of_test_facility": [
+              "STP/PCTP",
+              "PCTP/PCR",
+              "STP/PCR",
+              "ETP",
+              "IJTP",
+              "FTP",
+              "CMTP",
+              "STP",
+              "BB",
+              "PCR",
+              "EEC",
+              "CMTP/PCTP",
+              "FTP/PCTP",
+              "FPBB",
+              "PCTP",
+              "LCTP/PCTP",
+              "RDX",
+              "ETP/PCTP"
+            ],
+            "chainage": { "min": 0, "max": 94.68 },
+            "survey_period": "jvpxBzQ3bcAPSSH6aFXRVC",
+            "survey": "psp_on_off",
+            "pipeline_segments": [
+              { "min": 0, "max": 94.68, "label": "All Pipes" }
+            ],
+            "resistivity": { "min": 25.13, "max": 355628.13 },
+            "psp_on": { "min": 1192, "max": 1660 },
+            "psp_off": { "min": 996, "max": 1499 },
+            "coupon_off": { "min": 385, "max": 1208 },
+            "a_c": { "min": 0, "max": 13.7 }
+        },
+        "showFilterOptions": true,
+        "filterPinned": true
+      },
+      "mapProps": {
+        "selected_column": "resistivity",
+        "activeMapType": "satellite",
+        "center": { "lat": 24.45, "lng": 54.37 },
+        "zoom": 13,
+        "tilt": 30,
+        "showInMap": {
+          "show_chainages": true,
+          "show_survey": true,
+          "show_legends": true
+        },
+        "tooltipParams": []
+      },
+      "tableProps": {
+        "tableState": []
+      },
+      "chartProps": {
+        "type": "line",
+        "selected_column": [],
+        "markLines": null
+      },
+      "visualType": "table",
+      "wName": "Soil Resistivity Jan 2022",
+      "wId": "DKL38874pndsjhdj"
+    },
+    {
+      "cols": 12,
+      "rows": 3,
+      "y": 0,
+      "x": 0,
+      "filterProps": {
+        "filters": {
+            "type_of_test_facility": [
+              "STP/PCTP",
+              "PCTP/PCR",
+              "STP/PCR",
+              "ETP",
+              "IJTP",
+              "FTP",
+              "CMTP",
+              "STP",
+              "BB",
+              "PCR",
+              "EEC",
+              "CMTP/PCTP",
+              "FTP/PCTP",
+              "FPBB",
+              "PCTP",
+              "LCTP/PCTP",
+              "RDX",
+              "ETP/PCTP"
+            ],
+            "chainage": { "min": 0, "max": 94.68 },
+            "survey_period": "jvpxBzQ3bcAPSSH6aFXRVC",
+            "survey": "psp_on_off",
+            "pipeline_segments": [
+              { "min": 0, "max": 94.68, "label": "All Pipes" }
+            ],
+            "resistivity": { "min": 25.13, "max": 355628.13 },
+            "psp_on": { "min": 1192, "max": 1660 },
+            "psp_off": { "min": 996, "max": 1499 },
+            "coupon_off": { "min": 385, "max": 1208 },
+            "a_c": { "min": 0, "max": 13.7 }
+        },
+        "showFilterOptions": true,
+        "filterPinned": true
+      },
+      "mapProps": {
+        "selectedParam": "resistivity",
+        "activeMapType": "satellite",
+        "center": { "lat": 24.45, "lng": 54.37 },
+        "zoom": 10,
+        "tilt": 30,
+        "showInMap": {
+          "show_chainages": true,
+          "show_survey": true,
+          "show_legends": true
+        },
+        "tooltipParams": []
+      },
+      "tableProps": {
+        "tableState": []
+      },
+      "chartProps": {
+        "type": "line",
+        "selected_column": ["resistivity","natural_psp","psp_on"],
+        "markLines": null
+      },
+      "visualType": "chart",
+      "wName": "Soil Resistivity Jan 2023",
+      "wId": "DKL38874pndsjhdq"
+    }
+  ]
+}

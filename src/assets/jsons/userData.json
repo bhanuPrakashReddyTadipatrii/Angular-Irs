@@ -1,0 +1,97 @@
+{
+  "status": "success",
+  "message": "",
+  "data": {
+    "defaultColDef": {
+      "flex": 1,
+      "resizable": true
+    },
+    "columnDefs": [
+      {
+        "headerName": "Adnoc ID",
+        "field": "username"
+      },
+      {
+        "headerName": "Full Name",
+        "field": "full_name"
+      },
+      {
+        "headerName": "Email",
+        "field": "e_mail"
+      },
+      {
+        "headerName": "Role",
+        "field": "role"
+      },
+      {
+        "headerName": "Access Group",
+        "field": "access_group"
+      },
+      {
+        "headerName": "Created On",
+        "field": "created_on"
+      },
+      {
+        "headerName": "Last Login",
+        "field": "last_logged_in"
+      }
+    ],
+    "rowData": [
+      {
+        "user_id": "user_0991",
+        "full_name": "Administrator1",
+        "e_mail": "user1@knowledgelens.com",
+        "role": "iLensAdmin1",
+        "access_group": [
+          "HeroFutureAdmin1",
+          "iLensAdmin1"
+        ],
+        "username": "Admin1",
+        "access_group_id": [
+          "access_group_100",
+          "access_group_099"
+        ],
+        "disabledActions": [],
+        "created_on": "",
+        "last_logged_in": "31 Oct 2022 16:43"
+      },
+      {
+        "user_id": "user_0991",
+        "full_name": "Administrator",
+        "e_mail": "user2@knowledgelens.com",
+        "role": "iLensAdmin",
+        "access_group": ["HeroFutureAdmin", "iLensAdmin"],
+        "username": "Admin",
+        "access_group_id": ["access_group_100", "access_group_099"],
+        "disabledActions": [],
+        "created_on": "",
+        "last_logged_in": "31 Oct 2022 16:43"
+      }
+    ],
+    "tableActions": {
+      "actions": [
+        {
+          "label": "Edit",
+          "action": "edit",
+          "type": "edit",
+          "icon-class": "edit"
+        },
+        {
+          "label": "Edit",
+          "action": "edit",
+          "type": "edit",
+          "icon-class": "delete"
+        }
+      ],
+      "externalActions": [
+        {
+          "label": "Create New",
+          "action": "addnew",
+          "type": "addnew",
+          "icon-class": "add"
+        }
+      ]
+    },
+    "enableActions": true
+  }
+}

@@ -1,0 +1,56 @@
+<div class="workspace generic-tabs d-flex mt-1 ml-3 workspace-component">
+  <ul class="nav nav-tabs ml-3" id="myTab" role="tablist">
+    <li class="nav-tabs cursor-pointer nav-action" (click)="changeWorkSpace('add')">
+      <span class="material-icons-outlined px-2 py-2" title="Add Workspace">add</span>
+    </li>
+
+    <li class="dropup nav-tabs cursor-pointer nav-action" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      <div class=" d-flex">
+        <a class="btn-account d-none d-md-flex" type="button" id="dropdownMenuButton">
+          <span class="material-icons-outlined px-2 py-2" title="List of Workspaces">
+            reorder
+          </span>
+        </a>
+        <div class="dropdown-menu" style="margin-left: -24px;">
+          <a *ngFor="let eachWorkSpace of workSpaceData; let ind=index" class="dropdown-item" href="javascript:void(0)"
+            [class.active]="activeTab === eachWorkSpace.workspace_id"
+            [ngStyle]="{'margin-right': (ind === workSpaceData.length - 1) ? '100px' : '0px' }"
+            (click)="changeWorkSpace('changetab',ind,$event)">
+            <div class="dropdown-item-sub d-flex">
+              <span *ngIf="activeTab === eachWorkSpace.workspace_id" class="material-icons-two-tone">
+                check
+              </span>
+              <span class="dropdown-icon oi workspace-label">{{eachWorkSpace.workspace_name}}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>    
+  <div class="drop-list drag-element" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)" (mousewheel)="handleWheelEvent($event)" >
+    <div  [class.active]="activeTab === eachSheet.workspace_id"  class="drag-element"
+      *ngFor='let eachSheet of workSpaceData; let ind=index' cdkDrag [cdkDragData]="eachSheet" cdkDragHandle cdkDragLockAxis="x">
+      <div class="btn-group drag-element">
+        <a type="button" class="btn" class="sheetLabel" (click)="changeWorkSpace('changetab',ind,$event)" (dblclick)="changeWorkSpace('edit',ind,$event)"
+          title="{{eachSheet.workspace_name}}" *ngIf="!eachSheet?.isInput">{{eachSheet.workspace_name}}</a>
+        <input class="form-control rename-workspace" placeholder="Enter Workspace name" type="text"
+          [(ngModel)]="eachSheet.workspace_name" *ngIf="eachSheet?.isInput">
+        <span class="nav-action cursor-pointer material-icons-outlined px-1 {{eachSheet?.isInput ? 'mt-2' : ''}}"
+          title="Save Workspace" (click)="changeWorkSpace('save',ind, $event)" *ngIf="eachSheet?.isInput">save</span>
+        <a type="button" *ngIf="!eachSheet?.isInput" class="btn dropup dropdown-toggle d-flex align-items-center" [id]="eachSheet.workspace_id"
+          aria-selected="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="material-icons-outlined sr-only">
+            arrow_drop_down
+          </span>
+        </a>
+        <div class="dropdown-menu" *ngIf="!eachSheet?.isInput">
+          <ng-container *ngFor="let item of footArrowDropDown;">
+            <a class="dropdown-item" *ngIf="(item?.value !== 'move_right' && item?.value !== 'move_left') || (item?.value === 'move_left' && ind) || (item?.value === 'move_right' && ind !== workSpaceData?.length-1)" href="javascript:void(0)"
+              (click)="changeWorkSpace(item.value,ind,$event)">{{item.name}}</a>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

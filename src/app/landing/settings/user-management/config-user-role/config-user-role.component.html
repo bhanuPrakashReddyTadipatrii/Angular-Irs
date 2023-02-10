@@ -1,0 +1,105 @@
+<div>
+    <!-- <header class="page-title-bar">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active">
+                    <a href="#"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Forms</a>
+                </li>
+            </ol>
+        </nav>
+        <h5 class="ml-3 my-2"> Configure User </h5>
+    </header> -->
+    <div class="row col-12 m-0 user-access-fields">
+        <form [formGroup]="userRoleForm" class="pl-0">
+            <div class="row col-12 m-0 p-0">
+                <div class="form-group col-4 pl-0">
+                    <label class="form-design required">User Role</label>
+                    <input type="text" ucpWhiteSpaceRestrictor class="form-control" placeholder="Enter User Role"
+                        [(ngModel)]="userRoleData['user_role_name']" formControlName="user_role_name"
+                        [ngClass]="{ 'is-invalid': f['user_role_name'].dirty && f['user_role_name']['errors'] }">
+                    <div *ngIf="f['user_role_name']['errors'] && f['user_role_name'].dirty" class="invalid-feedback pt-1">
+                        <span *ngIf="f['user_role_name']['errors']['required']">
+                            User Role is required.
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group col-4 pl-0">
+                    <label class="form-design required">Description</label>
+                    <textarea type="text" rows="3" ucpWhiteSpaceRestrictor class="form-control" placeholder="Enter Description"
+                        [(ngModel)]="userRoleData['user_role_description']" formControlName="user_role_description"
+                        [ngClass]="{ 'is-invalid': f['user_role_description'].dirty && f['user_role_description']['errors'] }"></textarea>
+                    <div *ngIf="f['user_role_description']['errors'] && f['user_role_description'].dirty" class="invalid-feedback pt-1">
+                        <span *ngIf="f['user_role_description']['errors']['required']">
+                            Description is required.
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="accessPermission && accordionView?.length">
+                <div class="accordionLine col-md-12 mt-2 pl-0" (click)="openAccessTab()">
+                    <h5 class="vDataLabel d-flex accor_dian">
+                        <span class="material-icons-outlined" *ngIf="!openTab">chevron_right</span>
+                        <span class="material-icons-outlined" *ngIf="openTab">expand_more</span>
+                        <span> Access Permission</span>
+                    </h5>
+                </div>
+                <ng-container *ngIf="accordionView && openTab">
+                    <div class="pl-0 accordionLine" *ngFor="let activeAccordianTab of accordionView ; let i=index">
+                        <ng-container *ngIf="!activeAccordianTab?.parent || (activeAccordianTab?.parent && accessPermission[activeAccordianTab?.parent]?.view)">
+                            <div class="col-md-12 mt-2" [ngClass]="{'ml-3': activeAccordianTab?.parent}" (click)="changeactiveTab(activeAccordianTab)">
+                                <h6 class="vDataLabel d-flex accor_dian">
+                                    <span class="material-icons-outlined"
+                                        *ngIf="activeTab !== activeAccordianTab.value">chevron_right</span>
+                                    <span class="material-icons-outlined"
+                                        *ngIf="activeTab === activeAccordianTab.value">expand_more</span>
+                                    <span>{{activeAccordianTab.label}} </span>
+                                </h6>
+                            </div>
+                            <div class="ml-5" *ngIf="activeTab === activeAccordianTab.value">
+                                <ng-container *ngFor="let eachItem of allPermList">
+                                    <div class="row col-md-4 px-0 mx-0" *ngIf="((defaultParams.includes(eachItem?.value) || activeAccordianTab?.extraPerms?.includes(eachItem?.value)) && !activeAccordianTab?.hideDefaultPerms.includes(eachItem?.value)) && (!activeAccordianTab?.parent || (activeAccordianTab?.parent && accessPermission?.[activeAccordianTab?.parent]?.[eachItem?.value]))">
+                                        <div class="col-md-4 state px-0 mx-0">
+                                            <label><span class="mr-2">{{eachItem?.label}}</span></label>
+                                        </div>
+                                        <div class="col-md-2 px-0 mx-0">
+                                            <label class="switcher-control"><input type="checkbox" class="switcher-input"
+                                                    [checked]="accessPermission[activeTab][eachItem?.value]" name="{{eachItem?.label}}"
+                                                    [(ngModel)]="accessPermission[activeTab][eachItem?.value]" [ngModelOptions]="{'standalone': true}" (change)="onPermChange(activeTab, eachItem?.value)"> <span
+                                                    class="switcher-indicator"></span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6 px-0 mx-0 float-left">
+                                            <span>Can {{eachItem?.label}} Setup</span>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-12 pl-0 ml-0">
+        <div class="pt-3 ml-0 pl-0">
+            <button type="submit" class="btn btn-primary" (click)="saveUserRole()">
+                Save Changes
+            </button>
+            <button class="btn btn-inverse btn-outline-primary mx-2" (click)="cancelUserRole()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+<div *ngIf="loader?.saveRole || loader?.fetch || loader?.fetchPerm">
+    <div id="loader-wrapper-submaincontent">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>

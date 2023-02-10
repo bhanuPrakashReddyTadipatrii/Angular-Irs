@@ -1,0 +1,102 @@
+<div class="config-project">
+  <div class="config-project-breadcrumb mb-3" *ngIf="pageType">
+    <label class="ml-3 d-flex pt-1">
+      <a class="ml-2 cursor-pointer" (click)="discardPage()" href="javascript:void(0)">
+        <span class="material-icons-outlined">
+          west
+        </span></a>
+      <a class="ml-3 cursor-pointer" (click)="discardPage()" href="javascript:void(0)"><span>Projects</span></a>
+      <span>&nbsp;/&nbsp;</span>
+      <span class="" title="{{pageType + ' Project'}}">{{pageType + ' Project'}}</span>
+    </label>
+  </div>
+  <div *ngIf="!loader?.fetch">
+    <div class="project-info-component">
+      <ucp-dfm class="kl-dfm" [DFMDATA]="dfmData" [fieldValueDependent]="true" *ngIf="dfmData?.headerContent?.length"
+        (emitInstantChanges)="onChangesEmitted($event)">
+      </ucp-dfm>
+    </div>
+
+    <div class="col-12">
+      <div class="m-3">
+        <button type="submit" class="btn btn-primary" (click)="savePage()">
+          Save Changes
+        </button>
+        <button class="btn btn-inverse btn-outline-primary mx-2" *ngIf="pageType" (click)="discardPage()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn dropdown-toggle action-icon pt-0" hidden data-toggle="modal" data-target="#addModal" hidden
+    id="addModalButton">
+  </button>
+
+  <div class="modal fade right" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-min-width-slider" ucpGlobalSlider [ucpSliderType]="'right-to-left'" role="document"
+      style="min-width: 100% !important;">
+      <div class="modal-content">
+        <div class="modal-header" style="border: 0;">
+          <h5 class="modal-title float-left" id="exampleModalLabel">Set Up Chainages</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="height: calc(100vh - 200px);overflow-y: auto;">
+          <ng-container *ngIf="!loader?.sheetNames">
+            <div class="float-left {{uploadBtn ? '' : 'd-none'}}">
+              <input type="file" class="d-none" accept=".csv,.xls,.xlsx" name="file" #fileInput
+                (click)="fileInput.value = null" id="fileBlock" (change)="uploadBlockCsv($event)">
+              <button class="btn ml-3 mr-3 btn-primary" (click)="toggleDOMELM('fileBlock')">
+                <span>&nbsp;Import File</span></button>
+            </div>
+            <div class="row m-0">
+              <div class="col-md-6" *ngIf="!uploadBtn">
+                <ucp-ag-grid-table [Height]="'calc(100vh - 210px)'" [agGridOptions]="sheetList" [enableAutoResize]="true"
+                  (aggridEmitter)="aggridEmitter($event)"></ucp-ag-grid-table>
+              </div>
+              <div class="col-md-6">
+                <ucp-maps *ngIf="mapData" [mapOptions]="mapOptions" [showPolylines]="true" [mapData]="mapData"></ucp-maps>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <div class="modal-footer p-0">
+          <div class="m-3 float-left">
+            <button type="submit" class="btn btn-primary" (click)="savePopupData()">
+              Save Changes
+            </button>
+            <button class="btn btn-inverse btn-outline-primary mx-2" (click)="discardPopupData()">
+              Cancel
+            </button>
+          </div>
+        </div>
+        <div *ngIf="loader?.sheetNames">
+          <div id="loader-wrapper-submaincontent">
+            <div class="lds-ring">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="loader?.fetch || loader?.save">
+  <div>
+    <div id="loader-wrapper-submaincontent">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,21 @@
+.closeicon {
+    color: black;
+    float: right;
+}
+
+.min-input {
+    width: 30%; 
+    display: inline-block;
+    height: 26px;
+}
+.max-input {
+    width: 30%; 
+    display: inline-block;
+    margin-left: 40px;
+    // color: black !important;
+    height: 26px;
+}
+.min-max-input{
+    display: flex;
+    justify-content: space-between;
+}

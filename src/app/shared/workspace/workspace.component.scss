@@ -1,0 +1,123 @@
+.workspace{
+    margin-left: 0 !important;
+    width: auto !important;
+}
+.workspace ul{
+    display: inline-block;
+    // overflow-x: auto;
+    // overflow-y: hidden;
+    white-space: nowrap;
+}
+.workspace ul li{
+    display: inline-block;
+    vertical-align: top;
+}
+.nav-item.active {
+    background-color: #ffffff;
+}
+.nav-tabs .nav-link {
+    padding: 0.5rem !important;
+}
+.dropdown-menu.show :hover {
+    color: white !important;
+}
+.dropup.show{
+    position: absolute;   
+}
+.dropdown-item{
+    border-bottom: 1px solid #e5e5e5 !important;
+}
+.dropdown-menu.show{
+    color: rgb(0, 0, 0) !important;
+    bottom: 33.5px !important;
+    top: 0px !important;
+    left: auto  !important;
+    position: fixed !important;
+    height: fit-content;
+    margin-top: auto ;
+    min-width: fit-content;
+}
+a.sheetLabel{
+        margin-left: 10px;
+        margin-top: 8px;
+        margin-right: -6px;
+}
+.dropdown-icon{
+    color: black;
+    font-family: 'Inter-Regular';
+}
+.dropdown-icon.active{
+    color: white  !important;
+}
+.btn-group>.btn-group:not(:first-child), .btn-group>:not(.btn-check:first-child)+.btn {
+    border: none;
+}
+.dropdown-item.active span.dropdown-icon.oi{
+    margin-left: 15px !important;
+    color: black !important;
+}
+span.dropdown-icon.oi {
+    margin-left: 39px !important;
+}
+.dropdown-item.active{
+    background-color: #E5E5E5 !important;
+}
+span.material-icons-two-tone {
+    color: black;
+}
+.drag-element{
+    cursor: all-scroll !important;
+}
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  .drop-list.cdk-drop-list-dragging .drag-list:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }  
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    background-color: white;
+    color: #000;
+  }
+  .cdk-drag-placeholder {
+    opacity: 0;
+}  
+.drop-list {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    white-space: nowrap;
+    overflow-x: auto;
+    width: auto;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #fff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #C7C7C7;
+    }
+}
+.active{
+    background-color: #fff;
+    color: #000;
+}
+.workspace-label{
+    width: fit-content;
+}
+.workspace-component {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.rename-workspace{
+    width: auto;
+}

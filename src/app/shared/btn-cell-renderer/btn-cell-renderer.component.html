@@ -1,0 +1,11 @@
+<ng-container *ngFor="let eachAction of actions">
+    <button type="button" class="btn ag-grid-button" *ngIf="!(params?.node?.data?.disabledActions?.includes(eachAction?.type))" (click)="onClick(eachAction)" [hidden]="hidden" container="body">
+      <!-- <span class="fa fs-1" [ngClass]="eachAction.class" *ngIf="eachAction.class" [ngbTooltip]="eachAction['tooltip']" placement="right"></span> -->
+      <span class="material-icons-outlined" title="{{eachAction['label']}}">{{eachAction['icon-class']}}</span>
+      <span *ngIf="eachAction?.image">
+        <img alt="icon" [src]="eachAction.image" [ngbTooltip]="eachAction['tooltip']" placement="right">
+      </span>
+    </button>
+  </ng-container>
+  
+  

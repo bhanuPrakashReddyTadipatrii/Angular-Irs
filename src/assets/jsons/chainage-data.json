@@ -1,0 +1,182 @@
+{
+    "status": "success",
+    "message": "",
+    "data": {
+      "defaultColDef": {
+        "flex": 1,
+        "resizable": true
+      },
+      "columnDefs": [
+        {
+          "headerName": "Chainage",
+          "field": "chainage"
+        },
+        {
+          "headerName": "Location Coordinates",
+          "field": "locationCoordinate"
+        },
+        {
+          "headerName": "Test Facility",
+          "field": "test_facility"
+        }
+      ],
+      "rowData": [
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "2.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        },
+        {
+          "chainage": "1.000",
+          "locationCoordinate": "24°7.6699, 52°53.73",
+          "test_facility": " STP"
+        }
+      ],
+      "tableActions":{
+        "externalActions": [
+            {
+              "label": "Import File",
+              "action": "addnew",
+              "type": "addnew",
+              "icon-class": "upload_file"
+            }
+          ]
+      },
+      "enableActions": true
+    }
+  }

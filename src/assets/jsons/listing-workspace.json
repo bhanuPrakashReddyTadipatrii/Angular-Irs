@@ -1,0 +1,27 @@
+{
+    "status": "success",
+    "message": "Workspaces fetched successfully",
+    "data": [
+        {
+            "workspace_id": "GfDkndkfXSjov2UAb26veY",
+            "compare": [],
+            "project_id": "project_099",
+            "workspace_name": "Workspace2",
+            "workspace_type": "compare"
+        },
+        {
+            "workspace_id": "nE8Mw2D4kB2KXAQv3uat3d",
+            "compare": [],
+            "project_id": "project_099",
+            "workspace_name": "Workspace2",
+            "workspace_type": "compare"
+        },
+        {
+            "workspace_id": "NgfbGiQ4w6Uu8D5UJc6fUo",
+            "compare": [],
+            "project_id": "project_099",
+            "workspace_name": "Workspace3",
+            "workspace_type": "compare"
+        }
+    ]
+}

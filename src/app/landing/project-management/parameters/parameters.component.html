@@ -1,0 +1,201 @@
+<div class="m-3 pl-2" *ngIf="!loader.parameter">
+    <ucp-ag-grid-table [agGridOptions]="agGridOptions" [clickableColumns]="agGridOptions?.clickableColumns"
+        (aggridEmitter)="aggridEmitter($event)">
+    </ucp-ag-grid-table>
+</div>
+
+
+<button class="btn dropdown-toggle action-icon pt-0" hidden data-toggle="modal" data-target="#addModal" hidden
+    id="configureModalButton">
+</button>
+
+<div class="modal fade right" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-min-width-slider" ucpGlobalSlider [ucpSliderType]="'right-to-left'" role="document"
+        style="min-width: 75% !important;">
+
+        <div class="modal-content">
+            <div class="modal-header" style="border: 0;">
+                <h5 class="modal-title float-left" id="exampleModalLabel">{{paramKey}} Parameter Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeParamModel"
+                    (click)="closeModal(true)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="height: calc(100vh - 130px);overflow-y: auto;">
+                <form [formGroup]="paramForm" class="pl-0">
+                    <div class="row m-0 col-md-12">
+                        <div class="form-group col-4 pl-0">
+                            <label class="form-design required">Parameter Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Parameter Name" ucpWhiteSpaceRestrictor
+                                formControlName="label" [(ngModel)]="paramData.label"
+                                [ngClass]="{ 'is-invalid': f['label'].dirty && f['label']['errors'] }">
+                            <div *ngIf="f['label']['errors'] && f['label'].dirty" class="invalid-feedback pt-1">
+                                <span *ngIf="f['label']['errors']['required']">
+                                    Name is required.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group col-4 pl-0">
+                            <label class="form-design">Unit</label>
+                            <ng-select placeholder="Select Unit" bindLabel="label" bindValue="value"
+                                class="form-control p-0" [items]="unitList" [(ngModel)]="paramData.unit"
+                                formControlName="unit">
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group col-4 pl-0">
+                            <label class="form-design required">Parameter Type</label>
+                            <ng-select placeholder="Select Parameter Type" bindLabel="label" bindValue="value"
+                                class="form-control p-0" [items]="filterList" [(ngModel)]="paramData.filter_type"
+                                [ngClass]="{ 'is-invalid': f['filter_type'].dirty && f['filter_type']['errors'] }"
+                                formControlName="filter_type">
+                            </ng-select>
+                            <div *ngIf="f['filter_type']['errors'] && f['filter_type'].dirty"
+                                class="invalid-feedback pt-1">
+                                <span *ngIf="f['filter_type']['errors']['required']">
+                                    Parameter Type is required.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group col-4 pl-0">
+                            <label class="form-design">Round Decimal To</label>
+                            <input type="number" formControlName="round_decimal" [(ngModel)]="paramData.round_decimal" class="form-control" placeholder="Round Decimal To" (keypress)="roundToDecimalInputEvent($event)">
+                        </div>
+                        <div class="form-group col-4 pl-0">
+                            <label class="form-design">Mark as Important</label>
+                            <label class="switcher-control d-block">
+                                <input type="checkbox" class="switcher-input"
+                                    [checked]="paramData['mark_important']" name="MarkasImportant"
+                                    [(ngModel)]="paramData['mark_important']" [ngModelOptions]="{'standalone': true}"> 
+                                    <span class="switcher-indicator"></span>
+                                    </label>
+                        </div>
+                        <!-- <div class="form-group col-4 pl-0">
+                            <label class="form-design">Lower Threshold Value</label>
+                            <input type="number" formControlName="lower_threshold" [(ngModel)]="paramData.lower_threshold" class="form-control" placeholder="Enter Lower Threshold Value" (keypress)="roundToDecimalInputEvent($event)">
+                        </div>
+                        <div class="form-group col-4 pl-0">
+                            <label class="form-design">Higher Threshold Value</label>
+                            <input type="number" formControlName="higher_threshold" [(ngModel)]="paramData.higher_threshold" class="form-control" placeholder="Enter Higher Threshold Value" (keypress)="roundToDecimalInputEvent($event)">
+                        </div> -->
+                        <div class="limit-range">
+                            <label for="" class="inter-bold">Limit Range Table</label>
+                        </div>
+                        <div class="add-new-limit inter-bold">
+                            <a href="javascript:void(0)" class="d-flex float-right" (click)="addNew()">
+                                Add limit
+                                <span class="material-icons-outlined ml-2">
+                                    add_circle
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="table" *ngIf="paramData?.limits?.length > 0">
+                            <div class="row m-0 bg-white py-2">
+                                <table class="w-100">
+                                    <!-- <thead>
+                                        <tr>
+                                            <th>Range Select</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Text</th>
+                                            <th>Color</th>
+                                        </tr>
+                                    </thead> -->
+                                    <tbody>
+                                        <tr *ngFor="let each_breaks of paramData.limits;let ind = index">
+                                            <td class="table-data pr-3">
+                                                <label class="limit-range-label"></label>
+                                                <ng-select placeholder="Select" bindLabel="label" bindValue="value"
+                                                [ngModelOptions]="{standalone: true}" class="px-0"
+                                                [items]="rangeList" [(ngModel)]="each_breaks.type"
+                                                [clearable]="false">
+                                            </ng-select>
+                                        </td>
+                                        <ng-container *ngIf="each_breaks.type === 'range_select'">
+                                            <td class="table-data">
+                                                <label class="limit-range-label">From</label>
+                                                    <div class="col-12 row m-0 p-0">
+                                                        <ng-select placeholder="Select Qualifier" title="{{each_breaks?.pre_qualifier ? '' : 'Select Qualifier'}}" bindLabel="label"
+                                                            [ngModelOptions]="{standalone: true}" class="col-4 px-0"
+                                                            [items]="fromList" [(ngModel)]="each_breaks.pre_qualifier"
+                                                            [clearable]="false">
+                                                        </ng-select>
+                                                        <input type="number" [ngModelOptions]="{standalone: true}"
+                                                            placeholder="Enter from value" class="form-control col-7"
+                                                            [(ngModel)]="each_breaks.lower_limit">
+                                                    </div>
+                                                </td>
+                                                <td class="table-data">
+                                                    <label class="limit-range-label">To</label>
+                                                    <div class="col-12 row m-0 p-0">
+                                                        <ng-select placeholder="Select Qualifier" title="{{each_breaks?.post_qualifier ? '' : 'Select Qualifier'}}" bindLabel="label"
+                                                            [ngModelOptions]="{standalone: true}" class="col-4 px-0"
+                                                            [items]="toList" [(ngModel)]="each_breaks.post_qualifier"
+                                                            [clearable]="false">
+                                                        </ng-select>
+                                                        <input type="number" [ngModelOptions]="{standalone: true}"
+                                                            placeholder="Enter to value" class="form-control col-7"
+                                                            [(ngModel)]="each_breaks.upper_limit">
+                                                    </div>
+                                                </td>
+                                        </ng-container>
+                                        <ng-container *ngIf="each_breaks.type === 'single_select'">
+                                            <td class="table-data">
+                                                <label class="limit-range-label">Value</label>
+                                                <input type="number" [ngModelOptions]="{standalone: true}"
+                                                    placeholder="Enter value" class="form-control col-10 value-class"
+                                                    [(ngModel)]="each_breaks.value">
+                                            </td>
+                                        </ng-container>
+                                            <td class="table-data">
+                                                <label class="limit-range-label">Text</label>
+                                                <input type="text" [ngModelOptions]="{standalone: true}" ucpWhiteSpaceRestrictor
+                                                    placeholder="Enter Text" class="form-control col-10"
+                                                    [(ngModel)]="each_breaks.text">
+                                            </td>
+                                            <td class="table-data">
+                                                <label class="limit-range-label d-block mt-1">Color</label>
+                                                <input type="color" class="color-picker-height" style="width: 2rem"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    [(ngModel)]="each_breaks.color">
+                                            </td>
+                                            <td class="cursor-pointer">
+                                                <span class="material-icons-outlined pt-2" (click)="deleteLimit(ind)">
+                                                    delete
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer p-0">
+                <div class="m-3 float-left">
+                    <button type="submit" class="btn btn-primary" (click)="saveModal()">
+                        Save Changes
+                    </button>
+                    <button class="btn btn-inverse btn-outline-primary mx-2" (click)="closeModal()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loader?.parameter || loader?.save || loader?.delete || loader?.edit">
+    <div id="loader-wrapper-submaincontent">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>

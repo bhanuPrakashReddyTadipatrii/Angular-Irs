@@ -1,0 +1,11 @@
+<div class="col-12 px-0">
+  <div class="steps steps-" [class.border-bottom]="settings.showHrLine" role="tablist">
+    <ul>
+      <li *ngFor="let step of data; let i=index" (click)="onclick(step)" (change)="emitdata(step, i)"
+        [ngClass]="{'active': step.active}" class="step"> <!--, 'disableWizardStep': !step.active-->
+        <a class="step-trigger">
+           <span class="">{{step.label}}</span></a>
+      </li>
+    </ul>
+  </div>
+</div>

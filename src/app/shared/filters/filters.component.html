@@ -1,0 +1,83 @@
+<div class="show-all-filters">
+    <div class="showfilterpopover mt-1" *ngIf="showFilterOptions">
+      <div class="d-flex filter-head cursor-default">
+        <div class="filter-label inter-bold">Customize...</div>
+        <div class="ml-auto filter-header-btn">
+          <ng-container *ngIf="loaders?.leftFilters || loaders?.dfm || loaders?.fields">
+            <div class="spinner-border ml-2 mt-2 text-primary spinner-border-sm" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </ng-container>
+            <a class="nav-link has-badge d-flex  px-1 more-svg" href="javascript:void(0)" data-toggle="dropdown" 
+          aria-haspopup="true" aria-expanded="false">
+          <img class="cursor-pointer"
+            src="{{'assets/svgs/more.svg'}}" title="more"
+            alt="{{'assets/svgs/more.svg'}}">
+          </a>
+
+            <div class="dropdown-menu dropdown-menu-rich w-25 dropdown-menu-right share border_0_px">
+              <div class="dropdown-scroll perfect-scrollbar">
+                <a href="javascript:void(0)" class="dropdown-item more-svg-dropdown" (click)="moreFilter('collapse')">
+                  <div class="icon collapse-svg-icon">
+                    <img src="assets/svgs/collapse.svg" alt="" height="25rem">
+                  </div>
+                  <div class="dropdown-item-body">
+                    <p class="text"> Collapse </p>
+                  </div>
+                </a>
+                <a href="javascript:void(0)" class="dropdown-item more-svg-dropdown" (click)="moreFilter('expand')">
+                  <div class="icon expand-svg-icon">
+                    <img src="assets/svgs/expand.svg" alt="" height="25rem">
+                  </div>
+                  <div class="dropdown-item-body">
+                    <p class="text"> Expand </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+          <img class="cursor-pointer pin_class invert" (click)="pinFilter()"
+            src="{{ filterPinned ? 'assets/svgs/pin-filled.svg' : 'assets/svgs/pin.svg'}}"
+            alt="{{filterPinned ? 'Unpin' : 'Pin'}}" title="{{filterPinned ? 'Unpin' : 'Pin'}}">
+          <span class="material-icons-outlined closeicon cursor-pointer invert" (click)="showFilters()">
+            close
+          </span>
+        </div>
+      </div>
+      <ng-container>
+        <div class="tabs-section m-1 p-3">
+          <ul class="nav filter-tabs" id="myTab" role="tablist">
+            <li class="nav-item each-info-tab cursor-pointer tab-border  {{eachtab.class}}" *ngFor="let eachtab of tabs" 
+              [ngClass]="eachtab.value === selectedTab ? 'active' : ''">
+              <a class="nav-link active py-0 my-1" title="{{eachtab.label}}"
+                (click)="switchTabs(eachtab)">{{eachtab.label}}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+
+      <div class="containers vis-left-filters show-all-filters-dfm" *ngIf="selectedTab === 'filters'">
+        <ng-container
+          *ngIf="(dfmFilterData?.headerContent?.length && !loaders['leftFilters'] && !loaders['dfm']) else noFilterData">
+          <ucp-dfm [restrictFields]="true" [DFMDATA]="dfmFilterData" [fieldValueDependent]="true"
+            (emitInstantChanges)="emitDFMField($event, 'left')" (scrollEmitter)="emitOnScroll($event)">
+          </ucp-dfm>
+          <div>
+            <a class="float-right mr-3 mt-1" href="javascript: void(0)" (click)="clearAllFilters()">Clear All</a>
+          </div>
+        </ng-container>
+        <ng-template #noFilterData>
+          <label *ngIf="!loaders['leftFilters'] && !loaders['dfm']" class="m-3">No Data found to filter.</label>
+        </ng-template>
+      </div>
+
+      <div class="vis-display-options" *ngIf="selectedTab === 'display_options'">
+        <ucp-dfm *ngIf="displayFilterData?.headerContent?.length && !loaders['leftFilters'] else noDisplayData" [restrictFields]="true" [DFMDATA]="displayFilterData" 
+        [fieldValueDependent]="true" (emitInstantChanges)="emitDFMDisplayField($event)"></ucp-dfm>
+        <ng-template #noDisplayData>
+          <label *ngIf="!loaders['leftFilters']" class="m-3">No Data found to filter.</label>
+        </ng-template>
+      </div>
+    </div>
+  </div>

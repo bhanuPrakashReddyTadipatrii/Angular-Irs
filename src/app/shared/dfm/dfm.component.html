@@ -1,0 +1,1151 @@
+<div class="editFields animated bounceInDown DFMModule">
+  <form [formGroup]="formDFM">
+    <div class="form-body form-padding-bottom">
+      <div class="col-12 " [ngClass]="{'specified-height': heightSpecified, 'height_setup' : !heightSpecified}"
+        [ngStyle]="{'height': calculatedFormHeight ? 'calc(100vh - ' + calculatedFormHeight + 'px )' : '' }">
+        <ng-template #FormBuilderTemplate let-eachField="eachField" let-colWidth="colWidth"
+          let-sectionIndex="sectionIndex">
+          <div *ngFor="let field of eachField; let ind = index; trackBy: fieldTrackFilter"
+            class="col-lg-{{colWidth ? field.gridWidth : '12'}} all-filters" [ngClass]="{'hidden': (field['hidden'])}">
+            <div class="form-group dfm-form-data dfm-component-{{field?.key}} {{field?.showTab ? '' : 'mb-0'}}" [ngClass]="{'pt-3': pageType === 'profile'}"
+              *ngIf="((!field['booleanDependancy'] && !field.dependentKey) ||
+            (field['booleanDependancy'] && Form_filled_data[field.dependentKey]) || (!field['booleanDependancy'] && field.dependentKey && (Form_filled_data[field.dependentKey] === field.dependentValue)))">
+              <div class="{{!ind && restrictFields ? 'd-flex mt-3' : 'd-flex'}}" *ngIf="((restrictFields && field.headerTitle) || (field?.label)) && (!field?.isGrouped || (field?.isGrouped && field?.isStarting))">
+                <label id="dfm_component_{{field.key}}" for="{{field.key}}_{{ind}}_{{field.type}}" title="{{ restrictFields ? field?.headerTitle : field.label}}" class="{{restrictFields ? 'left-filters-label d-block cursor-pointer inter-bold' : ''}} control-label pr-0"
+                  *ngIf="field.type !== 'dynamicFieldsArray'" (click)="onLabelClick(field, sectionIndex, ind)">
+                  {{ restrictFields ? field?.headerTitle : field.label}}
+                </label>
+                <sup *ngIf="field.sup !== ''">{{field.sup}}</sup>
+                <sub *ngIf="field.sub !== ''">{{field.sub}}</sub>
+                <span class="required" *ngIf="field.required === true"></span>
+                <span class="fa fa-info-circle ml-2" style="color:blueviolet" [ngbTooltip]="field.infoMessage"
+                *ngIf="field.infoMessage" container="body" placement="auto"></span>
+                <ng-container *ngIf="field.type !== 'dynamicFieldsArray'">
+                  <span class="cursor-pointer material-icons-outlined down-arrow {{restrictFields ? 'ml-auto' : ''}}" (click)="onLabelClick(field, sectionIndex, ind)" *ngIf="restrictFields && !field?.showTab">expand_more</span>
+                  <span class="cursor-pointer material-icons-outlined up-arrow {{restrictFields ? 'ml-auto' : ''}}" (click)="onLabelClick(field, sectionIndex, ind)" *ngIf="restrictFields && field?.showTab">expand_less</span>
+                </ng-container>
+              </div>
+              <!-- Inputs fields starts starts -->
+              <div *ngIf="field?.isGrouped && field?.subHeaderTitle && field?.showTab">
+                <label class="sub-header-title">{{field?.subHeaderTitle}}</label>
+              </div>
+              <div *ngIf="(restrictFields && field?.showTab) || (!restrictFields)">
+                <div>
+                  <ng-container *ngIf="((!restrictFields) || (restrictFields && !field?.hideInput)) else fieldDataTemp">
+                    <ng-container *ngIf="field.type === 'edit_grid'">
+                      <ng-container
+                        *ngTemplateOutlet="editGridTemplate; context:{ field:field, fieldIndex:ind,sectionIndex:sectionIndex }">
+                      </ng-container>
+                    </ng-container>
+                    <!-- Type Text -->
+                    <input *ngIf="(field.type === 'text')" class="form-control" type="text" name="{{ field.key }}"
+                      placeholder="{{ field.placeholder }}" [(ngModel)]="Form_filled_data[field.key]"
+                      ucpWhiteSpaceRestrictor
+                      [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                      formControlName="{{field.key}}" [required]="field.required" [hidden]="field['hidden']"
+                      (blur)="fieldValidationMethod(field,field.key,Form_filled_data[field.key])"
+                      (keydown)="onKeydown(field, $event)">
+
+                    <!-- Type Color -->
+                    <input *ngIf="(field.type === 'color')" class="form-control" type="color" name="{{ field.key }}"
+                      placeholder="{{ field.placeholder }}" [(ngModel)]="Form_filled_data[field.key]"
+                      ucpWhiteSpaceRestrictor
+                      [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                      formControlName="{{field.key}}" [required]="field.required" [hidden]="field['hidden']">
+
+                    <!-- Input-type Number -->
+                    <input *ngIf="(field.type === 'number')" class="form-control" type="number" name="{{ field.key }}"
+                      min="{{ field.min }}" max="{{field.max}}" placeholder="{{ field.placeholder }}"
+                      [(ngModel)]="Form_filled_data[field.key]" formControlName="{{field.key}}"
+                      [required]="field.required"
+                      [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                      [hidden]="field['hidden']" (keydown)="onKeydown(field, $event)">
+
+                    <!-- Input-type Password   password validation should also be JSON Driven -->
+                    <input *ngIf="(field.type === 'password')" class="form-control" type="password"
+                      name="{{ field.key }}" placeholder="{{ field.placeholder }}"
+                      [(ngModel)]="Form_filled_data[field.key]"
+                      [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                      formControlName="{{field.key}}" [required]="field.required" [hidden]="field['hidden']">
+
+                    <!-- Input-type textarea -->
+                    <textarea *ngIf="(field.type === 'textarea')" name="{{ field.key }}" class="form-control"
+                      rows="{{field['rows'] ? field['rows'] : 5}}" placeholder="{{ field.placeholder }}"
+                      [(ngModel)]="Form_filled_data[field.key]"
+                      [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                      formControlName="{{field.key}}" ucpWhiteSpaceRestrictor [required]="field.required"
+                      [hidden]="field['hidden']"></textarea>
+
+                    <!-- Input-Type url -->
+                    <input *ngIf="(field.type === 'url')" type="url" class="form-control" ucpWhiteSpaceRestrictor
+                      id="{{field.key}}_{{ind}}_{{field.type}}" placeholder="{{field.placeholder}}"
+                      [(ngModel)]="Form_filled_data[field.key]" [attr.required]="field.required"
+                      formControlName="{{field.key}}" [hidden]="field['hidden']">
+
+                    <!-- Input-type email Email Validators should be JSON Driven -->
+                    <div>
+                      <input *ngIf="(field.type === 'email')" class="form-control" type="email" name="{{field.key}}"
+                        placeholder="{{ field.placeholder }}" [(ngModel)]="Form_filled_data[field.key]"
+                        [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                        ucpWhiteSpaceRestrictor formControlName="{{field.key}}" [required]="field.required"
+                        (blur)="fieldValidationMethod(field,field.key,Form_filled_data[field.key])"
+                        [hidden]="field['hidden']">
+                      <div *ngIf="f[field.key]['errors'] && f[field.key].dirty" class="invalid-feedback d-flex pt-1">
+                        <span *ngIf="f[field.key]['errors']['pattern']">
+                          email is not valid.
+                        </span>
+                      </div>
+                    </div>
+
+                    <!--Custom text with button-->
+
+                    <div class="d-flex row m-0" *ngIf="field.type === 'custom_text_button'">
+                      <div class="col" style="max-width: fit-content;">
+                        <div>{{field?.text_label}}</div>
+                        <div class="sub_label">
+                          {{field?.sub_label}}</div>
+                      </div>
+                      <span class="col">
+                        <button class="button_class py-1 px-1" (click)="openDataPage(field)"><span
+                            class="button_label">{{field?.button_label}}</span></button>
+                      </span>
+                    </div>
+
+                    <!-- Input-type Select without dependency-->
+                    <ng-select [virtualScroll]="true" bindValue="value"
+                      *ngIf="(field.type === 'select' && !field.dependent && !field['fullObject'] && !field.fieldDependency)"
+                      [items]="field.options" placeholder="{{ field.placeholder }}"
+                      [(ngModel)]="Form_filled_data[field.key]" [hidden]="field['hidden']" ucpWhiteSpaceRestrictor
+                      [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }" appendTo="body"
+                      [clearable]="field.allowClear" id="{{field.key}}"
+                      (change)="onSingleSelectChange($event, field, sectionIndex)" formControlName="{{field.key}}"
+                      (ngModelChange)="onValueChangeInSingleSelect(field, sectionIndex)">
+                    </ng-select>
+                    <!-- Input-type Select without dependency bind Full Object-->
+                    <ng-select [virtualScroll]="true"
+                      *ngIf="(field.type === 'select' && field.dependent === false && field['fullObject'])"
+                      [items]="field.options" placeholder="{{ field.placeholder }}"
+                      [(ngModel)]="Form_filled_data[field.key]" [hidden]="field['hidden']" ucpWhiteSpaceRestrictor
+                      [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                      [required]="field.required" appendTo="body" [clearable]="field.allowClear" id="{{field.key}}"
+                      (change)="onSingleSelectChange($event, field, sectionIndex)" formControlName="{{field.key}}">
+                    </ng-select>
+                    <!-- Input-type Boolean without dependency-->
+                    <ng-select [virtualScroll]="true" bindValue="value"
+                      *ngIf="(field['type'] === 'boolean' && field['dependent'] === false && field['options'])"
+                      [items]="field.options" placeholder="{{ field.placeholder }}" id="{{field.key}}"
+                      [(ngModel)]="Form_filled_data[field.key]" [hidden]="field['hidden']" ucpWhiteSpaceRestrictor
+                      [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                      [required]="field.required" appendTo="body" [clearable]="field.allowClear"
+                      (change)="onSingleSelectChange($event, field.key, sectionIndex)" formControlName="{{field.key}}">
+                    </ng-select>
+                    <!-- Input-type Select with dependency-->
+                    <ng-select [virtualScroll]="true" bindValue="value"
+                      *ngIf="(field.type === 'select' && field.dependent === true)" [items]="field.options"
+                      ucpWhiteSpaceRestrictor placeholder="{{ field.placeholder }}"
+                      [(ngModel)]="Form_filled_data[field.key]" id="{{field.key}}" appendTo="body"
+                      [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                      [required]="field.required" formControlName="{{field.key}}" [clearable]="field.allowClear"
+                      (change)="dynamicDropDownInfo(field.key, eachField, sectionIndex, true, field)"
+                      [hidden]="field['hidden']">
+                    </ng-select>
+
+                    <!-- Input-type Select with field value dependency-->
+                    <ng-select [virtualScroll]="true" bindValue="value"
+                      *ngIf="(field.type === 'select' && field.fieldDependency === true)" [items]="field.options"
+                      ucpWhiteSpaceRestrictor placeholder="{{ field.placeholder }}"
+                      [(ngModel)]="Form_filled_data[field.key]" id="{{field.key}}" appendTo="body"
+                      [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                      [required]="field.required" formControlName="{{field.key}}" [clearable]="field.allowClear"
+                      (ngModelChange)="updateFieldsWithValueDependency(field.key, eachField, sectionIndex, true, field)"
+                      [hidden]="field['hidden']">
+                    </ng-select>
+
+                    <!-- Input-type Multiselect without dependency -->
+                    <ng-container *ngIf="(field.type === 'multiselect' && field.options)">
+                      <!-- <ucp-multiselect
+                                      [DropDownInfo]="field.options" [form_Control]="f[field.key]"
+                                      [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] , 'd-none': (field['hidden'])}"
+                                      [SelectedInfo]="Form_filled_data[field.key]" (SelectedValues)="multiselectFunc($event, field.key)"
+                                      [settings]="field.settings">
+                                    </ucp-multiselect> -->
+                      <ng-select [items]="field.options" *ngIf="field.settings?.fullObject; else valueTemplate"
+                        placeholder="{{ field.placeholder }}" bindLabel="{{ field.settings?.labelKey || 'label' }}"
+                        [(ngModel)]="Form_filled_data[field.key]" [hidden]="field['hidden']" ucpWhiteSpaceRestrictor
+                        [multiple]="true" [virtualScroll]="true" [closeOnSelect]="false"
+                        [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                        [required]="field.required" appendTo="body" [clearable]="field.allowClear" id="{{field.key}}"
+                        formControlName="{{field.key}}" (ngModelChange)="onMultiselectValueChange(field)">
+                        <ng-template ng-header-tmp>
+                          <div>
+                            <button class="btn btn-link py-0 px-1" (click)="onSelectAll(field)">Select All</button>
+                            <button class="btn btn-link py-0 px-1" (click)="onDeSelectAll(field)">Clear All</button>
+                          </div>
+                        </ng-template>
+                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                          <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"
+                            [ngModelOptions]="{standalone: true}" />
+                          {{item?.label || item[field?.settings?.labelKey]}}
+                        </ng-template>
+                        <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                          <div class="ng-value" *ngFor="let item of items | slice:0:2">
+                            <span class="ng-value-icon left" (click)="clear(item)" aria-hidden="true"
+                              *ngIf="!(item?.disabled)">×</span>
+                            <span class="ng-value-label">{{item?.label || item[field?.settings?.labelKey]}}</span>
+                          </div>
+                          <div class="ng-value badge-value" *ngIf="items.length > 2">
+                            <span class="ng-value-label">+{{items.length - 2}}</span>
+                          </div>
+                        </ng-template>
+                      </ng-select>
+                      <ng-template #valueTemplate>
+                        <ng-select [items]="field.options" placeholder="{{ field.placeholder }}"
+                          *ngIf="field.optionsType === 'string'" [(ngModel)]="Form_filled_data[field.key]"
+                          [hidden]="field['hidden']" ucpWhiteSpaceRestrictor [multiple]="true" [virtualScroll]="true"
+                          [closeOnSelect]="false"
+                          [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                          [required]="field.required" appendTo="body" [clearable]="field.allowClear" id="{{field.key}}"
+                          formControlName="{{field.key}}" (ngModelChange)="onMultiselectValueChange(field)">
+                        </ng-select>
+                        <ng-select [items]="field.options" placeholder="{{ field.placeholder }}"
+                          *ngIf="field.optionsType !== 'string'" bindLabel="{{ field.settings?.labelKey || 'label' }}"
+                          [(ngModel)]="Form_filled_data[field.key]" [hidden]="field['hidden']" ucpWhiteSpaceRestrictor
+                          [multiple]="true" [virtualScroll]="true" [closeOnSelect]="false"
+                          bindValue="{{ field.settings?.primaryKey || 'value' }}"
+                          [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                          [required]="field.required" appendTo="body" [clearable]="field.allowClear" id="{{field.key}}"
+                          formControlName="{{field.key}}" (ngModelChange)="onMultiselectValueChange(field)">
+                          <ng-template ng-header-tmp>
+                            <div>
+                              <button class="btn btn-link py-0 px-1" (click)="onSelectAll(field)">Select All</button>
+                              <button class="btn btn-link py-0 px-1" (click)="onDeSelectAll(field)">Clear All</button>
+                            </div>
+                          </ng-template>
+                          <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                            <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"
+                              [ngModelOptions]="{standalone: true}" />
+                            {{item.label}}
+                          </ng-template>
+                          <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                            <div class="ng-value" *ngFor="let item of items | slice:0:2">
+                              <span class="ng-value-icon left" (click)="clear(item)" aria-hidden="true"
+                                *ngIf="!(item?.disabled)">×</span>
+                              <span class="ng-value-label">{{item?.label}}</span>
+                            </div>
+                            <div class="ng-value badge-value" *ngIf="items.length > 2">
+                              <span class="ng-value-label">+{{items.length - 2}}</span>
+                            </div>
+                          </ng-template>
+                        </ng-select>
+                      </ng-template>
+                    </ng-container>
+
+                    <ng-container *ngIf="(field.type === 'simpleRadioSelect' && field.options)">
+                      <ng-select class="dfm-simple-radio-select inter-regular" [virtualScroll]="true"
+                        bindLabel="{{ field.settings?.labelKey || 'label' }}" [searchable]="false"
+                        bindValue="{{ field.settings?.valueKey || 'value' }}" [items]="field.options"
+                        ucpWhiteSpaceRestrictor placeholder="{{ field.placeholder }}"
+                        [(ngModel)]="Form_filled_data[field.key]" id="{{field.key}}" appendTo="body"
+                        [closeOnSelect]="false"
+                        [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                        [required]="field.required" formControlName="{{field.key}}" [clearable]="field.allowClear"
+                        (ngModelChange)="updateFieldsWithValueDependency(field.key, eachField, sectionIndex, true, field)"
+                        [hidden]="field['hidden']">
+                        <ng-template ng-header-tmp>
+                          {{field?.headerTitle}}
+                        </ng-template>
+                        <ng-template ng-footer-tmp>
+                          <div *ngIf="field?.allowClear">
+                            <button class="btn btn-link py-0 px-1" *ngIf="field.options?.length" (click)="onDeSelectAll(field)">Clear</button>
+                          </div>
+                        </ng-template>
+                        <!-- <ng-template ng-label-tmp let-item="item" let-index="index">
+                                        {{item.label}}
+                                      </ng-template> -->
+                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                          <div class="custom-control custom-radio cursor-pointer">
+                            <input id="item-{{index}}" type="radio" 
+                              class="custom-control-input" [ngModelOptions]="{standalone: true}" [disabled]="item?.disabled"
+                              name="simple_radio_select" [checked]="item$.selected"/>
+                            <label class="custom-control-label cursor-pointer" for="item-{{index}}">{{item?.label ||
+                              item[field?.settings?.labelKey]}}</label>
+                          </div>
+                        </ng-template>
+                      </ng-select>
+                    </ng-container>
+
+                    <ng-container *ngIf="(field.type === 'advRadioSelect' && field.options)">
+                      <ng-select class="adv-radio-select inter-regular" [virtualScroll]="true"
+                        bindLabel="{{ field.settings?.labelKey || 'label' }}"
+                        bindValue="{{ field.settings?.valueKey || 'value' }}" [items]="field.options"
+                        ucpWhiteSpaceRestrictor placeholder="{{ field.placeholder }}"
+                        [(ngModel)]="Form_filled_data[field.key]" id="{{field.key}}" appendTo="body"
+                        [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                        [required]="field.required" formControlName="{{field.key}}" [clearable]="field.allowClear"
+                        [closeOnSelect]="false"
+                        (ngModelChange)="updateFieldsWithValueDependency(field.key, eachField, sectionIndex, true, field)"
+                        [hidden]="field['hidden']">
+                        <ng-template ng-header-tmp>
+                          {{field?.headerTitle}}
+                        </ng-template>
+                        <ng-template ng-footer-tmp>
+                          <div>
+                            <button class="btn btn-link py-0 px-1" *ngIf="field.options?.length" (click)="onDeSelectAll(field)">Clear</button>
+                          </div>
+                        </ng-template>
+                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                           <div class="custom-control custom-radio cursor-pointer">
+                            <input id="item-{{index}}" type="radio" 
+                              class="custom-control-input" [ngModelOptions]="{standalone: true}"
+                              name="simple_radio_select" [checked]="item$.selected"/>
+                            <label class="custom-control-label cursor-pointer" for="item-{{index}}">{{item?.label ||
+                              item[field?.settings?.labelKey]}}
+                              <span class="ml-2 badge_bg_prop badge badge-subtle badge-dark color-white">Latest</span>
+                              <p class="description mb-1" for="item-{{index}}">{{item?.description ||
+                                item[field?.settings?.descriptionKey]}}</p>
+                            </label>
+                          </div>
+                        </ng-template>
+                      </ng-select>
+                    </ng-container>
+
+                    <ng-container *ngIf="(field.type === 'advMultiSelect' && field.options)">
+                      <ng-select class="adv-multi-select inter-regular" [virtualScroll]="true"
+                        bindLabel="{{ field.settings?.labelKey || 'label' }}"
+                        bindValue="{{ field.settings?.valueKey || 'value' }}" [items]="field.options"
+                        ucpWhiteSpaceRestrictor placeholder="{{ field.placeholder }}"
+                        [(ngModel)]="Form_filled_data[field.key]" id="{{field.key}}" appendTo="body" [multiple]="true"
+                        [closeOnSelect]="false"
+                        [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                        [items]="field.options" klWhiteSpaceValidator placeholder="{{ field.placeholder }}"
+                        [(ngModel)]="Form_filled_data[field.key]" id="{{field.key}}" appendTo="body" [multiple]="true"
+                        [closeOnSelect]="false"
+                        [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                        [required]="field.required" formControlName="{{field.key}}" [clearable]="field.allowClear"
+                        (ngModelChange)="updateFieldsWithValueDependency(field.key, eachField, sectionIndex, true, field)"
+                        [hidden]="field['hidden']">
+                        <ng-template ng-header-tmp>
+                          {{field?.headerTitle}}
+                        </ng-template>
+                        <ng-template ng-footer-tmp>
+                          <div>
+                            <button class="btn btn-link py-0 px-1" *ngIf="field?.allowClear && field?.options?.length" (click)="onDeSelectAll(field)">Clear</button>
+                          </div>
+                        </ng-template>
+                        <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                          <div class="d-flex">
+                            <div class="ng-value" *ngFor="let item of items | slice:0:1">
+                              <span class="ng-value-icon left" (click)="clear(item)" aria-hidden="true"
+                                *ngIf="!item['disabled']">×</span>
+                              <span class="ng-value-label" style="width: 50px">{{item.label}}</span>
+                            </div>
+                            <div class="ng-value badge-value" *ngIf="items.length > 0" style="right: 40px !important;">
+                              <span class="ng-value-label">+{{items.length}}</span>
+                            </div>
+                          </div>
+                        </ng-template>
+                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                          <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"
+                            [ngModelOptions]="{standalone: true}" name="adv_multi_select"
+                            [checked]="item$.selected === item.value" value="item$.selected" />
+                            <label class="label cursor-pointer" for="item-{{index}}">{{item?.label ||
+                            item[field?.settings?.labelKey]}}</label>
+                          <p class="description" for="item-{{index}}">{{item?.description ||
+                            item[field?.settings?.descriptionKey]}}</p>
+                        </ng-template>
+                      </ng-select>
+                    </ng-container>
+
+                    <div class="two-way-slider" *ngIf="(field.type === 'range')">
+                      <ng-container *ngTemplateOutlet="listTemplate"></ng-container>
+                    </div>
+                    <ng-template #listTemplate>
+                      <div class="form-control inter-medium" (click)="showRangeSlider(field, sectionIndex, ind)">
+                        {{field.placeholder}}</div>
+                      <div class="input-panel range-slider" *ngIf="field?.showSlider">
+                        <!-- <ucp-dual-range-slider [index]="ind" [(dualRange)]="Form_filled_data[field?.key]" [field]="field"></ucp-dual-range-slider> -->
+                        <ucp-multi-range-slider [index]="ind" [(dualRange)]="Form_filled_data[field?.key]" [field]="field" (sliderEmitter)="sliderEmitter($event, field, sectionIndex, ind)"></ucp-multi-range-slider>
+                      </div>
+                    </ng-template>
+
+                    <ng-container *ngIf="field.type === 'customMultiselect'">
+                      <div class="border p-2 customMultiselect">
+                        <div class="pb-2">
+                          <ng-container *ngIf="field?.selectedItems?.length">
+                            <div class="ng-value" *ngFor="let item of field.selectedItems | slice:0:2">
+                              <span class="ng-value-label">{{item?.label || item[field?.settings?.labelKey]}}</span>
+                              <span class="ng-value-icon left" aria-hidden="true"
+                                (click)="item.checked = !item?.checked;onCustomMultiselectModelChange(field,item)">×</span>
+                            </div>
+                            <div class="ng-value badge-value float-right" *ngIf="field.selectedItems.length > 2">
+                              <span class="ng-value-label">+{{field.selectedItems.length - 2}}</span>
+                            </div>
+                          </ng-container>
+                          <input type="text" [(ngModel)]="field.searchVal" [ngModelOptions]="{standalone: true}"
+                            placeholder="Search" class="form-control">
+                        </div>
+                        <div class="col-12 p-0">
+                          <button class="btn btn-link btn-sm select-deselct" (click)="selectAllList(field)"
+                            *ngIf="!field?.settings?.singleSelection">{{field.searchVal ? 'Select Filtered' : 'Select
+                            All'
+                            }}</button>
+                          <button class="btn btn-sm btn-link select-deselct" (click)="deselectAllList(field)"
+                            *ngIf="!field?.settings?.singleSelection">{{field.searchVal? 'Deselect Filtered':'Deselect
+                            All'}}</button>
+                        </div>
+                        <div class="col-12 p-0 checkbox-list" [ngStyle]="{'height.px' : field['height']}">
+                          <cdk-virtual-scroll-viewport class="inheritClass" [ngStyle]="{'height.px': field['height']}"
+                            itemSize="25" minBufferPx="350" maxBufferPx="400">
+                            <div class="pb-2"
+                              *cdkVirtualFor="let checkBoxItem of field.options | search: [ field?.settings?.labelKey || 'label'] : field.searchVal; index as i">
+                              <label class="checkbox-container">{{checkBoxItem[field?.settings?.labelKey || 'label'] ||
+                                '&nbsp;' }}
+                                <input type="checkbox" [ngModelOptions]="{standalone: true}"
+                                  [(ngModel)]="checkBoxItem['checked']" [disabled]="checkBoxItem['disabled']"
+                                  (change)="onCustomMultiselectModelChange(field,checkBoxItem)">
+                                <span class="checkmark"></span>
+                              </label>
+                            </div>
+                          </cdk-virtual-scroll-viewport>
+                        </div>
+                      </div>
+                    </ng-container>
+
+                    <!-- <tag-input [(ngModel)]="Form_filled_data[field.key]" [placeholder]="field.placeholder"
+                                    *ngIf="(field.type === 'tagInput') && field.autoComplete" [identifyBy]="field.identifyBy"
+                                    [displayBy]="field.displayBy" [secondaryPlaceholder]="field.placeholder" [separatorKeyCodes]="field.separatorKeyCodes"
+                                    [modelAsStrings]="field.modelAsStrings" [editable]="field.optionsEditable" [addOnPaste]="true" [addOnBlur]="true"
+                                    formControlName="{{field.key}}"
+                                    [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] , 'd-none': (field['hidden'])}">
+                                    <tag-input-dropdown [appendToBody]="false" [showDropdownIfEmpty]="true" [autocompleteItems]="field?.autoCompleteItems"
+                                      displayBy="{{field?.displayBy || 'label'}}" identifyBy="{{field?.identifyBy || 'value'}}">
+                                    </tag-input-dropdown>
+                                  </tag-input>
+                                  <tag-input [(ngModel)]="Form_filled_data[field.key]" [placeholder]="field.placeholder"
+                                    *ngIf="(field.type === 'tagInput') && !field.autoComplete" [identifyBy]="field.identifyBy"
+                                    [displayBy]="field.displayBy" [secondaryPlaceholder]="field.placeholder" [separatorKeyCodes]="field.separatorKeyCodes"
+                                    [modelAsStrings]="field.modelAsStrings" [editable]="field.optionsEditable" [addOnPaste]="true" [addOnBlur]="true"
+                                    formControlName="{{field.key}}"
+                                    [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] , 'd-none': (field['hidden'])}">
+                                  </tag-input> -->
+                    <ng-container *ngIf="(field.type === 'image')">
+                      <div class="row m-0">
+                        <div
+                          class="{{Form_filled_data[field.key] && Form_filled_data[field.key].image_url ? 'col-md-8' : 'col-md-12'}} p-0">
+                          <!-- <div style="font-weight: 700">Upload</div> -->
+                          <div style="opacity: 0.7;">only .jpeg, .jpg, .png files at 500KB or less</div>
+                          <div class="mt-2">
+                            <button class="btn btn-primary" style="padding: 0.375rem 1rem !important;"
+                              (click)="triggerFileUpload(field.key)">
+                              {{field.img_label || 'Add Image'}}</button>
+                            <input class="d-none" [id]="field.key" type="file" accept=".jpeg, .jpg, .png"
+                              (change)="fileChangeEvent($event, field)">
+                            <input class="d-none" type="text" formControlName="{{field.key}}">
+                          </div>
+                        </div>
+                        <div class="col-md-4 p-0"
+                          *ngIf="Form_filled_data[field.key] && Form_filled_data[field.key].image_url">
+                          <img [src]="Form_filled_data[field.key]?.image_url" alt=""
+                            [ngStyle]="field['imageStyle'] || {}" class="img-field">
+                        </div>
+                        <span *ngIf="imageOptions['message']" class="invalid-feedback d-flex pt-1">
+                          {{imageOptions['message']}}
+                        </span>
+                      </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="(field.type === 'file')">
+                      <div>
+                        <!-- <label for="uploadFile_{{ind}}" class="btn btn-link pl-0">Upload File</label> -->
+                        <input class="" id="uploadFile_{{ind}}" type="file" name="logo" accept="{{field.fileTypes}}"
+                          (change)="onFileUpload($event,field)">
+                      </div>
+                    </ng-container>
+                    <!-- Input-type Multiselect with dependency-->
+
+                    <!-- Input-type date -->
+                    <ng-container *ngIf="(field.type === 'date')">
+                      <input type="text" class="form-control"
+                        placeholder="{{ field.placeholder }}" name="{{field.key}}"
+                        [(ngModel)]="Form_filled_data[field.key]" (ngModelChange)="onDateSelect($event,field.key, field, sectionIndex)"
+                        ucpWhiteSpaceRestrictor
+                        [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }" autocomplete="off"
+                        [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" formControlName="{{field.key}}"
+                        [hidden]="field['hidden']">
+                      <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                    </ng-container>
+                    <ng-container *ngIf="(field.type === 'time')">
+                      <input type="text" class="form-control"
+                        placeholder="{{ field.placeholder }}" name="{{field.key}}"
+                        [(ngModel)]="Form_filled_data[field.key]"
+                        [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }" autocomplete="off"
+                        [owlDateTimeTrigger]="dtime" [owlDateTime]="dtime" formControlName="{{field.key}}"
+                        [hidden]="field['hidden']">
+                      <owl-date-time [pickerType]="'timer'" #dtime></owl-date-time>
+                    </ng-container>
+                    <ng-container *ngIf="(field.type === 'dateTime')">
+                      <input type="text" class="form-control"
+                        placeholder="{{ field.placeholder }}" name="{{field.key}}"
+                        [(ngModel)]="Form_filled_data[field.key]"
+                        [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }" autocomplete="off"
+                        [owlDateTimeTrigger]="dateTime1" [owlDateTime]="dateTime1" formControlName="{{field.key}}"
+                        [hidden]="field['hidden']">
+                      <owl-date-time #dateTime1></owl-date-time>
+                    </ng-container>
+                    <ng-container *ngIf="(field.type === 'dateTimeRange')">
+                      <input class="form-control" placeholder="Date Range:" [(ngModel)]="Form_filled_data[field.key]"
+                        (ngModelChange)="emitFieldChanges(field)" [selectMode]="'range'" [owlDateTimeTrigger]="dtRange1"
+                        [owlDateTime]="dtRange1" [ngModelOptions]="{standalone: true}" [max]="field.max">
+                      <owl-date-time #dtRange1 [pickerType]="field['pickerMode']"></owl-date-time>
+                    </ng-container>
+                    <ng-container *ngIf="(field.type === 'monthPicker')">
+                      <div [owlDateTimeTrigger]="yearMonthPicker"
+                        class="form-control cursor-pointer height_input custom_input_date">
+                        <span class="month-year ml-1" *ngIf="!Form_filled_data[field.key]">{{field.placeholder || 'Pick
+                          Month'}}</span>
+                        <span class="month-year-inserted"
+                          *ngIf="Form_filled_data[field.key]">{{Form_filled_data[field.key] | date :
+                          'MMM, y'}}</span>
+                      </div>
+                      <input [(ngModel)]="Form_filled_data[field.key]" [max]="field?.max"
+                        [owlDateTime]="yearMonthPicker" [ngModelOptions]="{standalone: true}" class="datePicker"
+                        (ngModelChange)="emitFieldChanges(field)">
+                      <owl-date-time #yearMonthPicker [startView]="'year'" [pickerType]="'calendar'"
+                        (monthSelected)="choosenYearMonHandler($event,yearMonthPicker, field)"></owl-date-time>
+                    </ng-container>
+                    <ng-container *ngIf="(field.type === 'yearPicker')">
+                      <div [owlDateTimeTrigger]="yearPicker"
+                        class="form-control cursor-pointer height_input custom_input_date">
+                        <span class="month-year ml-1" *ngIf="!Form_filled_data[field.key]">{{field.placeholder ||'Pick
+                          Year'}}</span>
+                        <span class="month-year-inserted"
+                          *ngIf="Form_filled_data[field.key]">{{Form_filled_data[field.key] | date :
+                          'y'}}</span>
+                      </div>
+                      <input [(ngModel)]="Form_filled_data[field.key]" [max]="field?.max" [owlDateTime]="yearPicker"
+                        [ngModelOptions]="{standalone: true}" class="datePicker"
+                        (ngModelChange)="emitFieldChanges(field)">
+                      <owl-date-time #yearPicker [startView]="'multi-years'" [pickerType]="'calendar'"
+                        (yearSelected)="choosenYearMonHandler($event, yearPicker, field)"></owl-date-time>
+                    </ng-container>
+                    <!-- Input-type Radio Buttons -->
+                    <div *ngIf="(field.type === 'radio')">
+                      <span *ngFor="let RadioGroup of field.options; let radio = index"
+                        class="col-lg-{{ field.radio_width }}">
+                        <div class="pretty p-default p-round">
+
+                          <input type="radio" id="{{RadioGroup.value}}_{{sectionIndex}}_{{radio}}"
+                            [(ngModel)]="Form_filled_data[field.key]"
+                            [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                            class="with-gap radio-col-light-green" value={{RadioGroup.value}}>
+                          <div class="state p-primary">
+                            <label for="{{RadioGroup.value}}_{{sectionIndex}}_{{radio}}">{{RadioGroup.label}}</label>
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+
+                    <!-- Input-type CheckBox -->
+                    <div *ngIf="(field.type === 'checkbox')">
+                      <span *ngFor="let CheckBox of field.options; let j=index;"
+                        class="col-lg-{{ field.checkbox_width }}">
+                        <div class="pretty p-icon p-smooth">
+                          <input type="checkbox" name="{{CheckBox.value}}" [(ngModel)]="CheckBox.IsSelected"
+                            id="{{CheckBox.value}}_{{sectionIndex}}_{{j}}"
+                            [ngClass]="{ 'is-invalid': (f[field.key].dirty) && f[field.key]['errors'] }"
+                            formControlName="{{field.key}}" [required]="field.required"
+                            (ngModelChange)="checkboxUpdate(field.key, CheckBox.value, CheckBox)"
+                            [checked]="CheckBox.IsSelected">
+                          <div class="state p-primary">
+                            <span class="fa fa-check"></span>
+                            <label for="{{CheckBox.value}}_{{sectionIndex}}_{{j}}">{{CheckBox.label}}</label>
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+
+
+                    <!-- Type of tree -->
+                    <div id="accordion"
+                      *ngIf="(field.type === 'treesingleselect' || field.type === 'treeMultiselect' || field.type === 'treeHierarchy')">
+                      <div class="card col-lg-12 col-sm-12 col-xs-12">
+                        <div id="{{field.gridWidth}}{{field.key}}">
+                          <h5 class="mb-0 d-flex justify-content-between">
+                            <button class="btn btn-link btn-sm" [attr.data-target]="'#' + field.key + field.gridWidth"
+                              [attr.aria-expanded]="field.expanded" [attr.aria-controls]="field.key + field.gridWidth"
+                              style="padding: 5px 30px !important;" (click)="field.expanded = !field.expanded">
+                              {{field.innerlabel}}
+                            </button>
+                            <button class="btn btn-link btn-sm" style="padding: 5px 30px !important;"
+                              (click)="deselectAllTreeNodes(field)">Deselect All </button>
+                            <button class="btn btn-link btn-sm" (click)="addNew(field['key'])"
+                              style="padding: 5px 30px !important;" *ngIf="field['enableAddNew']">
+                              Add New
+                            </button>
+                            <small>{{field.innerlabelsub}}</small>
+                          </h5>
+                        </div>
+                        <div id="{{field.key}}{{field.gridWidth}}"
+                          [ngClass]="{'show': field.expanded === true, 'collapse': !field.expanded, 'expand': field.expanded}"
+                          [attr.aria-labelledby]="field.gridWidth + field.key" data-parent="#accordion">
+
+                          <!-- Type of Tree "treesingleselect" -->
+                          <div class="card-body" *ngIf="(field.type === 'treesingleselect')">
+                            <div class="treeHeight">
+                              <tree-root #treesingleselect [nodes]="field.nodeData">
+                                <ng-template #treeNodeTemplate let-node="node" let-index="index">
+                                  <input (change)="checkSingleSelectTree(node, !node.data.isChecked, field.key)"
+                                    type="checkbox" [indeterminate]="node.data.indeterminate"
+                                    [checked]="node.data.isChecked">
+                                  <span>{{ node.data.name }}</span>
+                                  <div class="list-inline action_list float-right"
+                                    *ngIf="(node['data']['node_id'] === node['data']['parent_id']) && field['enableEdit']">
+                                    <a class="pl-2" (click)="onEditNode(node, field['key'])">
+                                      <span class="float-right">
+                                        <span class="fa fa-pencil"></span>
+                                      </span>
+                                    </a>
+                                  </div>
+                                </ng-template>
+                              </tree-root>
+                            </div>
+                          </div>
+
+                          <!-- Type of Tree "treeMultiselect" -->
+                          <div class="card-body" *ngIf="(field.type === 'treeMultiselect')">
+                            <!-- <p>Inside treeMultiselect</p> -->
+                            <div class="treeHeight">
+                              <tree-root #treeMultiselect [nodes]="field.nodeData">
+                                <ng-template #treeNodeTemplate let-node="node" let-index="index">
+                                  <input (change)="checkTreeMultiSelect(node, !node.data.isChecked, field.key)"
+                                    type="checkbox" [indeterminate]="node.data.indeterminate"
+                                    [checked]="node.data.isChecked">
+                                  <span>{{ node.data.name }}</span>
+                                </ng-template>
+                              </tree-root>
+                            </div>
+                          </div>
+
+                          <!-- Type of Tree "treeHierarchy" -->
+                          <div class="card-body" *ngIf="(field.type === 'treeHierarchy')">
+                            <div class="treeHeight">
+                              <tree-root #treeHierarchy [nodes]="field.nodeData">
+                                <ng-template #treeNodeTemplate let-node="node" let-index="index">
+                                  <input (change)="checkSingleSelectTree(node, node.data.isChecked, field.key)"
+                                    type="checkbox" [indeterminate]="node.data.indeterminate"
+                                    [checked]="node.data.isChecked">
+                                  <span>{{ node.data.name }}</span>
+                                </ng-template>
+                              </tree-root>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <ng-container *ngIf="field.type === 'dynamicFieldsArray'">
+                      <div>
+                        <div class="col-12 px-0 d-flex justify-content-between">
+                          <label>{{field['label']}}</label>
+                          <button type="button" class="btn btn-primary" (click)="addFieldsToDynamicFieldsArray(field)">
+                            Add
+                          </button>
+                        </div>
+                        <div class="row col-12" *ngIf="field['fieldsArray'] && field['fieldsArray'].length">
+                          <div class="col-5">
+                            <label class="mb-0 pt-1">Collector Name</label>
+                          </div>
+                          <div class="col-5">
+                            <label class="mb-0 pt-1">Collector Type*</label>
+                          </div>
+                          <div class="col-2">
+                            <label class="mb-0 pt-1">Actions</label>
+                          </div>
+                          <ng-container *ngFor="let fieldItem of field['fieldsArray']; let fieldItemIndex = index">
+                            <div class="col-5 py-1">
+                              <span class="mb-0 pt-1">{{fieldItem['label']}}</span>
+                            </div>
+                            <div class="col-5 py-1">
+                              <ng-select [virtualScroll]="true" bindValue="value"
+                                *ngIf="(fieldItem.type === 'select' && fieldItem.dependent === false)"
+                                [items]="fieldItem.options" placeholder="{{ fieldItem.placeholder }}"
+                                [(ngModel)]="Form_filled_data[field.key][fieldItemIndex]['type']"
+                                [ngClass]="{ 'is-invalid': (f[field['incrimentalKey'] + fieldItem['counter']].dirty) && f[field['incrimentalKey'] + fieldItem['counter']]['errors'] }"
+                                [required]="fieldItem.required" [clearable]="fieldItem.allowClear"
+                                formControlName="{{field['incrimentalKey'] + fieldItem['counter']}}"
+                                id="{{field['incrimentalKey'] + fieldItem['counter']}}" appendTo="body">
+                              </ng-select>
+                              <div *ngIf="f[field['incrimentalKey'] + fieldItem['counter']]['errors'] 
+                                              &&(f[field['incrimentalKey'] + fieldItem['counter']].dirty)"
+                                class="invalid-feedback d-flex pt-1">
+                                <span *ngIf="f[field['incrimentalKey'] + fieldItem['counter']]['errors']['required']">
+                                  Collector type is required.
+                                </span>
+                              </div>
+                            </div>
+                            <div class="col-2 py-1 d-flex justify-content-end">
+                              <a href="javascript:void(0)" class="pt-2"
+                                (click)="deleteFieldsFromDynamicFieldsArray(field['fieldsArray'], fieldItemIndex, field)">
+                                Delete<span class="pl-1">
+                                  <em class="icon-icons8-trash-can-100"></em>
+                                </span>
+                              </a>
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </ng-container>
+
+                    <!-- Input-type Switch -->
+
+                    <!-- <div class="pretty p-switch p-fill" *ngIf="field.type === 'switch'">
+                                    <input type="checkbox" [checked]="Form_filled_data[field.key]" name="{{field.key}}"
+                                      [(ngModel)]="Form_filled_data[field.key]" formControlName="{{field.key}}"
+                                      (change)="emitFieldChanges(field)">
+                                    <div class="state">
+                                      <label><span class="ml-2" *ngIf="field?.isLabel">{{ Form_filled_data[field.key] ?
+                                          field?.checkedLabel || '' : field?.UnCheckedLabel || ''}}</span></label>
+                                    </div>
+                                  </div> -->
+                    <div *ngIf="field.type === 'switch'">
+                      <label class="switcher-control"><input type="checkbox" class="switcher-input"
+                          [checked]="Form_filled_data[field.key]" name="{{field.key}}"
+                          [(ngModel)]="Form_filled_data[field.key]" formControlName="{{field.key}}"
+                          (change)="emitFieldChanges(field)"> <span class="switcher-indicator"></span></label>
+                      <span class="state">
+                        <label><span class="ml-2" *ngIf="field?.isLabel">{{ Form_filled_data[field.key] ?
+                            field?.checkedLabel || '' : field?.UnCheckedLabel || ''}}</span></label>
+                      </span>
+                    </div>
+
+                    <!-- Input type table -->
+                    <div *ngIf="field.type === 'table' && field.options && !field['dependentKeys'] && !field.hidden">
+                      <!-- <ucp-simple-table-with-pagination [hidden]="field.hidden"
+                                      (actionEmitter)="handleTableEmitter($event,field,sectionIndex)"
+                                      [tableDataWithActions]="field.options" [calculatedHeight]="510">
+                                    </ucp-simple-table-with-pagination> -->
+                    </div>
+
+                    <div *ngIf="field.type === 'table' && field.options && field['dependentKeys'] && !field.hidden">
+                      <!-- <ucp-simple-table-with-pagination [hidden]="field.hidden"
+                                      (actionEmitter)="handleTableEmitter($event,field,sectionIndex);"
+                                      [tableDataWithActions]="field.options" [calculatedHeight]="510">
+                                    </ucp-simple-table-with-pagination> -->
+                    </div>
+
+                    <div *ngIf="field.type === 'genericTabs'">
+                      <ucp-generic-tabs [items]="field.options" (activeTab)="handleTabsEmitter($event,field)">
+                      </ucp-generic-tabs>
+                    </div>
+
+                    <div *ngIf="field.type === 'customDataMap'">
+                      <!-- <ucp-custom-data-mapping [(value)]="Form_filled_data[field.key]"></ucp-custom-data-mapping>	 -->
+                    </div>
+                  </ng-container>
+                  <ng-template #fieldDataTemp>
+                    <ng-container *ngIf="field.type === 'simpleRadioSelect'">
+                      <ng-container *ngIf="field?.options?.length else nodataTemp">
+                        <div class="filter-class-contents simpleRadioSelect card-infinte-scroll-body pl-1"
+                        infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+                         (scrolled)="onScrollDown(field, sectionIndex, ind)" [infiniteScrollContainer]="'.card-infinte-scroll-body'" [scrollWindow]="false" [fromRoot]="true">
+                          <div *ngFor="let eachFilter of field.options; let radInd = index" class="all-filters-content {{eachFilter?.disabled ? 'opacitpoint6' : ''}} mt-3">
+                            <label class="row p-0 m-0 cursor-pointer radio-label">
+                              <div class="col-1 pr-0 form-check radio-buttons">
+                                <input class="form-check-input" type="radio" name="{{field.key}}" [ngModelOptions]="{standalone:true}" [disabled]="eachFilter?.disabled || Form_filled_data?.[field?.parentWithDisableCtrl]"
+                                  [id]="eachFilter.value +'_'+ sectionIndex +'_'+radInd +'_'+ field.key" [(ngModel)]="Form_filled_data[field.key]" (ngModelChange)="updateFieldsWithValueDependency(field.key, eachField, sectionIndex, true, field)"
+                                  value={{eachFilter.value}}/>
+                              </div>
+                              {{eachFilter.label}}
+                            </label>
+                          </div>
+                        </div>
+                        <div>
+                          <button class="float-right btn btn-link py-0 px-1" *ngIf="field?.allowClear && field?.options?.length" (click)="clearFieldValue(field, eachField, sectionIndex, true)">Clear</button>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+
+                    <div *ngIf="field.type === 'switch'">
+                      <label class="switcher-control"><input type="checkbox" class="switcher-input"
+                          [checked]="Form_filled_data[field.key]" name="{{field.key}}"
+                          [(ngModel)]="Form_filled_data[field.key]" formControlName="{{field.key}}"
+                          (change)="onSwitchChange(field)"> <span class="switcher-indicator"></span></label>
+                      <span class="state">
+                        <label><span class="ml-2" *ngIf="field?.isLabel">{{ Form_filled_data[field.key] ?
+                            field?.checkedLabel || '' : field?.UnCheckedLabel || ''}}</span></label>
+                      </span>
+                    </div>
+
+                    <ng-container *ngIf="field.type === 'advRadioSelect'">
+                      <ng-container *ngIf="field?.options?.length else nodataTemp">
+                        <div class="filter-class-contents advRadioSelect card-infinte-scroll-body-1 pl-1"
+                        infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+                         (scrolled)="onScrollDown(field, sectionIndex, ind)" [infiniteScrollContainer]="'.card-infinte-scroll-body-1'" [scrollWindow]="false" [fromRoot]="true">
+                          <div *ngFor="let eachFilter of field.options" class="all-filters-content mt-3">
+                            <label class="row m-0 cursor-pointer">
+                              <div class="col-1 pr-0 form-check radio-buttons">
+                                <input class="form-check-input" type="radio" name="{{field.key}}" [ngModelOptions]="{standalone:true}"
+                                [id]="eachFilter.value +'_'+ sectionIndex +'_'+radio +'_'+ field.key" [(ngModel)]="Form_filled_data[field.key]" (ngModelChange)="updateFieldsWithValueDependency(field.key, eachField, sectionIndex, true, field)"
+                                value={{eachFilter.value}}/>
+                              </div>
+                              {{eachFilter.label}}
+                            </label>
+                            <p class="description pl-4">{{eachFilter.description}}</p>
+                          </div>
+                        </div>
+                        <div>
+                          <button class="float-right btn btn-link py-0 px-1" *ngIf="field?.allowClear && field?.options?.length" (click)="clearFieldValue(field, eachField, sectionIndex, true)">Clear</button>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+
+                    <ng-container *ngIf="field.type === 'advMultiSelect'">
+                      <ng-container *ngIf="field?.options?.length else nodataTemp">
+                        <div class="filter-class-contents advMultiSelect card-infinte-scroll-body-2 pl-1"
+                        infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+                         (scrolled)="onScrollDown(field, sectionIndex, ind)" [infiniteScrollContainer]="'.card-infinte-scroll-body-2'" [scrollWindow]="false" [fromRoot]="true">
+                          <div *ngFor="let eachOpt of field.options" class="all-filters-content mt-3 ml-3">
+                            <label class="row m-0 cursor-pointer ml-1 pos_relative">
+                              <input class="form-check-input" type="checkbox" name="{{eachOpt.key}}" [ngModelOptions]="{standalone:true}"
+                              [id]="eachOpt.value +'_'+ sectionIndex +'_'+radio +'_'+ field.key" [(ngModel)]="eachOpt.IsSelected"
+                              (ngModelChange)="advSelectValChange(field.key, eachField, sectionIndex, true, field, eachOpt)"
+                              [checked]="eachOpt.IsSelected"
+                              value={{eachOpt.value}}/>
+                              <span class="radio-checked-label">{{eachOpt.label}}</span>
+                            </label>
+                            <p class="description ">{{eachOpt.description}}</p>
+                          </div>
+                        </div>
+                        <div>
+                          <button class="float-left btn btn-link py-0 px-1" *ngIf="field?.allowSelectAll && field?.options?.length" (click)="onAdvMultiSelectAll(field, eachField, sectionIndex, true, true)">Select All</button>
+                          <button class="float-right btn btn-link py-0 px-1" *ngIf="field?.allowClear && field?.options?.length" (click)="clearFieldValue(field, eachField, sectionIndex, true, true)">Clear</button>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                    
+                    <ng-template #nodataTemp>
+                      <label class="mx-3 mb-0"> No items found.</label>
+                    </ng-template>
+                     <ng-container *ngIf="(field.type === 'range')">
+                        <ucp-multi-range-slider [index]="ind" [(dualRange)]="Form_filled_data[field?.key]" [field]="field" (sliderEmitter)="sliderEmitter($event, field, sectionIndex, ind)"></ucp-multi-range-slider>
+                    </ng-container>   
+                  </ng-template>
+                </div>
+              </div>
+
+              <!-- error message -->
+
+              <div>
+                <div *ngIf="f[field.key]['errors'] &&(f[field.key].dirty)" class="invalid-feedback d-flex pt-1">
+                  <span *ngIf="f[field.key]['errors']['required']">
+                    {{field.label}} is required.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-container *ngIf="DFMDATA['userActions'] && !sectionIndex">
+            <ng-container *ngIf="DFMDATA['userActions']['addOptionalFields']">
+              <div class="col-lg-12 col-sm-12 col-xs-12" [ngClass]="{'pt-3': pageType === 'profile'}">
+                <div class="form-group" *ngIf="DFMDATA['userActions']['addOptionalFields']['enableAdd']">
+                  <a href="javascript:void(0)" (click)="openOptinalFieldsModal()">
+                    <span class="pl-3">
+                      <em class="fa fa-plus-circle"></em>
+                    </span>
+                    <span class="pl-1">Add another field</span>
+                  </a>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </ng-template>
+        <ng-container *ngFor="let DFMObject of DFMDATA.headerContent; let i=index;trackBy: sectionTrackFilter">
+          <!-- Section Starts -->
+          <div class="col-lg-{{DFMObject.sectionWidth}} pl-0 display-inline-block"
+            *ngIf="loaders['createFormControls']">
+            <div class="card-style">
+              <div class="card-body includedAccordion py-0">
+                <h4 *ngIf="DFMObject.sectionTitle !== ''" class="form-section-title">{{DFMObject.sectionTitle}}</h4>
+                <ng-container *ngIf="!DFMObject.accordionView">
+                  <h6 *ngIf="DFMObject.sectionSubTitle !== ''" class="card-subtitle">{{DFMObject.sectionSubTitle}}</h6>
+                  <div class="row">
+                    <ng-container *ngTemplateOutlet="FormBuilderTemplate; context:{ eachField: DFMObject.data, colWidth: DFMObject.sectionWidth, 
+                      sectionIndex: i}">
+                    </ng-container>
+                  </div>
+                </ng-container>
+                <!-- <ng-container *ngIf="DFMObject.accordionView">
+                  <ngb-accordion #acc="ngbAccordion">
+                    <ngb-panel title="" class="card-subtitle">
+                      <ng-template ngbPanelTitle>
+                        <span class="fa fa-angle-down fs-1 mr-1"></span>
+                        <span>{{DFMObject.sectionSubTitle}}</span>
+                      </ng-template>
+                      <ng-template ngbPanelContent>
+                        <div class="row">
+                          <ng-container *ngTemplateOutlet="FormBuilderTemplate; context:{ eachField: DFMObject.data, colWidth: DFMObject.sectionWidth, 
+                                          sectionIndex: i}">
+                          </ng-container>
+                        </div>
+                      </ng-template>
+                    </ngb-panel>
+                  </ngb-accordion>
+                </ng-container> -->
+                <ng-container *ngIf="DFMObject.accordionView">
+                  <div class="accordionLine">
+                    <div class="col-md-12" (click)="changeactiveTab(DFMObject.activeAccordianTab)">
+                      <h5 class="vDataLabel d-flex accor_dian inter-medium">
+                        <span class="material-icons-outlined"
+                          *ngIf="activeTab !== DFMObject.activeAccordianTab">chevron_right</span>
+                        <span class="material-icons-outlined"
+                          *ngIf="activeTab === DFMObject.activeAccordianTab">expand_more</span>
+                        <span>{{DFMObject.subTitle}} </span>
+                      </h5>
+                    </div>
+                    <div class="row ml-3 mt-3 pl-1 data-section" *ngIf="activeTab === DFMObject.activeAccordianTab ">
+                      <ng-container *ngTemplateOutlet="FormBuilderTemplate; context:{ eachField: DFMObject.data, colWidth: DFMObject.sectionWidth, 
+                                              sectionIndex: i}">
+                      </ng-container>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="DFMDATA.userActions">
+          <ng-container *ngIf="DFMDATA.userActions.buttonsPosition === 'notfixed'">
+            <div style="text-align: center;" class="float-right my-4">
+              <!-- Button-type previous or back -->
+              <button *ngIf="DFMDATA.userActions.back" type="" (click)="stepprevious()"
+                class="btn btn-secondary pl-4 pr-4 ml-3 mr-1" (click)="stepprevious()">
+                {{ DFMDATA.userActions.back.label }}
+              </button>
+
+              <!-- Button Type Save to save all the User Data -->
+              <button *ngIf="DFMDATA.userActions.save" type="submit" (click)="submitData()"
+                class="btn btn-primary mr-1 ml-1">
+                <span *ngIf="!(['xs','sm'].indexOf(mediaBreakPoint) > -1)">{{ DFMDATA.userActions.save.label }}</span>
+                <span *ngIf="(['xs','sm'].indexOf(mediaBreakPoint) > -1)"><em class="fa fa-save"></em></span>
+              </button>
+
+              <!-- Button-type Cancel the Event or Triggger Out-->
+              <button *ngIf="DFMDATA.userActions.cancel" type="" (click)="cancelForm()"
+                class="btn btn-inverse btn-secondary mr-1 ml-2">
+                <span *ngIf="!(['xs','sm'].indexOf(mediaBreakPoint) > -1)">{{ DFMDATA.userActions.cancel.label }}</span>
+                <span *ngIf="(['xs','sm'].indexOf(mediaBreakPoint) > -1)"><em class="fa fa-times"></em></span>
+              </button>
+
+              <!-- Button-type Refresh the Form -->
+              <button *ngIf="DFMDATA.userActions.refresh" type="" (click)="refreshForm()"
+                class="btn btn-primary pl-4 pr-4 mr-1" (click)="stepprevious()" style="margin-left: 20px;">
+                {{ DFMDATA.userActions.refresh.label }}
+              </button>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <ng-container *ngIf="DFMDATA.userActions">
+        <ng-container
+          *ngIf="(!DFMDATA.userActions.buttonsPosition ||  (DFMDATA.userActions.buttonsPosition === 'fixed')) && DFMDATA.userActions.buttonsType !== 'modalButtons'">
+          <div class="col-12 display-inline-block btns-fixed-pos my-4"
+            [ngClass]="{'text-center': DFMDATA['userActions']['buttonsAlign'] !== 'left','pl-4': DFMDATA['userActions']['buttonsAlign'] === 'left'}">
+            <div [ngClass]="{'float-left': DFMDATA['userActions']['buttonsAlign'] !== 'left'}">
+              <!-- Button Type Save to save all the User Data -->
+              <button *ngIf="DFMDATA.userActions.save && !hideSave" type="submit" [disabled]="disableSave"
+                (click)="submitData()" class="btn btn-primary mr-1">
+                <span *ngIf="!(['xs','sm'].indexOf(mediaBreakPoint) > -1)">{{ DFMDATA.userActions.save.label
+                  }}</span><span *ngIf="(['xs','sm'].indexOf(mediaBreakPoint) > -1)"><em class="fa fa-save"></em></span>
+                <span *ngIf="button_loader"><em class="fa fa-spinner fa-spin"></em></span>
+              </button>
+
+              <!-- Button-type Cancel the Event or Triggger Out-->
+              <button *ngIf="DFMDATA.userActions.cancel" type="" (click)="cancelForm()"
+                class="btn btn-inverse btn-secondary mr-1">
+                <span *ngIf="!(['xs','sm'].indexOf(mediaBreakPoint) > -1)">{{ DFMDATA.userActions.cancel.label }}</span>
+                <span *ngIf="(['xs','sm'].indexOf(mediaBreakPoint) > -1)"><em class="fa fa-times"></em></span>
+              </button>
+
+              <!-- Button-type Refresh the Form -->
+              <button *ngIf="DFMDATA.userActions.refresh" type="" (click)="refreshForm()"
+                class="btn ml-2 btn-primary pl-4 pr-4 mr-1" (click)="stepprevious()">
+                {{ DFMDATA.userActions.refresh.label }}
+              </button>
+
+              <!-- Button-type previous or back -->
+              <button *ngIf="DFMDATA.userActions.back" type="" class="btn ml-2 btn-primary pl-4 pr-4 mr-1"
+                (click)="stepprevious()">
+                {{ DFMDATA.userActions.back.label }}
+              </button>
+
+              <!-- Button-type next -->
+              <button *ngIf="DFMDATA.userActions.next" type="" class="btn ml-2 btn-primary pl-4 pr-4 mr-1"
+                (click)="stepnext()">
+                {{ DFMDATA.userActions.next.label }}
+              </button>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container
+          *ngIf="(!DFMDATA.userActions.buttonsPosition ||  (DFMDATA.userActions.buttonsPosition === 'fixed')) && DFMDATA.userActions.buttonsType === 'modalButtons'">
+          <div class="col-12">
+            <div class="row">
+              <!-- Button-type Cancel the Event or Triggger Out- used in settings-Config--->
+              <button *ngIf="DFMDATA.userActions.cancel" type="" (click)="cancelForm(true)"
+                class="btn btn-dark col-6 btn-lg rounded-0">
+                {{ DFMDATA.userActions.cancel.label }}
+              </button>
+              <!-- Button Type Save to save all the User Data -->
+              <button *ngIf="DFMDATA.userActions.save" type="submit" (click)="submitData()"
+                class="btn btn-primary col-6 btn-lg rounded-0">
+                {{ DFMDATA.userActions.save.label }}
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </form>
+</div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal"
+  [attr.data-target]="'#enableOptionalModal_' + currTime" hidden id="addAnotherFieldModal_{{currTime}}"
+  data-backdrop="static" data-keyboard="false">
+  Launch Enabling optional fields modal
+</button>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal"
+  [attr.data-target]="'#enableOptionalModal_' + currTime" hidden id="addAnotherFieldModalWithNoBackDrop_{{currTime}}"
+  data-backdrop="false" data-keyboard="false">
+  Launch Enabling optional fields modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" [id]="'enableOptionalModal_' + currTime" tabindex="-1" role="dialog"
+  aria-labelledby="enableOptionalModalLabel" aria-hidden="true">
+  <ng-container *ngIf="DFMDATA['userActions']">
+    <ng-container
+      *ngIf="DFMDATA['userActions']['addOptionalFields'] && DFMDATA['userActions']['addOptionalFields']['enableAdd']">
+      <div class="modal-dialog optional-field-config-modal" role="document" style="min-width: 90% !important;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="row">
+              <div class="col-12">
+                <div class="col-12 px-0">
+                  <span class="text-muted pl-1">
+                    {{DFMDATA['userActions']['addOptionalFields']['modalInfo']['modalTitle']}}
+                  </span>
+                </div>
+                <div class="col-12 px-0">
+                  <h5 class="optional-fields-title pl-1">Add fields</h5>
+                  <span class="text-dark pl-1">Here you can select and add fields that defines your
+                    {{DFMDATA['userActions']['addOptionalFields']['modalInfo']['config']}} in a better way.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-body pt-0">
+            <div class="row">
+              <div class="col-12">
+                <ng-container *ngFor="let DFMObject of selctedOptionalFields['headerContent']; let sectionIndex=index">
+                  <div class="col-12 px-0">
+                    <h6 class="optional-fields-title pl-1">{{DFMObject['sectionTitle']}}</h6>
+                  </div>
+                  <div class="row col-12">
+                    <ng-container *ngIf="DFMObject['data']">
+                      <ng-container *ngFor="let eachField of DFMObject['data']">
+                        <ng-container *ngIf="eachField['isOptional']">
+                          <div class="col-4 p-1 cursor-pointer" (click)="selectField(eachField)">
+                            <div class="card each-optional-field"
+                              [ngClass]="{'selcted-optionalField': eachField['isSelected']}">
+                              <div class="card-body optional-fields">
+                                <div class="col-12">
+                                  <label> {{eachField['label']}}</label>
+                                </div>
+                                <div class="col-12">
+                                  <span class="text-muted" *ngIf="eachField['example']">
+                                    {{'Eg: ' + eachField['example']}}
+                                  </span>
+                                  <span *ngIf="!eachField['example']">
+                                    {{eachField['placeholder']}}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button type="button" class="btn btn-dark btn-lg rounded-0" hidden id="closeAddOptionalFieldsModal"
+              data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-dark btn-lg col-6 rounded-0"
+              (click)="closeAddOptionalFieldsModal()">Cancel</button>
+            <button type="button" class="btn btn-primary btn-lg col-6 rounded-0"
+              (click)="saveSelectedOptinalFields()">Done</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+
+
+<!-- Edit Grid Templete Starts Here -->
+
+<ng-template #editGridTemplate let-sectionIndex="sectionIndex" let-field="field" let-fieldIndex="fieldIndex">
+  <table class="table table-bordered w-100 edit-grid-table" [ngStyle]="field.style" [ngClass]="field.fieldClass"
+    aria-describedby="Edit grid table">
+    <thead>
+      <tr>
+        <th *ngFor="let eachHeader of field.columns">{{eachHeader.label}}</th>
+        <th *ngIf="!field.disabled">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let eachRow of (Form_filled_data[field.key] || []);let rowInd=index">
+        <td *ngFor="let eachHeader of field.columns">
+
+          <input *ngIf="eachHeader.type === 'text'" type="text" [disabled]="field.disabled || eachHeader.disabled"
+            class="form-control" placeholder="{{eachHeader.placeholder}}"
+            [(ngModel)]="Form_filled_data[field.key][rowInd][eachHeader.key]">
+
+          <input *ngIf="eachHeader.type === 'number'" type="number" [disabled]="field.disabled || eachHeader.disabled"
+            class="form-control" placeholder="{{eachHeader.placeholder}}"
+            [(ngModel)]="Form_filled_data[field.key][rowInd][eachHeader.key]">
+
+          <ng-select *ngIf="eachHeader.type === 'select' && eachHeader.fullObject" [items]="eachHeader.options"
+            [(ngModel)]="Form_filled_data[field.key][rowInd][eachHeader.key]" [bindLabel]="eachHeader.bindLabel"
+            [multiple]="eachHeader.multiple" [disabled]="field.disabled || eachHeader.disabled"
+            [closeOnSelect]="!eachHeader.multiple" placeholder="{{eachHeader.placeholder}}"
+            [clearable]="eachHeader.allowClear" appendTo="body"></ng-select>
+
+          <ng-select *ngIf="eachHeader.type === 'select' && !eachHeader.fullObject" [items]="eachHeader.options"
+            [(ngModel)]="Form_filled_data[field.key][rowInd][eachHeader.key]" [bindLabel]="eachHeader.bindLabel"
+            [bindValue]="eachHeader.bindValue" [multiple]="eachHeader.multiple"
+            [disabled]="field.disabled || eachHeader.disabled" [closeOnSelect]="!eachHeader.multiple"
+            placeholder="{{eachHeader.placeholder}}" [clearable]="eachHeader.allowClear" appendTo="body"></ng-select>
+        </td>
+        <td *ngIf="!field.disabled">
+          <a href="javascript:void(0)" (click)="Form_filled_data[field.key].push({})" class="mr-2">
+            Add
+            <span class="fa fa-plus-circle"></span>
+          </a>
+          <a href="javascript:void(0)" (click)="Form_filled_data[field.key].splice(rowInd,1)"
+            *ngIf="Form_filled_data[field.key].length > 1">
+            Delete
+            <span class="fa fa-trash"></span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>
+
+<!-- Edit Grid Templete Ends Here -->

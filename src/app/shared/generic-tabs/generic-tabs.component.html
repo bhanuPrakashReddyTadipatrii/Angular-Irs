@@ -1,0 +1,12 @@
+<div class="row m-0 generic-tabs">
+  <div class="col-md-12">
+    <ul class="nav float-left">
+      <li class="nav-item cursor-pointer inter-medium" *ngFor="let eachTab of items"
+        (click)="changeResultTab(eachTab)" [class.disabled]="eachTab.disabled"  style="margin-right: 4px !important;"
+        [ngClass]="{'selected-tab': activeResultTab === eachTab['value']}">
+        <a class="nav-link tab_font_all"
+          [ngClass]="{'active': activeResultTab === eachTab['value']}">{{eachTab['label']}}</a>
+      </li>
+    </ul>
+  </div>
+</div>

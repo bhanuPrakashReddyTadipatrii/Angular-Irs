@@ -1,0 +1,1941 @@
+{
+    "status": "success",
+    "message": "Fetched visualize details successfully",
+    "data": {
+        "map_data": {
+            "markers": [
+                {
+                    "lat": 24.127831666666665,
+                    "lng": 52.8955,
+                    "color": "#F44336",
+                    "tooltip": [
+                        {
+                            "value": 32.6725635973339,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 0.052,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 1,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 24.118925,
+                    "lng": 52.895356666666665,
+                    "color": "#F44336",
+                    "tooltip": [
+                        {
+                            "value": 37.6991118430775,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 0.06,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 2,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 24.103671666666667,
+                    "lng": 52.895158333333335,
+                    "color": "#F44336",
+                    "tooltip": [
+                        {
+                            "value": 41.4690230273853,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 0.066,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 3.23,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 24.100388333333335,
+                    "lng": 52.895095,
+                    "color": "#F44336",
+                    "tooltip": [
+                        {
+                            "value": 55.2920307031804,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 0.088,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 4.056,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 24.05216666666667,
+                    "lng": 52.900125,
+                    "color": "#F44336",
+                    "tooltip": [
+                        {
+                            "value": 34.5575191894877,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 0.055,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 9.866,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 24.042315,
+                    "lng": 52.93039,
+                    "color": "#F44336",
+                    "tooltip": [
+                        {
+                            "value": 904.77868423386,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 1.44,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 13.066,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 24.034881666666667,
+                    "lng": 52.95330333333333,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 1376.01758227233,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 2.19,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 15.5,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 24.028653333333335,
+                    "lng": 52.966901666666665,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 1130.97335529233,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 1.8,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 17.113,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 24.016921666666665,
+                    "lng": 53.001595,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 1080.70787283489,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 1.72,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 21,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 24.001418333333334,
+                    "lng": 53.036845,
+                    "color": "#F44336",
+                    "tooltip": [
+                        {
+                            "value": 973.893722612836,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 1.55,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 25.066,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.981236666666668,
+                    "lng": 53.070105,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 1966.63700114721,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 3.13,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 29.066,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.960891666666665,
+                    "lng": 53.102605,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 4932.30046613597,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 7.85,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 33.066,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.951965,
+                    "lng": 53.118388333333336,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 4907.16772490726,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 7.81,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 34.957,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.94148,
+                    "lng": 53.135725,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 10813.3619136561,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 17.21,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 37.066,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.926915,
+                    "lng": 53.159815,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 8048.76037849705,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 12.81,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 40,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.921586666666666,
+                    "lng": 53.168596666666666,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 10499.2026482971,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 16.71,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 41.066,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.901866666666667,
+                    "lng": 53.20155166666667,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 13326.6360365279,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 21.21,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 45.066,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.862796666666668,
+                    "lng": 53.26734833333333,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 14017.7864203177,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 22.31,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 53.066,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.847721666666665,
+                    "lng": 53.29978333333333,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 13703.6271549587,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 21.81,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 57.066,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.847461666666668,
+                    "lng": 53.318765,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 21180.6176705024,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 33.71,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 59,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.84711666666667,
+                    "lng": 53.339016666666666,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 19484.1576375639,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 31.01,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 61,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.846431666666668,
+                    "lng": 53.35796,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 16782.3879554767,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 26.71,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 63,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.842813333333332,
+                    "lng": 53.37783666666667,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 5233.8933608806,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 8.33,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 65,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.839321666666667,
+                    "lng": 53.396455,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 3085.04398582518,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 4.91,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 67,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.833236666666668,
+                    "lng": 53.423856666666666,
+                    "color": "#C0CA33",
+                    "tooltip": [
+                        {
+                            "value": 43605.3060318263,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 69.4,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 69,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.833236666666668,
+                    "lng": 53.423856666666666,
+                    "color": "#C0CA33",
+                    "tooltip": [
+                        {
+                            "value": 43046.1025394874,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 68.51,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 69.9,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.833281666666668,
+                    "lng": 53.424926666666664,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 24699.2014425229,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 39.31,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 70,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.82846333333333,
+                    "lng": 53.454391666666666,
+                    "color": "#43A047",
+                    "tooltip": [
+                        {
+                            "value": 202953.168607208,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 323.01,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 73,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.826835,
+                    "lng": 53.473011666666665,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 9292.83106931861,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 14.79,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 75,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.826733333333333,
+                    "lng": 53.49346166666667,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 20615.1309928562,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 32.81,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 77,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.826641666666667,
+                    "lng": 53.51249333333333,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 23631.0599403024,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 37.61,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 79,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.826616666666666,
+                    "lng": 53.532675,
+                    "color": "#C0CA33",
+                    "tooltip": [
+                        {
+                            "value": 69812.4719480724,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 111.11,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 81,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.82451,
+                    "lng": 53.55632333333333,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 16342.5649839741,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 26.01,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 83.435,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.82451,
+                    "lng": 53.55632333333333,
+                    "color": "#43A047",
+                    "tooltip": [
+                        {
+                            "value": 106694.769701217,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 169.81,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 83.55,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.824436666666667,
+                    "lng": 53.563915,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 6308.3180484083,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 10.04,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 84.2,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.824393333333333,
+                    "lng": 53.571108333333335,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 2733.18560862312,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 4.35,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 85,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.823681666666666,
+                    "lng": 53.59039,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 20363.803580569,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 32.41,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 86.33,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.823681666666666,
+                    "lng": 53.59039,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 12384.158240451,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 19.71,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 86.8,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.825648333333334,
+                    "lng": 53.59748,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 4655.84031262007,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 7.41,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 87.788,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.825648333333334,
+                    "lng": 53.59748,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 5950.17648589907,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 9.47,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 87.95,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.828063333333333,
+                    "lng": 53.59749,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 12007.1671220202,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 19.11,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 88.126,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.828063333333333,
+                    "lng": 53.59749,
+                    "color": "#FDD835",
+                    "tooltip": [
+                        {
+                            "value": 17850.5294576972,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 28.41,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 88.25,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.839235,
+                    "lng": 53.60953333333333,
+                    "color": "#43A047",
+                    "tooltip": [
+                        {
+                            "value": 126298.307859617,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 201.01,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 90,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.848301666666668,
+                    "lng": 53.622613333333334,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 1633.62817986669,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 2.6,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 91.217,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.842851666666668,
+                    "lng": 53.62925666666667,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 3292.3891009621,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 5.24,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 92.62,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.83513,
+                    "lng": 53.637856666666664,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 3292.3891009621,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 5.24,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 93.25,
+                            "label": "Chainage"
+                        }
+                    ]
+                },
+                {
+                    "lat": 23.831743333333332,
+                    "lng": 53.641578333333335,
+                    "color": "#FB8C00",
+                    "tooltip": [
+                        {
+                            "value": 3292.3891009621,
+                            "label": "Resistivity"
+                        },
+                        {
+                            "value": 5.24,
+                            "label": "Resistance"
+                        },
+                        {
+                            "value": 94.557,
+                            "label": "Chainage"
+                        }
+                    ]
+                }
+            ],
+            "polylines": [
+                {
+                    "path": [
+                        {
+                            "lat": 24.127831666666665,
+                            "lng": 52.8955
+                        },
+                        {
+                            "lat": 24.118925,
+                            "lng": 52.895356666666665
+                        },
+                        {
+                            "lat": 24.103671666666667,
+                            "lng": 52.895158333333335
+                        },
+                        {
+                            "lat": 24.100388333333335,
+                            "lng": 52.895095
+                        },
+                        {
+                            "lat": 24.05216666666667,
+                            "lng": 52.900125
+                        },
+                        {
+                            "lat": 24.042315,
+                            "lng": 52.93039
+                        },
+                        {
+                            "lat": 24.034881666666667,
+                            "lng": 52.95330333333333
+                        }
+                    ],
+                    "strokeColor": "#F44336",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 24.034881666666667,
+                            "lng": 52.95330333333333
+                        },
+                        {
+                            "lat": 24.028653333333335,
+                            "lng": 52.966901666666665
+                        },
+                        {
+                            "lat": 24.016921666666665,
+                            "lng": 53.001595
+                        },
+                        {
+                            "lat": 24.001418333333334,
+                            "lng": 53.036845
+                        }
+                    ],
+                    "strokeColor": "#FB8C00",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 24.001418333333334,
+                            "lng": 53.036845
+                        },
+                        {
+                            "lat": 23.981236666666668,
+                            "lng": 53.070105
+                        }
+                    ],
+                    "strokeColor": "#F44336",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.981236666666668,
+                            "lng": 53.070105
+                        },
+                        {
+                            "lat": 23.960891666666665,
+                            "lng": 53.102605
+                        },
+                        {
+                            "lat": 23.951965,
+                            "lng": 53.118388333333336
+                        },
+                        {
+                            "lat": 23.94148,
+                            "lng": 53.135725
+                        }
+                    ],
+                    "strokeColor": "#FB8C00",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.94148,
+                            "lng": 53.135725
+                        },
+                        {
+                            "lat": 23.926915,
+                            "lng": 53.159815
+                        },
+                        {
+                            "lat": 23.921586666666666,
+                            "lng": 53.168596666666666
+                        },
+                        {
+                            "lat": 23.901866666666667,
+                            "lng": 53.20155166666667
+                        },
+                        {
+                            "lat": 23.862796666666668,
+                            "lng": 53.26734833333333
+                        },
+                        {
+                            "lat": 23.847721666666665,
+                            "lng": 53.29978333333333
+                        },
+                        {
+                            "lat": 23.847461666666668,
+                            "lng": 53.318765
+                        },
+                        {
+                            "lat": 23.84711666666667,
+                            "lng": 53.339016666666666
+                        },
+                        {
+                            "lat": 23.846431666666668,
+                            "lng": 53.35796
+                        },
+                        {
+                            "lat": 23.842813333333332,
+                            "lng": 53.37783666666667
+                        },
+                        {
+                            "lat": 23.839321666666667,
+                            "lng": 53.396455
+                        }
+                    ],
+                    "strokeColor": "#FDD835",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.839321666666667,
+                            "lng": 53.396455
+                        },
+                        {
+                            "lat": 23.833236666666668,
+                            "lng": 53.423856666666666
+                        }
+                    ],
+                    "strokeColor": "#FB8C00",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.833236666666668,
+                            "lng": 53.423856666666666
+                        },
+                        {
+                            "lat": 23.833236666666668,
+                            "lng": 53.423856666666666
+                        },
+                        {
+                            "lat": 23.833281666666668,
+                            "lng": 53.424926666666664
+                        }
+                    ],
+                    "strokeColor": "#C0CA33",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.833281666666668,
+                            "lng": 53.424926666666664
+                        },
+                        {
+                            "lat": 23.82846333333333,
+                            "lng": 53.454391666666666
+                        }
+                    ],
+                    "strokeColor": "#FDD835",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.82846333333333,
+                            "lng": 53.454391666666666
+                        },
+                        {
+                            "lat": 23.826835,
+                            "lng": 53.473011666666665
+                        }
+                    ],
+                    "strokeColor": "#43A047",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.826835,
+                            "lng": 53.473011666666665
+                        },
+                        {
+                            "lat": 23.826733333333333,
+                            "lng": 53.49346166666667
+                        },
+                        {
+                            "lat": 23.826641666666667,
+                            "lng": 53.51249333333333
+                        },
+                        {
+                            "lat": 23.826616666666666,
+                            "lng": 53.532675
+                        }
+                    ],
+                    "strokeColor": "#FDD835",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.826616666666666,
+                            "lng": 53.532675
+                        },
+                        {
+                            "lat": 23.82451,
+                            "lng": 53.55632333333333
+                        }
+                    ],
+                    "strokeColor": "#C0CA33",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.82451,
+                            "lng": 53.55632333333333
+                        },
+                        {
+                            "lat": 23.82451,
+                            "lng": 53.55632333333333
+                        }
+                    ],
+                    "strokeColor": "#FDD835",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.82451,
+                            "lng": 53.55632333333333
+                        },
+                        {
+                            "lat": 23.824436666666667,
+                            "lng": 53.563915
+                        }
+                    ],
+                    "strokeColor": "#43A047",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.824436666666667,
+                            "lng": 53.563915
+                        },
+                        {
+                            "lat": 23.824393333333333,
+                            "lng": 53.571108333333335
+                        }
+                    ],
+                    "strokeColor": "#FDD835",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.824393333333333,
+                            "lng": 53.571108333333335
+                        },
+                        {
+                            "lat": 23.823681666666666,
+                            "lng": 53.59039
+                        }
+                    ],
+                    "strokeColor": "#FB8C00",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.823681666666666,
+                            "lng": 53.59039
+                        },
+                        {
+                            "lat": 23.823681666666666,
+                            "lng": 53.59039
+                        },
+                        {
+                            "lat": 23.825648333333334,
+                            "lng": 53.59748
+                        }
+                    ],
+                    "strokeColor": "#FDD835",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.825648333333334,
+                            "lng": 53.59748
+                        },
+                        {
+                            "lat": 23.825648333333334,
+                            "lng": 53.59748
+                        }
+                    ],
+                    "strokeColor": "#FB8C00",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.825648333333334,
+                            "lng": 53.59748
+                        },
+                        {
+                            "lat": 23.828063333333333,
+                            "lng": 53.59749
+                        },
+                        {
+                            "lat": 23.828063333333333,
+                            "lng": 53.59749
+                        },
+                        {
+                            "lat": 23.839235,
+                            "lng": 53.60953333333333
+                        }
+                    ],
+                    "strokeColor": "#FDD835",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 23.839235,
+                            "lng": 53.60953333333333
+                        },
+                        {
+                            "lat": 23.848301666666668,
+                            "lng": 53.622613333333334
+                        }
+                    ],
+                    "strokeColor": "#43A047",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 15
+                },
+                {
+                    "path": [
+                        {
+                            "lat": 24.127831666666665,
+                            "lng": 52.8955
+                        },
+                        {
+                            "lat": 24.118925,
+                            "lng": 52.895356666666665
+                        },
+                        {
+                            "lat": 24.103671666666667,
+                            "lng": 52.895158333333335
+                        },
+                        {
+                            "lat": 24.100388333333335,
+                            "lng": 52.895095
+                        },
+                        {
+                            "lat": 24.05216666666667,
+                            "lng": 52.900125
+                        },
+                        {
+                            "lat": 24.042315,
+                            "lng": 52.93039
+                        },
+                        {
+                            "lat": 24.034881666666667,
+                            "lng": 52.95330333333333
+                        },
+                        {
+                            "lat": 24.028653333333335,
+                            "lng": 52.966901666666665
+                        },
+                        {
+                            "lat": 24.016921666666665,
+                            "lng": 53.001595
+                        },
+                        {
+                            "lat": 24.001418333333334,
+                            "lng": 53.036845
+                        },
+                        {
+                            "lat": 23.981236666666668,
+                            "lng": 53.070105
+                        },
+                        {
+                            "lat": 23.960891666666665,
+                            "lng": 53.102605
+                        },
+                        {
+                            "lat": 23.951965,
+                            "lng": 53.118388333333336
+                        },
+                        {
+                            "lat": 23.94148,
+                            "lng": 53.135725
+                        },
+                        {
+                            "lat": 23.926915,
+                            "lng": 53.159815
+                        },
+                        {
+                            "lat": 23.921586666666666,
+                            "lng": 53.168596666666666
+                        },
+                        {
+                            "lat": 23.901866666666667,
+                            "lng": 53.20155166666667
+                        },
+                        {
+                            "lat": 23.862796666666668,
+                            "lng": 53.26734833333333
+                        },
+                        {
+                            "lat": 23.847721666666665,
+                            "lng": 53.29978333333333
+                        },
+                        {
+                            "lat": 23.847461666666668,
+                            "lng": 53.318765
+                        },
+                        {
+                            "lat": 23.84711666666667,
+                            "lng": 53.339016666666666
+                        },
+                        {
+                            "lat": 23.846431666666668,
+                            "lng": 53.35796
+                        },
+                        {
+                            "lat": 23.842813333333332,
+                            "lng": 53.37783666666667
+                        },
+                        {
+                            "lat": 23.839321666666667,
+                            "lng": 53.396455
+                        },
+                        {
+                            "lat": 23.833236666666668,
+                            "lng": 53.423856666666666
+                        },
+                        {
+                            "lat": 23.833236666666668,
+                            "lng": 53.423856666666666
+                        },
+                        {
+                            "lat": 23.833281666666668,
+                            "lng": 53.424926666666664
+                        },
+                        {
+                            "lat": 23.82846333333333,
+                            "lng": 53.454391666666666
+                        },
+                        {
+                            "lat": 23.826835,
+                            "lng": 53.473011666666665
+                        },
+                        {
+                            "lat": 23.826733333333333,
+                            "lng": 53.49346166666667
+                        },
+                        {
+                            "lat": 23.826641666666667,
+                            "lng": 53.51249333333333
+                        },
+                        {
+                            "lat": 23.826616666666666,
+                            "lng": 53.532675
+                        },
+                        {
+                            "lat": 23.82451,
+                            "lng": 53.55632333333333
+                        },
+                        {
+                            "lat": 23.82451,
+                            "lng": 53.55632333333333
+                        },
+                        {
+                            "lat": 23.824436666666667,
+                            "lng": 53.563915
+                        },
+                        {
+                            "lat": 23.824393333333333,
+                            "lng": 53.571108333333335
+                        },
+                        {
+                            "lat": 23.823681666666666,
+                            "lng": 53.59039
+                        },
+                        {
+                            "lat": 23.823681666666666,
+                            "lng": 53.59039
+                        },
+                        {
+                            "lat": 23.825648333333334,
+                            "lng": 53.59748
+                        },
+                        {
+                            "lat": 23.825648333333334,
+                            "lng": 53.59748
+                        },
+                        {
+                            "lat": 23.828063333333333,
+                            "lng": 53.59749
+                        },
+                        {
+                            "lat": 23.828063333333333,
+                            "lng": 53.59749
+                        },
+                        {
+                            "lat": 23.839235,
+                            "lng": 53.60953333333333
+                        },
+                        {
+                            "lat": 23.848301666666668,
+                            "lng": 53.622613333333334
+                        },
+                        {
+                            "lat": 23.842851666666668,
+                            "lng": 53.62925666666667
+                        },
+                        {
+                            "lat": 23.83513,
+                            "lng": 53.637856666666664
+                        },
+                        {
+                            "lat": 23.831743333333332,
+                            "lng": 53.641578333333335
+                        }
+                    ],
+                    "strokeColor": "white",
+                    "strokeOpacity": 1,
+                    "strokeWeight": 5
+                }
+            ]
+        },
+        "table_data": {
+            "defaultColDef": {
+                "flex": 1,
+                "resizable": true,
+                "sortable": true,
+                "filter": true
+            },
+            "rowData": [
+                {
+                    "chainage": 1,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 0.052,
+                    "resistivity": 32.6725635973339,
+                    "remarks": "",
+                    "color": "#F44336"
+                },
+                {
+                    "chainage": 2,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 0.06,
+                    "resistivity": 37.6991118430775,
+                    "remarks": "",
+                    "color": "#F44336"
+                },
+                {
+                    "chainage": 3.23,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 0.066,
+                    "resistivity": 41.4690230273853,
+                    "remarks": "",
+                    "color": "#F44336"
+                },
+                {
+                    "chainage": 4.056,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 0.088,
+                    "resistivity": 55.2920307031804,
+                    "remarks": "",
+                    "color": "#F44336"
+                },
+                {
+                    "chainage": 9.866,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 0.055,
+                    "resistivity": 34.5575191894877,
+                    "remarks": "",
+                    "color": "#F44336"
+                },
+                {
+                    "chainage": 13.066,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 1.44,
+                    "resistivity": 904.77868423386,
+                    "remarks": "",
+                    "color": "#F44336"
+                },
+                {
+                    "chainage": 15.5,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 2.19,
+                    "resistivity": 1376.01758227233,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                },
+                {
+                    "chainage": 17.113,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 1.8,
+                    "resistivity": 1130.97335529233,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                },
+                {
+                    "chainage": 21,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 1.72,
+                    "resistivity": 1080.70787283489,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                },
+                {
+                    "chainage": 25.066,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 1.55,
+                    "resistivity": 973.893722612836,
+                    "remarks": "",
+                    "color": "#F44336"
+                },
+                {
+                    "chainage": 29.066,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 3.13,
+                    "resistivity": 1966.63700114721,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                },
+                {
+                    "chainage": 33.066,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 7.85,
+                    "resistivity": 4932.30046613597,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                },
+                {
+                    "chainage": 34.957,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 7.81,
+                    "resistivity": 4907.16772490726,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                },
+                {
+                    "chainage": 37.066,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 17.21,
+                    "resistivity": 10813.3619136561,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 40,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 12.81,
+                    "resistivity": 8048.76037849705,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 41.066,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 16.71,
+                    "resistivity": 10499.2026482971,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 45.066,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 21.21,
+                    "resistivity": 13326.6360365279,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 53.066,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 22.31,
+                    "resistivity": 14017.7864203177,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 57.066,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 21.81,
+                    "resistivity": 13703.6271549587,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 59,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 33.71,
+                    "resistivity": 21180.6176705024,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 61,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 31.01,
+                    "resistivity": 19484.1576375639,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 63,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 26.71,
+                    "resistivity": 16782.3879554767,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 65,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 8.33,
+                    "resistivity": 5233.8933608806,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 67,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 4.91,
+                    "resistivity": 3085.04398582518,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                },
+                {
+                    "chainage": 69,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 69.4,
+                    "resistivity": 43605.3060318263,
+                    "remarks": "",
+                    "color": "#C0CA33"
+                },
+                {
+                    "chainage": 69.9,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 68.51,
+                    "resistivity": 43046.1025394874,
+                    "remarks": "",
+                    "color": "#C0CA33"
+                },
+                {
+                    "chainage": 70,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 39.31,
+                    "resistivity": 24699.2014425229,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 73,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 323.01,
+                    "resistivity": 202953.168607208,
+                    "remarks": "",
+                    "color": "#43A047"
+                },
+                {
+                    "chainage": 75,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 14.79,
+                    "resistivity": 9292.83106931861,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 77,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 32.81,
+                    "resistivity": 20615.1309928562,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 79,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 37.61,
+                    "resistivity": 23631.0599403024,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 81,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 111.11,
+                    "resistivity": 69812.4719480724,
+                    "remarks": "",
+                    "color": "#C0CA33"
+                },
+                {
+                    "chainage": 83.435,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 26.01,
+                    "resistivity": 16342.5649839741,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 83.55,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 169.81,
+                    "resistivity": 106694.769701217,
+                    "remarks": "",
+                    "color": "#43A047"
+                },
+                {
+                    "chainage": 84.2,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 10.04,
+                    "resistivity": 6308.3180484083,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 85,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 4.35,
+                    "resistivity": 2733.18560862312,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                },
+                {
+                    "chainage": 86.33,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 32.41,
+                    "resistivity": 20363.803580569,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 86.8,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 19.71,
+                    "resistivity": 12384.158240451,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 87.788,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 7.41,
+                    "resistivity": 4655.84031262007,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                },
+                {
+                    "chainage": 87.95,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 9.47,
+                    "resistivity": 5950.17648589907,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 88.126,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 19.11,
+                    "resistivity": 12007.1671220202,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 88.25,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 28.41,
+                    "resistivity": 17850.5294576972,
+                    "remarks": "",
+                    "color": "#FDD835"
+                },
+                {
+                    "chainage": 90,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 201.01,
+                    "resistivity": 126298.307859617,
+                    "remarks": "",
+                    "color": "#43A047"
+                },
+                {
+                    "chainage": 91.217,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 2.6,
+                    "resistivity": 1633.62817986669,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                },
+                {
+                    "chainage": 92.62,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 5.24,
+                    "resistivity": 3292.3891009621,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                },
+                {
+                    "chainage": 93.25,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 5.24,
+                    "resistivity": 3292.3891009621,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                },
+                {
+                    "chainage": 94.557,
+                    "depth_of_measurement": 1,
+                    "pin_spacing": 100,
+                    "resistance": 5.24,
+                    "resistivity": 3292.3891009621,
+                    "remarks": "",
+                    "color": "#FB8C00"
+                }
+            ],
+            "columnDefs": [
+                {
+                    "headerName": "Chainage",
+                    "field": "chainage"
+                },
+                {
+                    "headerName": "Depth of Measurement (m)",
+                    "field": "depth_of_measurement"
+                },
+                {
+                    "headerName": "Pin Spacing (cm)",
+                    "field": "pin_spacing"
+                },
+                {
+                    "headerName": "Resistance (Ω)",
+                    "field": "resistance"
+                },
+                {
+                    "headerName": "Resistivity (Ω-cm)",
+                    "field": "resistivity",
+                    "cellColor": true
+                },
+                {
+                    "headerName": "Remarks",
+                    "field": "remarks"
+                }
+            ]
+        }
+    }
+}

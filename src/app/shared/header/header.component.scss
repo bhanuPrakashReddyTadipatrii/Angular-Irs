@@ -1,0 +1,91 @@
+.btn-account {
+  padding: 0 0 0 1.75rem !important;
+}
+.app-header {
+  background: #38383B 0% 0% no-repeat padding-box;
+  position: inherit;
+}
+.header-title {
+  color: #FFFFFF;
+}
+.top-bar-brand {
+  background-color: rgb(56,56,59) !important;
+}
+.tabs-section {
+  .tab-border{
+    color: white !important;
+    background: #FFFFFF34 0% 0% no-repeat padding-box;
+    text-align: center;
+    height: 1.9rem;
+  }
+  .tab-border.active {
+    .nav-link.active {
+      font-family: 'Inter-Medium';
+      background-color: white;
+      color: black !important;
+      margin-top: 2.5px !important;
+      margin-bottom: 2.5px !important;
+      padding-top: 2.5px !important;
+      padding-bottom: 2.5px !important;
+      border-radius: 5px;
+      max-width: 7rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow-x: hidden;
+    }
+  }
+  
+  li.each-info-tab:first-child {
+    border-top-left-radius   : 5px !important;
+    border-bottom-left-radius: 5px !important;
+    &.active{
+      .nav-link.active {
+        margin-left: 2.5px;
+      }
+    }
+  }
+  
+  li.each-info-tab:last-child {
+    border-top-right-radius   : 5px !important;
+    border-bottom-right-radius: 5px !important;
+    &.active{
+      .nav-link.active {
+        margin-right: 2.5px;
+      }
+    }
+  }
+  .nav-link:focus, .nav-link:hover {
+    color: #346cb0;
+  }
+  .nav-link.active {
+    color: white !important;
+  }
+  .active>.nav-link {
+    color: black !important;
+  }
+  li.each-info-tab:not(:last-child) {
+    .nav-link.active {
+      border-right: 1px solid #767677;
+      padding-right: 10px !important;
+    }
+  }
+}
+.badge_count {
+  font-size: 50%;
+  background-color: white;
+  color: black;
+}
+// .profile-img {
+//   height: 100%;
+//   width: 100%;
+//   border-radius: 50%;
+//   text-align: center;
+// }
+.pointer{
+  cursor: pointer;
+  padding: 5px;
+}
+
+.add-project {
+  float: right;
+}

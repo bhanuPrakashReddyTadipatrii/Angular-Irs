@@ -1,0 +1,12 @@
+.survey-format {
+    width: 60px;
+    height: 30px
+}
+.download-btn{
+    color: blue;
+    padding-top: 1.5rem !important;
+    &:hover{
+      color: blue;
+     text-decoration: underline;
+    }
+}

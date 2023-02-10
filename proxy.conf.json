@@ -1,0 +1,11 @@
+{
+"/ucp_api/*": {
+        "target": "https://7eca-14-98-12-178.in.ngrok.io",
+        "secure": true,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/ucp_api": ""
+        }
+    }
+}

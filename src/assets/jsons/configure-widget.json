@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "message": "WidgetData Created successfully",
+  "data": {
+    "cols": 12,
+    "rows": 3,
+    "y": 0,
+    "x": 0,
+    "filters": {},
+    "wName": "Soil Resistivity Jan 2019",
+    "wId": "DKL38874pnd89ihd",
+    "type": "chart"
+  }
+}

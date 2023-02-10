@@ -1,0 +1,42 @@
+<div class="wrapper slider-all-filters p-2 pl-3 multi-range-slider-component" *ngIf="dualRange">
+    <!-- <span class="material-icons-outlined closeicon cursor-pointer"
+        (click)="field.showSlider = !field.showSlider">
+        close
+    </span> -->
+    <!-- <label class="label" for="item-{{index}}">{{field?.displayLabel}}</label> -->
+    <div class="description" *ngIf="isValid && dualRange.max !== dualRange.min;"><span>Min : {{options?.floor}}</span> <span> Max : {{options?.ceil}}</span> </div>
+    <div *ngIf="dualRange.max !== dualRange.min" class="min-max-input">
+    <input type="number" class="form-control min-input" placeholder="min" [min]="options.floor" title="minRangeData" [(ngModel)]="minRangeData" (ngModelChange)="inputChange($event)">
+    <input type="number" class="form-control max-input" placeholder="max" title="maxRangeData" [(ngModel)]="maxRangeData" [max]="options.ceil" (ngModelChange)="inputChange($event)">
+    </div>
+    <div *ngIf="isValid && dualRange.max !== dualRange.min; else noRangeFound">
+        <ngx-slider *ngIf="showSlider" [(value)]="dualRange.min" [(highValue)]="dualRange.max" [options]="options" (userChangeEnd)="changedData()"></ngx-slider>
+        <ng-container *ngIf="field?.showToggle && field?.toggleKey">
+            <div>
+                <label class="switcher-control"><input type="checkbox" class="switcher-input"
+                    [checked]="dualRange[this.field?.toggleKey]" name="{{field.key}}"
+                    [(ngModel)]="dualRange[this.field?.toggleKey]"
+                    (ngModelChange)="changedData()"> <span class="switcher-indicator"></span></label>
+                <span class="state">
+                  <label><span class="ml-2" *ngIf="field?.toggleLabel">{{field.toggleLabel || 'Ignore Null'}}</span></label>
+                </span>
+              </div>
+        </ng-container>
+    </div>
+    <ng-template #noRangeFound>
+        No range found.
+    </ng-template>
+    <div class="float-right mt-2" *ngIf="dualRange.max !== dualRange.min">
+        <button class="btn btn-link py-0 px-1" (click)="clearRangeValue(field)">Clear</button>
+    </div>
+</div>
+<!-- <div *ngIf="!showSlider">
+    <div id="loader-wrapper-submaincontent">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+</div> -->

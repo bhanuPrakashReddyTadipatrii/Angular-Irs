@@ -1,0 +1,37 @@
+
+    <div #mapContainer id="main-map-container" style="height: 100%"></div>
+    <div id="mapTypeOptions" class="map-type-options d-flex map-options" *ngIf="mapOptions?.activeMapType">
+        <div class="mapTypeModal">
+            <ng-container *ngFor="let eachType of mapTypes">
+                <div class="m-0 p-0 maptypes cursor-pointer" *ngIf="tableEle?.style && mapOptions?.activeMapType !== eachType?.id"
+                    (click)="changeMapType(eachType?.id)">
+                    <img src="{{eachType?.svg}}" alt="" title="{{eachType.tooltip || ''}}">
+                </div>
+            </ng-container>
+        </div>
+
+        <div class="chart-table" *ngIf="mapOptions?.selectedVisualType">
+            <ng-container *ngFor="let eachType of visualOptions">
+                <div class="m-0 p-0 chartTable cursor-pointer" *ngIf="tableEle?.style && mapOptions?.selectedVisualType !== eachType?.id"
+                    (click)="changeOptions(eachType?.id)">
+                    <img src="{{eachType?.svg}}" alt="" title="{{eachType.tooltip || ''}}">
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="color-container" *ngIf="showLegends && (legends | json) !== '{}' && selectedLegends?.length">
+        <ng-container *ngFor="let item of legends | keyvalue; let ind = index">
+            <div class="" style="z-index: 0 !important" *ngIf="selectedLegends?.includes(item?.key) && legends?.[item?.key]?.['data']?.length">
+                <label class="legend-label {{ ind ? 'mt-2' : ''}} mb-0">{{legends?.[item?.key]?.label}}</label>
+                <div *ngFor="let eachData of legends?.[item?.key]?.['data']">
+                    <div class="d-flex cursor-pointer">
+                        <span class="color-box" [ngStyle]="{'backgroundColor': eachData.backgroundColor || ' '}"></span>
+                        <span title="{{eachData.label}}"
+                            class="inter-regular ml-1 box-text {{ (selectedLegend?.key === item?.key && eachData?.min === selectedLegend?.min && eachData?.max === selectedLegend?.max) ? 'selected-legend' : ''}}"
+                            (click)="legendClick(eachData, item?.key)">{{eachData.label}}</span>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <p class="title-text" *ngIf="title">{{title}}</p>

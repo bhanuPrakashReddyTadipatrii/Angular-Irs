@@ -1,0 +1,28 @@
+{
+    "status": "success",
+    "message": "Survey fields fetched successfully",
+    "data": {
+        "surveys": [
+            {
+                "label": "Soil Resistivity",
+                "value": "soil_resistivity"
+            },
+            {
+                "label": "PSP On-Off",
+                "value":"psps_on_off"
+            },
+            {
+                "label": "DCVG",
+                "value":"dcvg"
+            },
+            {
+                "label": "CIPS",
+                "value":"cips"
+            },
+            {
+                "label": "Polarization Survey",
+                "value":"polarization_survey"
+            }
+        ]
+    }
+}

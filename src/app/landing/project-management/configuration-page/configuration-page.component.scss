@@ -1,0 +1,70 @@
+.tabs-section {
+    .tab-border {
+        color: black !important;
+        background: #ACACAC34 0% 0% no-repeat padding-box;
+        text-align: center;
+        height: 1.9rem;
+    }
+
+    .tab-border.active {
+        .nav-link.active {
+            font-family: 'Inter-Medium';
+            background-color: white;
+            color: black !important;
+            margin-top: 2.5px !important;
+            margin-bottom: 2.5px !important;
+            padding-top: 2.5px !important;
+            padding-bottom: 2.5px !important;
+            border-radius: 5px;
+            max-width: 10rem;
+            min-width: fit-content;
+        }
+    }
+
+    li.each-info-tab:first-child {
+        border-top-left-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+
+        &.active {
+            .nav-link.active {
+                margin-left: 2.5px;
+            }
+        }
+    }
+
+    li.each-info-tab:last-child {
+        border-top-right-radius: 5px ;
+        border-bottom-right-radius: 5px ;
+
+        &.active {
+            .nav-link.active {
+                margin-right: 2.5px;
+            }
+        }
+    }
+
+    .nav-link:focus,
+    .nav-link:hover {
+        color: #346cb0;
+    }
+
+    .nav-link.active {
+        color: black ;
+    }
+
+    .active>.nav-link {
+        color: black ;
+    }
+
+    li.each-info-tab:not(:last-child) {
+        .nav-link.active {
+            border-right: 1px solid #767677;
+            padding-right: 10px !important;
+        }
+    }
+}
+
+.accordionLine {
+    border-bottom: 1px solid #d9c0c0;
+    cursor: pointer;
+}

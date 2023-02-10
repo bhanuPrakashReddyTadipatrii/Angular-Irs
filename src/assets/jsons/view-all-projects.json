@@ -1,0 +1,74 @@
+{
+  "data": {
+    "tableActions": {
+      "actions": [
+        {
+          "label": "Edit",
+          "type": "edit",
+          "action": "edit",
+          "icon-class": "edit"
+        },
+        {
+          "label": "Delete",
+          "type": "delete",
+          "action": "delete",
+          "icon-class": "delete"
+        }
+      ],
+      "externalActions": [
+        {
+          "label": "Create New",
+          "type": "addnew",
+          "action": "addnew",
+          "icon-class": "add"
+        }
+      ]
+    },
+    "defaultColDef": { "flex": 1, "resizable": true },
+    "rowData": [
+      {
+        "project_name": "Project 1",
+        "description": "Acess to all",
+        "users": ["CB", "CP", "KL", "UT", "FL"],
+        "project_id": "project_1",
+        "date":" 30 July, 2022",
+        "created_by":" Robin M"
+      },
+      {
+        "project_name": "Project 2",
+        "description": "Acess to all",
+        "users": ["CB", "CP", "KL"],
+        "project_id": "2aN7M6KQf77YUwAjwPRUzW",
+        "date":" 30 July, 2022",
+        "created_by":" Robin M"
+      },
+      {
+        "project_name": "Project 3",
+        "description": "Acess to all",
+        "users": ["CB", "CP", "KL", "FL"],
+        "project_id": "FGm4kejWzqbDnAbuJQh4b2",
+        "date":" 30 July, 2022",
+        "created_by":" Robin M"
+      },
+      {
+        "project_name": "Project 4",
+        "description": "Acess to all",
+        "users": ["CB"],
+        "project_id": "2aN7M6KQf77YUwAjwPRUzW",
+        "date":" 30 July, 2022",
+        "created_by":" Robin M"
+      }
+    ],
+    "columnDefs": [
+      { "headerName": "Project Name", "field": "project_name" },
+      { "headerName": "Description", "field": "description" },
+      { "headerName": "Users", "field": "users" },
+      { "headerName": "Created on", "field": "date" },
+      { "headerName": "Created by", "field": "created_by" }
+
+    ],
+    "enableActions": true
+  },
+  "status": "success",
+  "message": "Success"
+}

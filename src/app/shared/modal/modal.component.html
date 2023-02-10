@@ -1,0 +1,48 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-backdrop="static"
+ data-toggle="modal" id="modalDemoButton" hidden data-target="#commonModalPopup">
+  Login Modal
+</button>
+<!-- Modal -->
+<div class="modal fade" id="commonModalPopup" tabindex="-1" aria-labelledby="commonModalPopupLabel" aria-hidden="true" style="z-index: 10701;">
+  <div class="modal-dialog">
+    <div class="modal-content" style="font-family: poppins !important;">
+      <form>
+        <div class="modal-header">
+          <h5 class="modal-title inter-regular" id="commonModalPopupLabel">Session Expired</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button> -->
+        </div>
+        <div class="modal-body" *ngIf="showlogin">
+          <h6 class="mb-3 inter-regular">Please Login Again</h6>
+          <div class="col-12 mb-3 pl-0" *ngIf="metaData['username']">
+            <label class="inter-regular">User ID: <span> {{ metaData['username']}}</span></label>   
+          </div>     
+          <div class="col-12 pl-0">
+            <label class="required inter-regular">Password</label>
+            <input type="password" class="form-control" placeholder="Enter your Password" 
+            [(ngModel)]="passwordVal" [ngModelOptions]="{standalone: true}" >     
+          </div> 
+                   
+        </div>
+        <div class="modal-body" *ngIf="showOTP">
+          <form id="codeForm" #code= "ngForm" (ngSubmit)="verifyCode(false,code.value);" >
+            <label class="font-bold">Enter OTP</label>
+            <div class="d-flex flex-row  ">
+                    <div >
+                        <input type="text" name="otp" (keypress)="keyPressNumbers($event)" 
+                            class="form-control" placeholder="Enter OTP" maxlength="6"  ngModel/>
+                    </div>
+            </div>
+        </form>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="submit"  class="btn btn-primary inter-regular"  [disabled]="!passwordVal"  (click)="getToken()"  *ngIf="showlogin">Login Again</button>
+          <button type="submit" form="codeForm" id="submitbtn" type="submit" class="btn btn-primary inter-regular" *ngIf="showOTP" >Continue</button>
+          <button type="button" class="btn btn-secondary inter-regular" (click)="navigateToLoginPage()">End Session ({{metaData['timeoutSec']}})</button>
+          <button type="button" class="btn btn-secondary d-none" id="closeLoginPopupModal" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

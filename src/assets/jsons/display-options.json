@@ -1,0 +1,174 @@
+{
+  "status": "success",
+  "message": "Successfully fetched the display options",
+  "data": {
+    "headerContent": [
+      {
+        "content": "",
+        "sectionTitle": "Map Options",
+        "data": [
+          {
+            "emitChanges": true,
+            "disabled": false,
+            "example": "Monday",
+            "gridWidth": "12",
+            "key": "map_parameters",
+            "headerTitle": "SHOW PARAMETERS",
+            "label": "",
+            "placeholder": "",
+            "required": false,
+            "showTab": true,
+            "type": "simpleRadioSelect",
+            "allowClear": false,
+            "value": "",
+            "options": [
+              {
+                "label": "Resistivity (Ω-cm)",
+                "value": "resistivity"
+              },
+              {
+                "label": "Resistance (Ω)",
+                "value": "resistance"
+              }
+            ],
+            "hideInput": true
+          },
+          {
+            "emitChanges": true,
+            "disabled": false,
+            "example": "Monday",
+            "gridWidth": "12",
+            "key": "map_options",
+            "headerTitle": "SHOW ON MAP",
+            "label": "",
+            "placeholder": "",
+            "required": false,
+            "type": "advMultiSelect",
+            "allowClear": false,
+            "showTab": true,
+            "value": "",
+            "options": [
+              {
+                "label": "Show Chainages",
+                "value": "show_chainages"
+              },
+              {
+                "label": "Show Data",
+                "value": "show_survey"
+              },
+              {
+                "label": "Show legend",
+                "value": "show_legends"
+              }
+            ],
+            "hideInput": true
+          }
+        ],
+        "layoutType": "section",
+        "sectionWidth": "12"
+      },
+      {
+        "content": "",
+        "sectionTitle": "Chart Options",
+        "data": [
+          {
+            "emitChanges": true,
+            "disabled": false,
+            "example": "Monday",
+            "gridWidth": "12",
+            "key": "chart_parameters",
+            "headerTitle": "SHOW PARAMETERS",
+            "label": "",
+            "placeholder": "",
+            "required": false,
+            "type": "advMultiSelect",
+            "allowClear": false,
+            "showTab": true,
+            "value": "",
+            "options": [
+              {
+                "label": "Chainage",
+                "value": "chainage"
+              },
+              {
+                "label": "Depth of Measurement (m)",
+                "value": "depth_of_measurement"
+              },
+              {
+                "label": "Pin Spacing (cm)",
+                "value": "pin_spacing"
+              },
+              {
+                "label": "Resistance (Ω)",
+                "value": "resistance"
+              },
+              {
+                "label": "Resistivity (Ω-cm)",
+                "value": "resistivity"
+              },
+              {
+                "label": "Remarks",
+                "value": "remarks"
+              }
+            ],
+            "hideInput": true
+          }
+        ],
+        "layoutType": "section",
+        "sectionWidth": "12"
+      },
+      {
+        "content": "",
+        "sectionTitle": "Tooltip Options",
+        "data": [
+          {
+            "emitChanges": true,
+            "disabled": false,
+            "example": "Monday",
+            "gridWidth": "12",
+            "key": "tooltip_parameters",
+            "showTab": true,
+            "headerTitle": "SHOW PARAMETERS",
+            "label": "",
+            "placeholder": "",
+            "required": false,
+            "type": "advMultiSelect",
+            "allowClear": false,
+            "value": "",
+            "options": [
+              {
+                "label": "Chainage",
+                "value": "chainage"
+              },
+              {
+                "label": "Depth of Measurement (m)",
+                "value": "depth_of_measurement"
+              },
+              {
+                "label": "Pin Spacing (cm)",
+                "value": "pin_spacing"
+              },
+              {
+                "label": "Resistance (Ω)",
+                "value": "resistance"
+              },
+              {
+                "label": "Resistivity (Ω-cm)",
+                "value": "resistivity"
+              },
+              {
+                "label": "Remarks",
+                "value": "remarks"
+              }
+            ],
+            "hideInput": true
+          }
+        ],
+        "layoutType": "section",
+        "sectionWidth": "12"
+      }
+    ],
+    "bodyContent": {},
+    "userActions": {}
+  }
+}

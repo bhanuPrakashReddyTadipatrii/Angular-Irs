@@ -1,0 +1,172 @@
+{
+  "status": "success",
+  "message": "Survey data fetched successfully",
+  "data": {
+      "sheet_name": [
+          {
+              "label": "Soil Resistivity",
+              "value": "soil_resistivity",
+              "table_data": {
+                  "defaultColDef": {
+                      "flex": 1,
+                      "resizable": true
+                  },
+                  "columnDefs": [
+                      {
+                          "headerName": "Column Name",
+                          "field": "column_name"
+                      },
+                      {
+                          "headerName": "Parameter",
+                          "field": "parameter",
+                          "cellRenderer": "selectRenderer"
+                      },
+                      {
+                          "headerName": "Data Type",
+                          "field": "data_type",
+                          "cellRenderer": "selectRenderer"
+                      },
+                      {
+                          "headerName": "Skip Column",
+                          "field": "skip_column",
+                          "cellRenderer": "switchInputRenderer"
+                      }
+                  ],
+                  "rowData": [
+                      {
+                          "column_name": "SL#",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "Chainage",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "Depth of\nMeasurement (m)",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "Pin Spacing (cm)",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "Resistance (Ω)",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "Resistivity (Ω-cm)",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "Remarks",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "UnifyTwin Rule\n",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      }
+                  ],
+                  "enableActions": true
+              }
+          },
+          {
+              "label": "Chainage",
+              "value": "chainage",
+              "table_data": {
+                  "defaultColDef": {
+                      "flex": 1,
+                      "resizable": true
+                  },
+                  "columnDefs": [
+                      {
+                          "headerName": "Column Name",
+                          "field": "column_name"
+                      },
+                      {
+                          "headerName": "Parameter",
+                          "field": "parameter",
+                          "cellRenderer": "selectRenderer"
+                      },
+                      {
+                          "headerName": "Data Type",
+                          "field": "data_type",
+                          "cellRenderer": "selectRenderer"
+                      },
+                      {
+                          "headerName": "Skip Column",
+                          "field": "skip_column",
+                          "cellRenderer": "switchInputRenderer"
+                      }
+                  ],
+                  "rowData": [
+                      {
+                          "column_name": "SL#",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "Chainage",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "Depth of\nMeasurement (m)",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "Pin Spacing (cm)",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "Resistance (Ω)",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "Resistivity (Ω-cm)",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "Remarks",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      },
+                      {
+                          "column_name": "UnifyTwin Rule\n",
+                          "parameter": null,
+                          "data_type": null,
+                          "skip_column": null
+                      }
+                  ],
+                  "enableActions": true
+              }
+          }
+      ]
+  }
+}

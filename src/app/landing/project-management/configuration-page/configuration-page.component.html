@@ -1,0 +1,55 @@
+<div class="m-1 ucp-configuration-page">
+    <ng-container>
+        <div class="tabs-section m-1 p-3 d-md-flex">
+            <ul class="nav" id="myTab" role="tablist">
+                <li class="nav-item each-info-tab cursor-pointer tab-border" *ngFor="let eachtab of tabs"
+                    [ngClass]="eachtab.value === selectedTab ? 'active' : ''">
+                    <a class="nav-link active py-0 my-1" title="{{eachtab.label}}"
+                        (click)="switchTabs(eachtab)">{{eachtab.label}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="selectedTab === 'about_the_project'">
+        <ucp-config-project></ucp-config-project>
+    </ng-container>
+    <ng-container *ngIf="selectedTab === 'setup_user' || 'import_data' && selectedTab !== 'about_the_project'">
+        <ng-container *ngIf="accordionView">
+            <div class="accordionLine" *ngFor="let activeAccordianTab of accordionView">
+                <div class="col-md-12 mt-2" (click)="changeactiveTab(activeAccordianTab)">
+                    <h6 class="vDataLabel d-flex accor_dian inter-medium">
+                        <span class="material-icons-outlined"
+                            *ngIf="activeTab !== activeAccordianTab.value">chevron_right</span>
+                        <span class="material-icons-outlined"
+                            *ngIf="activeTab === activeAccordianTab.value">expand_more</span>
+                        <span>{{activeAccordianTab.label}} </span>
+                    </h6>
+                </div>
+                <div *ngIf="activeTab === activeAccordianTab.value">
+                    <div *ngIf="activeTab === 'users'">
+                        <ucp-user-tables [pageType]="activeTab"></ucp-user-tables>
+                    </div>
+                    <div *ngIf="activeTab === 'user-roles'">
+                        <ucp-user-tables [pageType]="activeTab"></ucp-user-tables>
+                    </div>
+                    <div *ngIf="activeTab === 'user-access-groups'">
+                        <ucp-user-tables [pageType]="activeTab"></ucp-user-tables>
+                    </div>
+                    <div *ngIf="activeTab === 'units'">
+                        <ucp-units></ucp-units>
+                    </div>
+                    <div *ngIf="activeTab === 'parameters'">
+                        <ucp-parameters></ucp-parameters>
+                    </div>
+                    <div *ngIf="activeTab === 'surveys_templates'">
+                        <ucp-survey-template></ucp-survey-template>
+                    </div>
+                    <div *ngIf="activeTab === 'surveys'">
+                        <ucp-surveys></ucp-surveys>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>

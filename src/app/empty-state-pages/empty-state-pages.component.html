@@ -1,0 +1,44 @@
+<div class="main-content">
+    <ng-container *ngIf="type == status.pagenotfound">
+        <main class="app-main">
+            <div class="wrapper">
+                <div class="empty-state">
+                    <div class="empty-state-container general-message-disp">
+                        <h3 class="state-header"> Page Not found! </h3>
+                        <p class="state-description lead text-muted">The page you are looking for doesn't exist or an
+                            unknown error might have occured.
+                            Go back, or head over to <a href="">{{presentOrigin}}</a> to navigate further. </p>
+                    </div>
+                    <div class="empty-state-container iframe-message-disp">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </ng-container>
+
+    <ng-container *ngIf="type == status.unauthorized">
+        <main class="app-main">
+            <div class="wrapper">
+                <div class="empty-state">
+                    <div class="empty-state-container general-message-disp">
+                        <h3 class="state-header">You are not authorized to view this page</h3>
+                        <p class="state-description lead text-muted">You might not have permission to view this page
+                            using the credentials you were supplied. Contact the administrator to request for necessary
+                            permissions.</p>
+                    </div>
+                    <div class="empty-state-container iframe-message-disp">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </ng-container>
+
+    <ng-container *ngIf="type == status.empty_state">
+        <div class="container mt-4">
+            <span class="svg_pos d-flex">
+                <i class="fa fa-circle-o-notch fa-spin mt-1" aria-hidden="true"></i>
+                <h6 class="m-0">Project is initializing.. Please wait</h6>
+            </span>
+        </div>
+    </ng-container>
+</div>

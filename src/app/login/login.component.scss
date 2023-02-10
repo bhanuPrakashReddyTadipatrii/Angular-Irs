@@ -1,0 +1,44 @@
+#loginImage {
+  background-image: url(../../assets/images/ucp-login.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  margin: 0 !important;
+  height: 100vh;
+  position: relative;
+}
+
+.adnoc-logo {
+  float: left;
+  img {
+    height: 7rem;
+  }
+}
+
+.info {
+  font-size: 1.3125rem;
+  padding: 6% 0;
+}
+
+.form-design {
+  color: #707376;
+}
+
+.label-sign-in {
+  margin-bottom: 30px;
+  margin-top: 5px;
+  color: #0f62fe;
+  text-align: center;
+}
+
+.get_captcha {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.captcha_image {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+ul li{
+  list-style-type: none;
+}

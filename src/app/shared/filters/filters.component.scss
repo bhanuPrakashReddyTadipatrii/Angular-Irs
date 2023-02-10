@@ -1,0 +1,210 @@
+.show-all-filters {
+    cursor: pointer;
+
+    .showfilterpopover {
+        display: inline-block;
+        position: fixed;
+        background-color: #ffffff;
+        border-radius: 12px;
+        overflow-y: auto;
+        left: 0;
+        width: 20%;   
+        z-index: 1;  
+        overflow: hidden !important; 
+    }
+
+    .containers {
+        position: relative;
+    }
+
+    .toggle-text {
+        color: black;
+    }
+
+    .cursor-pointer.material-icons-outlined.closeicon {
+        float: right;
+        color: #6C6C6C !important;
+    }
+
+    .filter-class-contents {
+        color: black;
+    }
+
+    .filter-label {
+        color: black;
+        font-size: 16px;
+        text-align: start;
+        width: 50%;
+    }
+
+
+    .filter-contents {
+        position: relative;
+        margin-left: 3rem;
+    }
+
+    .accordionLine {
+        margin-top: 25px;
+        cursor: pointer;
+    }
+
+    .vDataLabel {
+        font-size: 1rem;
+        padding-bottom: 6px;
+        cursor: pointer;
+
+        .fa.fa-angle-right,
+        .fa.fa-angle-down {
+            font-size: 30px;
+            float: right;
+            cursor: pointer;
+        }
+    }
+
+    .accor_dian {
+        margin-left: 10px;
+        padding: 0;
+        color: black;
+        font-size: 0.95rem;
+    }
+
+    span.material-icons-outlined.down-arrow, span.material-icons-outlined.up-arrow {
+        position: absolute;
+        right: 15px;
+    }
+
+    .badge_bg_prop {
+        background-color: #AAAAAA;
+    }
+
+    .description, .multi-description {
+        cursor: pointer;
+        color: black;
+        opacity: 50%;
+        
+    }
+
+    .radio-buttons {
+        display: contents;
+    }
+    
+    .cursor-pointer.material-icons-outlined.closeicon{
+        color : black !important;
+    }
+
+}
+
+.show-all-filters-dfm {
+    max-height: calc(100vh - 180px) !important;
+    height: calc(100vh - 180px) !important;
+    overflow-y: auto;
+}
+
+.tabs-section {
+    .tab-border {
+        color: black !important;
+        background: #00000029 0% 0% no-repeat padding-box;
+        text-align: center;
+        height: 1.9rem;
+    }
+    .filter-tabs {
+         width: -webkit-fill-available;
+         flex-wrap: nowrap;
+         display: inline-flex;
+         white-space: nowrap;
+         justify-content: center;
+    }
+
+    .tab-border.active {
+        .nav-link.active {
+            font-family: 'Inter-Medium';
+            background-color: white;
+            color: black !important;
+            margin-top: 2.5px !important;
+            margin-bottom: 2.5px !important;
+            padding-top: 2.5px !important;
+            padding-bottom: 2.5px !important;
+            border-radius: 5px;
+            max-width: 10rem;
+            min-width: fit-content;
+        }
+    }
+
+    li.each-info-tab:first-child {
+        border-top-left-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+
+        &.active {
+            .nav-link.active {
+                margin-left: 2.5px;
+            }
+        }
+    }
+
+    li.each-info-tab:last-child {
+        border-top-right-radius: 5px ;
+        border-bottom-right-radius: 5px ;
+
+        &.active {
+            .nav-link.active {
+                margin-right: 2.5px;
+            }
+        }
+    }
+
+    .nav-link:focus,
+    .nav-link:hover {
+        color: #346cb0;
+    }
+
+    .nav-link.active {
+        color: black ;
+    }
+
+    .active>.nav-link {
+        color: black ;
+    }
+
+    li.each-info-tab:not(:last-child) {
+        .nav-link.active {
+            border-right: 1px solid #767677;
+            padding-right: 10px !important;
+        }
+    }
+}
+
+.pin_class {
+    width: 14%;
+    margin-right: 10px;
+}
+
+.hidden{
+    display: none;
+}
+.filter-header-btn {
+    width: 50%;
+    flex-wrap: nowrap;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.filter-head{
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 15px;
+    border-bottom: 0.1rem solid #E5E5E5;
+}
+.spinner-border{
+    margin-top: -4px !important;
+    margin-right: 10px;
+}
+.li-filter{
+    width: 9rem;
+}
+
+.dropdown-item:hover {
+    color: black;
+    text-decoration: none;
+    background-color: #E5E5E5;
+}

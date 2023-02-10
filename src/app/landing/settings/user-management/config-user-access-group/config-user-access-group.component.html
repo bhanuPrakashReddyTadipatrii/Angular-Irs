@@ -1,0 +1,49 @@
+<div>
+    <!-- <header class="page-title-bar">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active">
+                    <a href="#"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Forms</a>
+                </li>
+            </ol>
+        </nav>
+        <h5 class="ml-3 my-2"> Configure User </h5>
+    </header> -->
+    <div class="row m-0">
+        <form [formGroup]="userAccessForm" class="pl-0">
+            <div class="form-group col-12 pl-0">
+                <label class="form-design required">User Group</label>
+                <input type="text" class="form-control" ucpWhiteSpaceRestrictor placeholder="Enter User Group"
+                    [(ngModel)]="userAccessData['access_group']" formControlName="access_group" 
+                    [ngClass]="{ 'is-invalid': f['access_group'].dirty && f['access_group']['errors'] }">
+                    <div *ngIf="f['access_group']['errors'] && f['access_group'].dirty" class="invalid-feedback pt-1">
+                        <span *ngIf="f['access_group']['errors']['required']">
+                            User Group is required.
+                        </span>
+                    </div>
+            </div>
+            <div class="form-group col-12 pl-0">
+                <label class="form-design required">Description</label>
+                <textarea type="text" rows="3" class="form-control" ucpWhiteSpaceRestrictor placeholder="Enter Description"
+                    [(ngModel)]="userAccessData['description']" formControlName="description" 
+                    [ngClass]="{ 'is-invalid': f['description'].dirty && f['description']['errors'] }"></textarea>
+                    <div *ngIf="f['description']['errors'] && f['description'].dirty" class="invalid-feedback pt-1">
+                        <span *ngIf="f['description']['errors']['required']">
+                            Description is required.
+                        </span>
+                    </div>
+            </div>
+        </form>
+    </div>
+    
+  <div class="col-12 pl-0 ml-0">
+    <div class="py-2 ml-0 pl-0">
+      <button type="submit" class="btn btn-primary" (click)="saveUserGroup()">
+        Save Changes
+      </button>
+      <button class="btn btn-inverse btn-outline-primary mx-2" (click)="cancelUserGroup()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>

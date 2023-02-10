@@ -1,0 +1,74 @@
+{
+    "status": "success",
+    "message": "",
+    "data": {
+      "headerContent": [
+        {
+          "content": "",
+          "data": [
+            {
+              "allowClear": false,
+              "emitChanges": true,
+              "gridWidth": "2",
+              "key": "surveyDate1",
+              "placeholder": "Select Date",
+              "type": "date",
+              "value": ""
+            },
+            {
+              "allowClear": false,
+              "emitChanges": true,
+              "gridWidth": "2",
+              "key": "surveyDate2",
+              "placeholder": "Select Date Time",
+              "type": "dateTime",
+              "value": ""
+            },
+            {
+              "allowClear": false,
+              "emitChanges": true,
+              "gridWidth": "2",
+              "key": "surveyDate3",
+              "placeholder": "Select Date Range",
+              "type": "dateTimeRange",
+              "pickerMode": "calendar",
+              "value": ""
+            },
+            {
+              "allowClear": false,
+              "emitChanges": true,
+              "gridWidth": "2",
+              "key": "surveyDate4",
+              "placeholder": "Select Date Time Range",
+              "type": "dateTimeRange",
+              "pickerMode": "both",
+              "value": ""
+            },
+            {
+              "allowClear": false,
+              "emitChanges": true,
+              "gridWidth": "2",
+              "key": "surveyDate5",
+              "placeholder": "Select Month:",
+              "type": "monthPicker",
+              "value": ""
+            },
+            {
+              "allowClear": false,
+              "emitChanges": true,
+              "gridWidth": "2",
+              "key": "surveyDate6",
+              "placeholder": "Select Year:",
+              "type": "yearPicker",
+              "value": ""
+            }
+          ],
+          "layoutType": "section",
+          "sectionTitle": "",
+          "sectionWidth": "12"
+        }
+      ],
+      "bodyContent": {},
+      "userActions": {}
+    }
+  }

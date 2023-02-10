@@ -1,0 +1,30 @@
+{
+    "status": "success",
+    "message": "Survey fields fetched successfully",
+    "data": {
+        "parameters": [
+            {
+                "label": "Chainage",
+                "value": "chainage"
+            },
+            {
+                "label": "Test",
+                "value":"test"
+            }
+        ],
+        "data_types": [
+            {
+                "label": "Float",
+                "value": "float"
+            },
+            {
+                "label": "String",
+                "value": "string"
+            },
+            {
+                "label": "Integer",
+                "value": "integer"
+            }
+        ]
+    }
+}

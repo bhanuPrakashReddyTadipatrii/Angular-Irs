@@ -1,0 +1,11 @@
+{
+    "status": "success",
+    "message": "",
+    "data": 
+        {
+            "description":"0-94.7 km (124 chainages)",
+            "minValue":0,
+            "maxValue":500,
+            "minGap":10
+      }
+}

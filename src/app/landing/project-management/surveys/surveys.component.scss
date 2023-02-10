@@ -1,0 +1,43 @@
+.preview {
+    color: blue;
+}
+
+.survey-format {
+    width: 60px;
+    height: 30px
+}
+
+.disableItem {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.chainage-milestone-input{
+    width: 92px;
+    height: 37px;
+    margin-right: 26px;
+}
+.chainage-milestone{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.chainage-milestone-select{
+    width: 65px;
+}
+.ng-dropdown-panel#a5b9fe5c8a69 {
+    width: auto;
+    margin-left: 97px;
+}
+.file-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.no-data-label {
+    color: #393939;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    display: grid;
+  }

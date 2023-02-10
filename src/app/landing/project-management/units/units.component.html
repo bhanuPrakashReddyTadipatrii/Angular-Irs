@@ -1,0 +1,75 @@
+<div class="m-3 pl-2" *ngIf="!loader.units">
+    <ucp-ag-grid-table [agGridOptions]="agGridOptions" [clickableColumns]="agGridOptions?.clickableColumns"
+        (aggridEmitter)="aggridEmitter($event)">
+    </ucp-ag-grid-table>
+</div>
+
+<button class="btn dropdown-toggle action-icon pt-0" hidden data-toggle="modal" data-target="#addModal" hidden
+    id="configureUnitModal">
+</button>
+
+<div class="modal fade right" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-min-width-slider" ucpGlobalSlider [ucpSliderType]="'right-to-left'" role="document"
+        style="min-width: 25% !important;">
+
+        <div class="modal-content">
+            <div class="modal-header" style="border: 0;">
+                <h5 class="modal-title float-left" id="exampleModalLabel">{{unitKey}} Unit </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeUnitModel"
+                    (click)="closeModal(true)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="height: calc(100vh - 130px);overflow-y: auto;">
+                <form [formGroup]="unitForm" class="pl-0">
+                    <div class="row col-md-12">
+                        <div class="form-group col-12 pl-0">
+                            <label class="form-design required">Unit Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Unit Name" ucpWhiteSpaceRestrictor
+                                formControlName="unit_name" [(ngModel)]="unitData.unit_name"
+                                [ngClass]="{ 'is-invalid': f['unit_name'].dirty && f['unit_name']['errors'] }">
+                            <div *ngIf="f['unit_name']['errors'] && f['unit_name'].dirty" class="invalid-feedback pt-1">
+                                <span *ngIf="f['unit_name']['errors']['required']">
+                                    Unit Name is required.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 pl-0">
+                            <label class="form-design required">Notation</label>
+                            <input type="text" class="form-control" placeholder="Enter Notation" ucpWhiteSpaceRestrictor
+                                formControlName="notation" [(ngModel)]="unitData.notation"
+                                [ngClass]="{ 'is-invalid': f['notation'].dirty && f['notation']['errors'] }">
+                            <div *ngIf="f['notation']['errors'] && f['notation'].dirty" class="invalid-feedback pt-1">
+                                <span *ngIf="f['notation']['errors']['required']">
+                                    Notation is required.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer p-0">
+                <div class="m-3 float-left">
+                    <button type="submit" class="btn btn-primary" (click)="saveModal()">
+                        Save Changes
+                    </button>
+                    <button class="btn btn-inverse btn-outline-primary mx-2" (click)="closeModal()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loader?.units || loader?.save || loader?.delete">
+    <div id="loader-wrapper-submaincontent">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>

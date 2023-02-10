@@ -1,0 +1,46 @@
+{
+    "status": "success",
+    "message": "Fetched get header filters successfully",
+    "data": {
+        "mapOptions": [
+            {
+                "label": "Psp On (-mV)",
+                "value": "psp_on"
+            },
+            {
+                "label": "Psp Off (-mV)",
+                "value": "psp_off"
+            },
+            {
+                "label": "Resistivity (Ω-cm)",
+                "value": "resistivity"
+            }
+        ],
+        "eChartOptions": [
+            {
+                "label": "Resistivity (Ω-cm)",
+                "value": "resistivity"
+            },
+            {
+                "label": "Natural Psp (-mV)",
+                "value": "natural_psp"
+            },
+            {
+                "label": "Psp On (-mV)",
+                "value": "psp_on"
+            },
+            {
+                "label": "Psp Off (-mV)",
+                "value": "psp_off"
+            },
+            {
+                "label": "Coupon Off (-mV)",
+                "value": "coupon_off"
+            },
+            {
+                "label": "A C (V)",
+                "value": "a_c"
+            }
+        ]
+    }
+}
