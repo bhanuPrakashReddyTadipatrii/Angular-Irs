@@ -1,3 +1,4 @@
+import { CardsViewPageComponent } from './cards-view-page/cards-view-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
@@ -12,6 +13,10 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
       },
+      {
+        path: 'cards-view',
+        component: CardsViewPageComponent
+      }
     ]
   }
 ];

@@ -1,0 +1,13 @@
+.card-width {
+  width: 40rem;
+}
+.container::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
+
+.container {
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+  scrollbar-width: none;
+}

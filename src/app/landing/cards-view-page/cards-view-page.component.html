@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row m-4">
+        <div class="d-flex justify-content-center align-items-center" style="flex-direction: column;">
+            <ng-container *ngFor="let cardData of cardsViewData">
+                <div class="card card-width">
+                    <div class="card-header d-flex" style="gap: 3.5rem;">
+                        <div>{{cardData.incident_name}}</div>
+                        <div>{{cardData.posted_on}}</div>
+                        <div>{{cardData.authority}}</div>
+                        <div>{{cardData.status}}</div>
+                    </div>
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">{{cardData.incident_desc}}</p>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
