@@ -11,3 +11,14 @@
   overflow-y: scroll;
   scrollbar-width: none;
 }
+
+.card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  height: 3rem;
+  align-items: center;
+}
+.actions_footer {
+    width: 10rem;
+}
