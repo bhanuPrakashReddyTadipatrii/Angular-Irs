@@ -456,34 +456,49 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  public loaders: any = {
+    getOtp: false,
+    verifyOtp: false,
+  }
+
   getOTP() {
     try {
+      this.loaders['getOtp'] = true;
       this.appservice.getOTP({phone_number: this.userDet.phonenumber}).pipe(takeUntil(this.destroy$)).subscribe((response) => {
         if (response?.status === 'success') {
           this.page = 'otp';
+          this.loaders['getOtp'] = false;
         } else {
+          this.loaders['getOtp'] = false;
           this._toaster.toast('error', 'Error', 'Error while fetching the otp.', true);
         }
-        }, (error) => {
-          this._toaster.toast('error', 'Error', 'Error while fetching the otp.', true);
-        });
+      }, (error) => {
+        this.loaders['getOtp'] = false;
+        this._toaster.toast('error', 'Error', 'Error while fetching the otp.', true);
+      });
     } catch (otpErr) {
+      this.loaders['getOtp'] = false;
       console.error(otpErr);
     }
   }
 
   verifyOTP() {
     try {
+      this.loaders['verifyOtp'] = true;
       this.appservice.verifyOTP({phone_number: this.userDet.phonenumber, otp: this.userDet.otp}).pipe(takeUntil(this.destroy$)).subscribe((response) => {
         if (response?.status === 'success') {
+          this.loaders['verifyOtp'] = false;
           this.page = 'otp';
         } else {
+          this.loaders['verifyOtp'] = false;
           this._toaster.toast('error', 'Error', 'Error while logging in. Please try again later.', true);
         }
         }, (error) => {
+          this.loaders['verifyOtp'] = false;
           this._toaster.toast('error', 'Error', 'Error while logging in. Please try again later.', true);
         });
     } catch (otpErr) {
+      this.loaders['verifyOtp'] = false;
       console.error(otpErr);
     }
   }
