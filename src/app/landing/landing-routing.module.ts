@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingComponent } from './landing.component';
+import { IssueRegistrationComponent } from './issue-registration/issue-registration.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'cards-view',
         component: CardsViewPageComponent
+      },
+      {
+        path: 'registration',
+        component: IssueRegistrationComponent
       }
     ]
   }

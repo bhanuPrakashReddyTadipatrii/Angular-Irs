@@ -8,12 +8,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardsViewPageComponent } from './cards-view-page/cards-view-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
+import { IssueRegistrationComponent } from './issue-registration/issue-registration.component';
 
 @NgModule({
   declarations: [
     LandingComponent,
     DashboardComponent,
     CardsViewPageComponent,
+    IssueRegistrationComponent,
   ],
   imports: [
     CommonModule,
