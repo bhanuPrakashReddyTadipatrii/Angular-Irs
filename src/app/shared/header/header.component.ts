@@ -7,7 +7,6 @@ import { AppService } from '../../services/app.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonPopupService } from '../common-popup/common-popup.service';
-import { ProjectsComponent } from '../../landing/project-management/projects/projects.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UtilityFunctions } from '../../utilities/utility-func';
 
@@ -223,8 +222,8 @@ export class HeaderComponent implements OnInit {
         this.toasterService.toast('info', 'Info', `Please contact Administrator to switch project.`, true);
         return;
       }
-      const projectComponent = new ProjectsComponent(this.document, this.toasterService, this.router, this._auth, this.appservice, this.commonPopup, this._util);
-      projectComponent.changeProject({ project_id: projectId }, true);
+      // const projectComponent = new ProjectsComponent(this.document, this.toasterService, this.router, this._auth, this.appservice, this.commonPopup, this._util);
+      // projectComponent.changeProject({ project_id: projectId }, true);
     } catch (projErr) {
       console.error(projErr);
     }

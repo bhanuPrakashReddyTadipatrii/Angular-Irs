@@ -256,6 +256,15 @@ export class AppService {
     return this.getService(Config.API.GET_SURVEY_TEMPLATE_DATA, data);
   }
 
+  //-----------------------------Config Simulate--------------------------------------------// 
+  getConfigSimulateData(data): Observable<any> {
+    return this.getService(Config.API.GET_CONFIGSIMULATE_LIST, data);
+  }
+  saveSimulate(data): Observable<any> {
+    return this.postService(Config.API.UPLOAD_SIMULATE_DATA, data);
+  }
+
+
 
 
   //--------------------------------------Visualize Component---------------------------------------//

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingComponent } from './landing.component';
 
 const routes: Routes = [
@@ -9,18 +10,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {
         path: 'dashboard',
-        loadChildren: () => import('./main-dashboard/main-dashboard.module').then(m => m.MainDashboardModule),
+        component: DashboardComponent,
       },
-      {
-        path: 'settings',
-        loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule),
-      },
-      {
-        path: 'projects',
-        loadChildren: () => import('./project-management/project-management.module').then(m => m.ProjectManagementModule),
-        data: { page: 'project_info' },
-        canActivate: [AuthGuard]
-      }
     ]
   }
 ];

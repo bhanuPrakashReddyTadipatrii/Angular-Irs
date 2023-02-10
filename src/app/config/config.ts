@@ -57,6 +57,10 @@ export class Config {
          DELETE_SURVEY: Config.BASE_POINT_API + 'delete_survey',
          GET_SURVEY_TEMPLATE_DATA: Config.BASE_POINT_API + 'fetch_survey_template',
 
+        //Config Simulate
+          UPLOAD_SIMULATE_DATA: Config.BASE_POINT_VIZ_API + 'upload_simulation',
+          GET_CONFIGSIMULATE_LIST: Config.BASE_POINT_VIZ_API + 'list_simulation_config',
+
          // Project Listing 
          CHANGE_PROJECT:  Config.BASE_POINT_API + 'change_project',
          FETCH_PROJECT_LIST: Config.BASE_POINT_API + 'list_projects',
@@ -203,6 +207,11 @@ export class Config {
             label: 'Surveys',
             value: 'surveys',
             key: 'surveys'
+          },
+          {
+            label: 'Simulate',
+            value: 'simulate',
+            key: 'simulate'
           }
         ]
       }

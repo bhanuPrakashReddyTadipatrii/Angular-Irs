@@ -86,12 +86,12 @@ export class LoginComponent implements OnInit {
   constructor(private _toaster: ToasterService, private appservice: AppService, private _utility: UtilityFunctions, private _auth: AuthService, public _route: Router) { }
 
   ngOnInit(): void {
-    const userDetails: any = this._auth.getUserDetails();
-    if (!userDetails || !userDetails?.user_id || !userDetails?.user_role_permissions || !(Object.keys(userDetails?.user_role_permissions || {})?.length)) {
+    // const userDetails: any = this._auth.getUserDetails();
+    // if (!userDetails || !userDetails?.user_id || !userDetails?.user_role_permissions || !(Object.keys(userDetails?.user_role_permissions || {})?.length)) {
       this.setValidation();
-    } else {
-      this._route.navigate([this.getDefaultRoute(this.userData?.landing_page) || 'app/dashboard/visualize']);
-    }
+    // } else {
+    //   this._route.navigate([this.getDefaultRoute(this.userData?.landing_page) || 'app/dashboard/visualize']);
+    // }
   }
 
   setValidation() {
@@ -314,11 +314,11 @@ export class LoginComponent implements OnInit {
             zoom_level: baseProjectDet?.zoom_level || 5,
           };
           projectDet['project_id'] = baseProjectDet['id'] || '';
-          this._auth.storeProjectDetails(projectDet);
-          this._route.navigate([this.getDefaultRoute(this.userData?.landing_page) || 'app/dashboard/visualize']);
-          // this.loader.login = false;
+          // this._auth.storeProjectDetails(projectDet);
+          this._route.navigate(['app/dashboard']);
+          // this.loader.login = false; 
         } else {
-          this.loader.login = false;
+          this.loader.login =  false;
           this._toaster.toast('error', 'Error', baseProjectRes['message'] || 'Error While Fetching base project.', true);
         }
       }, (baseProjectFetchErr) => {

@@ -32,7 +32,7 @@ export class MapsComponent implements OnInit, AfterViewInit, OnDestroy, OnChange
     "heading": 10,
     "tilt": 47.5,
     "mapTypeId": 'satellite',
-    "mapId": environment.mapId,
+    "mapId": '',
     "mapTypeControl": false,
     "streetViewControl": false,
     "activeMapType": 'satellite',
