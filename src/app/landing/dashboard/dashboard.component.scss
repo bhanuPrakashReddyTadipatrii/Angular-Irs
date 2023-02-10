@@ -1,0 +1,10 @@
+.page-inner {
+    height: calc(100vh - 75px) !important;
+    max-height: calc(100vh - 75px) !important;
+    min-height: calc(100vh - 75px) !important;
+    overflow-y: auto;
+}
+
+.chart_options {
+    height: 27.5rem;
+}

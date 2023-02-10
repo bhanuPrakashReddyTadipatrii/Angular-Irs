@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '', component: AppComponent, children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       {
-        path: 'login', component: LoginComponent, canActivate: [AuthGuard]
+        path: 'login', component: LoginComponent
       },
       {
         path: 'app',
