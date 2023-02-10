@@ -361,4 +361,12 @@ export class AppService {
   }
 
 
+  // IRS Endpoints
+  getOTP(data): Observable<any> {
+    return this.postService(Config.API.GET_OTP, data);
+  }
+  verifyOTP(data): Observable<any> {
+    return this.postService(Config.API.VERIFY_OTP, data);
+  }
+
 }

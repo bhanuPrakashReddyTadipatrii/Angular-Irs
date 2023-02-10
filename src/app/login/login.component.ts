@@ -26,11 +26,8 @@ export class LoginComponent implements OnInit {
   public captchaimage: string;
   public userdetails: any;
   public userDet: any = {
-    username: null,
-    password: null,
-    captcha: null,
-    activationKey: null,
-    confirmPassword: null,
+    phonenumber: null,
+    otp: null,
   };
   public pageType: any = 'normalLogin'; // ["normalLogin", "forgotPassword", "updatePassword"]
   public variableValidations: any = {
@@ -81,6 +78,7 @@ export class LoginComponent implements OnInit {
       isPresent: false,
     },
   ];
+  public page: any = 'phonenumber';
 
 
   constructor(private _toaster: ToasterService, private appservice: AppService, private _utility: UtilityFunctions, private _auth: AuthService, public _route: Router) { }
@@ -457,4 +455,38 @@ export class LoginComponent implements OnInit {
       return false;
     }
   }
+
+  getOTP() {
+    try {
+      this.appservice.getOTP({phone_number: this.userDet.phonenumber}).pipe(takeUntil(this.destroy$)).subscribe((response) => {
+        if (response?.status === 'success') {
+          this.page = 'otp';
+        } else {
+          this._toaster.toast('error', 'Error', 'Error while fetching the otp.', true);
+        }
+        }, (error) => {
+          this._toaster.toast('error', 'Error', 'Error while fetching the otp.', true);
+        });
+    } catch (otpErr) {
+      console.error(otpErr);
+    }
+  }
+
+  verifyOTP() {
+    try {
+      this.appservice.verifyOTP({phone_number: this.userDet.phonenumber, otp: this.userDet.otp}).pipe(takeUntil(this.destroy$)).subscribe((response) => {
+        if (response?.status === 'success') {
+          this.page = 'otp';
+        } else {
+          this._toaster.toast('error', 'Error', 'Error while logging in. Please try again later.', true);
+        }
+        }, (error) => {
+          this._toaster.toast('error', 'Error', 'Error while logging in. Please try again later.', true);
+        });
+    } catch (otpErr) {
+      console.error(otpErr);
+    }
+  }
+
+  
 }
