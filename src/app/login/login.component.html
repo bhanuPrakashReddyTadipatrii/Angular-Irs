@@ -12,7 +12,7 @@
             <div class="fieldView col-md-12">
                 <ng-container *ngIf="page === 'phonenumber'">
                     <div class="form-group">
-                        <label class="required form-design">Phone Number</label>
+                        <label class=" form-design">Phone Number</label>
                         <input type="text" ucpWhiteSpaceRestrictor class="form-control" placeholder="Enter Phone number" id="loginUserID"
                             [(ngModel)]="userDet.phonenumber">
                     </div>
@@ -20,9 +20,9 @@
                         Get Otp <span><em class="fa fa-spinner fa-spin"></em></span>
                     </button>
                 </ng-container>
-                <ng-container *ngIf="page ">
+                <ng-container *ngIf="page === 'otp'">
                     <div class="form-group">
-                        <label class="required form-design">OTP</label>
+                        <label class=" form-design">OTP</label>
                         <input type="number" ucpWhiteSpaceRestrictor class="form-control" placeholder="Enter OTP" id="loginUserID"
                             [(ngModel)]="userDet.otp">
                     </div>

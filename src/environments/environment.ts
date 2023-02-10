@@ -4,9 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_POINT_API: '/ucp/meta/v1.0/',
-  BASE_POINT_VIZ_API: '/ucp/visualize/v1.0/',
-  BASE_POINT_FILE_API: '/adnoc-file-upload/',
+  BASE_POINT_API: '/irs/',
   encryptionEnabled: false,
 };
 

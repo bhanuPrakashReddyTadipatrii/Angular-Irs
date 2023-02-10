@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     // const userDetails: any = this._auth.getUserDetails();
     // if (!userDetails || !userDetails?.user_id || !userDetails?.user_role_permissions || !(Object.keys(userDetails?.user_role_permissions || {})?.length)) {
-      this.setValidation();
+      // this.setValidation();
     // } else {
     //   this._route.navigate([this.getDefaultRoute(this.userData?.landing_page) || 'app/dashboard/visualize']);
     // }
