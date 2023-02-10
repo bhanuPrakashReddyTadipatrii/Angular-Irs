@@ -54,7 +54,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
           if (this._router.url.includes('login')) {
             return throwError(error);
           }
-          this.sessionResetModal.openModal();
+          // this.sessionResetModal.openModal();
           return this.refreshToken(error)
             .pipe(switchMap(() => {
               return next.handle(req);
@@ -86,9 +86,9 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 
   showLoginModal(err) {
     return new Observable<any>((observer) => {
-      this.sessionResetModal.modalSubj.subscribe((result: any) => {
-        observer.next(result);
-      });
+      // this.sessionResetModal.modalSubj.subscribe((result: any) => {
+      //   observer.next(result);
+      // });
     });
   }
 
