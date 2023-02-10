@@ -22,7 +22,8 @@
                                 <strong>Raise Hand</strong>
                             </span>
                         </div>
-                        <div class="actions_footer d-flex gap-1 cursor-pointer" (click)="openCommentsPopup(cardData)">
+                        <div class="actions_footer d-flex gap-1 cursor-pointer"
+                            (click)="openCommentsPopup(cardData, 'comments')">
                             <span class="material-icons-outlined">
                                 chat
                             </span>
@@ -30,12 +31,22 @@
                                 <strong>Comment</strong>
                             </span>
                         </div>
-                        <div class="actions_footer d-flex gap-1 cursor-pointer">
+                        <!-- <div class="actions_footer d-flex gap-1 cursor-pointer"
+                            (click)="openCommentsPopup(cardData, 'share')">
                             <span class="material-icons-outlined">
                                 share
                             </span>
                             <span>
                                 <strong>Share</strong>
+                            </span>
+                        </div> -->
+                        <div class="actions_footer d-flex gap-1 pl-3 cursor-pointer"
+                            (click)="copyInputMessage(cardData.url)">
+                            <span class="material-icons-outlined">
+                                content_copy
+                            </span>
+                            <span>
+                                <strong>Copy URL</strong>
                             </span>
                         </div>
                     </div>
@@ -49,12 +60,12 @@
 
 <!-- comments modal -->
 
-<button class="invisible" style="display: none;" data-toggle="modal" data-target="#appShareModal"
+<button class="invisible" style="display: none;" data-toggle="modal" data-target="#appCommentModal"
     id="openCommentsModal"></button>
 
 <!-- Modal -->
-<div class="modal fade" id="appShareModal" tabindex="-1" role="dialog" aria-labelledby="appShareModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="appCommentModal" tabindex="-1" role="dialog" aria-labelledby="appCommentModalLabel"
+    aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header popUpHeader">
@@ -64,7 +75,7 @@
                 </button>
             </div>
             <div class="modal-body" style="overflow-y: auto;">
-                <div class="row comments-popup">
+                <div class="row comments-popup p-1 m-1">
                     <ng-container *ngFor="let data of popupContent.comments">
                         <div class="">
                             <div class="card">
@@ -80,12 +91,52 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" [(ngModel)]="commentText">
                     <div class="input-group-append">
-                        <button type="button" class="btn btn-secondary" (click)="addComment()" [disabled]="!commentText"><span class="material-icons-outlined">
+                        <button type="button" class="btn btn-secondary" (click)="addComment()"
+                            [disabled]="!commentText"><span class="material-icons-outlined">
                                 send
                             </span></button>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- share modal -->
+
+<button class="invisible" style="display: none;" data-toggle="modal" data-target="#appShareModal"
+    id="openShareModal"></button>
+
+<!-- Modal -->
+<div class="modal fade" id="appShareModal" tabindex="-1" role="dialog" aria-labelledby="appShareModalLabel"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header popUpHeader">
+                <h4 class="modal-title">Share</h4>
+                <button type="button" class="close" data-dismiss="modal" data-target="#appShareModal"><span
+                        aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+            </div>
+            <div class="modal-body" style="overflow-y: auto;">
+                <div class="row">
+                    <div class="actions_footer d-flex gap-1 pl-3 cursor-pointer"
+                        (click)="copyInputMessage(popupContent.url)">
+                        <span class="material-icons-outlined">
+                            content_copy
+                        </span>
+                        <span>
+                            <strong>Copy URL</strong>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" id="dismissAdd" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>

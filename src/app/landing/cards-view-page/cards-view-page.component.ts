@@ -15,6 +15,7 @@ export class CardsViewPageComponent implements OnInit {
       status: 'In Progress',
       incident_img: '',
       no_of_raises: '25k',
+      url: 'https://mail.google.com/mail/u/0/#inbox',
       incident_desc:
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis et iste quos tenetur obcaecati earum nostrum quibusdam quidem error nesciunt! Deserunt ab quis ratione eum ea molestiae ad veritatis voluptas.',
       comments: [{
@@ -85,7 +86,7 @@ export class CardsViewPageComponent implements OnInit {
       status: 'In Progress',
       incident_img: '',
       no_of_raises: '25k',
-
+      url: 'https://echarts.apache.org/examples/en/index.html#chart-type-line',
       incident_desc:
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis et iste quos tenetur obcaecati earum nostrum quibusdam quidem error nesciunt! Deserunt ab quis ratione eum ea molestiae ad veritatis voluptas.',
       comments: [{
@@ -119,6 +120,7 @@ export class CardsViewPageComponent implements OnInit {
       authority: 'mla',
       status: 'In Progress',
       incident_img: '',
+      url: 'https://echarts.apache.org/examples/en/index.html#chart-type-line',
       no_of_raises: '25k',
       incident_desc:
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis et iste quos tenetur obcaecati earum nostrum quibusdam quidem error nesciunt! Deserunt ab quis ratione eum ea molestiae ad veritatis voluptas.',
@@ -226,9 +228,11 @@ export class CardsViewPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openCommentsPopup(data) {
+  openCommentsPopup(data, key) {
     try {
-      document.getElementById('openCommentsModal').click();
+      if (key === 'comments') {
+        document.getElementById('openCommentsModal').click();
+      }
       this.popupContent = data;
     } catch (error) {
       console.error(error);
@@ -246,7 +250,20 @@ export class CardsViewPageComponent implements OnInit {
     } catch (error) {
       console.error(error);
     }
+  }
 
+  copyInputMessage(val) {
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 
 }
