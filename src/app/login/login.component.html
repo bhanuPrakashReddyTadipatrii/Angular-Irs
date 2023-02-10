@@ -17,8 +17,11 @@
                             [(ngModel)]="userDet.phonenumber">
                     </div>
                     <button type="submit" class="btn btn-primary col-md-12" (click)="getOTP()">
-                        Get Otp <span><em class="fa fa-spinner fa-spin"></em></span>
-                    </button>
+                        Get Otp
+                        <ng-container *ngIf="loaders?.getOtp">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span class="sr-only">Loading...</span>
+                        </ng-container> 
+                     </button>
                 </ng-container>
                 <ng-container *ngIf="page === 'otp'">
                     <div class="form-group">
@@ -27,7 +30,11 @@
                             [(ngModel)]="userDet.otp">
                     </div>
                     <button type="submit" class="btn btn-primary col-md-12" (click)="verifyOTP()">
-                        Verify OTP & Login <span><em class="fa fa-spinner fa-spin"></em></span>
+                        Verify OTP & login
+                        <ng-container *ngIf="loaders?.verifyOtp">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span class="sr-only">Loading...</span>
+                        </ng-container> 
+
                     </button>
                 </ng-container>
             </div>

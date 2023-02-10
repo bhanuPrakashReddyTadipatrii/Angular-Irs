@@ -146,12 +146,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.router.url) {
-      for (let eachTab of this.tabs) {
-        if (this.router.url.includes(eachTab?.route)) {
-          this.choosenTab = eachTab?.value;
-        }
-      }
-      this.viewAllProjects();
+      // for (let eachTab of this.tabs) {
+      //   if (this.router.url.includes(eachTab?.route)) {
+      //     this.choosenTab = eachTab?.value;
+      //   }
+      // }
+      // this.viewAllProjects();
     }
     this.updateUserDetails();
     this.elem = document.documentElement;

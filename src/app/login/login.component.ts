@@ -489,6 +489,7 @@ export class LoginComponent implements OnInit {
         if (response?.status === 'success') {
           this.loaders['verifyOtp'] = false;
           this.page = 'otp';
+          this._route.navigate(['app/dashboard']);
         } else {
           this.loaders['verifyOtp'] = false;
           this._toaster.toast('error', 'Error', 'Error while logging in. Please try again later.', true);
