@@ -1,5 +1,5 @@
 <div class="row m-0 h-100">
-    <ng-container *ngIf="!loader?.login && !loader?.formPage">
+    <ng-container *ngIf="!loader?.login">
         <div class="col-lg-8 p-l-0" id="loginImage">
         </div>
         <div class="col-lg-4 p-5 loginFormSpacing h-100">
@@ -33,7 +33,7 @@
             </div>
         </div>
     </ng-container>
-    <ng-container *ngIf="loader?.login || loader?.formPage">
+    <ng-container *ngIf="loader?.login">
         <div>
             <div id="loader-wrapper-submaincontent">
                 <div class="lds-ring">
