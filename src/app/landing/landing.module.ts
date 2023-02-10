@@ -6,6 +6,8 @@ import { LandingComponent } from './landing.component';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardsViewPageComponent } from './cards-view-page/cards-view-page.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { CardsViewPageComponent } from './cards-view-page/cards-view-page.compon
   imports: [
     CommonModule,
     LandingRoutingModule,
+    FontAwesomeModule,
     SharedModule,
+    FormsModule,
   ],
   exports: [
     LandingComponent,

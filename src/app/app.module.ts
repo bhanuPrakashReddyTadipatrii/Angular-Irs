@@ -18,6 +18,7 @@ import { UtilityFunctions } from './utilities/utility-func';
 import { LandingModule } from './landing/landing.module';
 import { ModalService } from './shared/modal/modal.service';
 import { EmptyStatePagesComponent } from './empty-state-pages/empty-state-pages.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { EmptyStatePagesComponent } from './empty-state-pages/empty-state-pages.
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
     CommonModule,
     HttpClientModule,
     LandingModule,

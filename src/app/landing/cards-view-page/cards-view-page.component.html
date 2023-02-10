@@ -14,7 +14,7 @@
                         <p class="card-text">{{cardData.incident_desc}}</p>
                     </div>
                     <div class="card-footer">
-                        <div class="actions_footer">
+                        <div class="actions_footer d-flex gap-1 pl-3 cursor-pointer">
                             <span class="material-icons-outlined">
                                 back_hand
                             </span>
@@ -22,7 +22,7 @@
                                 <strong>Raise Hand</strong>
                             </span>
                         </div>
-                        <div class="actions_footer">
+                        <div class="actions_footer d-flex gap-1 cursor-pointer" (click)="openCommentsPopup(cardData)">
                             <span class="material-icons-outlined">
                                 chat
                             </span>
@@ -30,7 +30,7 @@
                                 <strong>Comment</strong>
                             </span>
                         </div>
-                        <div class="actions_footer">
+                        <div class="actions_footer d-flex gap-1 cursor-pointer">
                             <span class="material-icons-outlined">
                                 share
                             </span>
@@ -41,6 +41,52 @@
                     </div>
                 </div>
             </ng-container>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- comments modal -->
+
+<button class="invisible" style="display: none;" data-toggle="modal" data-target="#appShareModal"
+    id="openCommentsModal"></button>
+
+<!-- Modal -->
+<div class="modal fade" id="appShareModal" tabindex="-1" role="dialog" aria-labelledby="appShareModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header popUpHeader">
+                <h4 class="modal-title">Comments</h4>
+                <button type="button" class="close" data-dismiss="modal" data-target="#appShareModal"><span
+                        aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+            </div>
+            <div class="modal-body" style="overflow-y: auto;">
+                <div class="row comments-popup">
+                    <ng-container *ngFor="let data of popupContent.comments">
+                        <div class="">
+                            <div class="card">
+                                <div class="card-body">
+                                    {{data.comment_desc}}
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="commentText">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-secondary" (click)="addComment()" [disabled]="!commentText"><span class="material-icons-outlined">
+                                send
+                            </span></button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
