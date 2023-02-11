@@ -5,11 +5,14 @@ export class Config {
   public static API: any = {
     // IRS Endpoints
 
-    VERIFY_OTP: Config.BASE_POINT_API + 'otp/otp_validate',
-    GET_OTP: Config.BASE_POINT_API + 'otp/otp_trigger',
-    GET_CARDS_DATA: Config.BASE_POINT_API + '',
-    REGISTER_ISSUE: Config.BASE_POINT_API + 'incident/create',
-    //  PARSE_UPLOADED_FILE: Config.BASE_POINT_DCP_API + 'ilens_config/plc_mapping',
+         VERIFY_OTP: Config.BASE_POINT_API + 'otp/otp_validate',
+         GET_OTP: Config.BASE_POINT_API + 'otp/otp_trigger',
+
+         GET_CARDS_DATA: Config.BASE_POINT_API + '',
+         REGISTER_ISSUE: Config.BASE_POINT_API + 'incident/create',
+
+         DASHBOARD_LIST: Config.BASE_POINT_API + 'dashboard/list',
+        //  PARSE_UPLOADED_FILE: Config.BASE_POINT_DCP_API + 'ilens_config/plc_mapping',
 
   }
   public static getRandomColor() {

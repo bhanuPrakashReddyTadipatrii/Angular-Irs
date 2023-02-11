@@ -487,6 +487,8 @@ export class LoginComponent implements OnInit {
       this.loaders['verifyOtp'] = true;
       this.appservice.verifyOTP({phone_number: this.userDet.phonenumber, otp: this.userDet.otp}).pipe(takeUntil(this.destroy$)).subscribe((response) => {
         if (response?.status === 'success') {
+          localStorage.setItem('user_id', response?.user_id);
+          localStorage.setItem('user_type', response?.user_type);
           this.loaders['verifyOtp'] = false;
           this.page = 'otp';
           this._route.navigate(['app/dashboard']);

@@ -245,6 +245,8 @@ export class HeaderComponent implements OnInit {
   logOut() {
     try {
       this.loading['userLogout'] = true;
+      localStorage.clear();
+      this.router.navigate(['login']);
       const userDet: any = this._auth.getUserDetails();
       if (!userDet?.username || !userDet?.user_id) {
         this.router.navigate(['login']);

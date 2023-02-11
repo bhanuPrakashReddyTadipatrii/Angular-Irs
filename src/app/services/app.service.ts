@@ -367,7 +367,9 @@ export class AppService {
   verifyOTP(data): Observable<any> {
     return this.postService(Config.API.VERIFY_OTP, data);
   }
-
+  dashboardList(payload: any): Observable<any> {
+    return this._httplayer.post(Config.API.DASHBOARD_LIST, payload);
+  }
   parseUploadedFile(payload: any): Observable<any> {
     return this._httplayer.post(Config.API.PARSE_UPLOADED_FILE, payload);
   }
