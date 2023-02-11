@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AppService } from 'src/app/services/app.service';
@@ -20,10 +21,14 @@ export class DashboardComponent implements OnInit {
     dashboard: false,
   }
 
-  constructor(private _toaster: ToasterService, private appservice: AppService) { }
+  constructor(private _toaster: ToasterService, private router: Router, private appservice: AppService) { }
 
   ngOnInit(): void {
     this.getDashboardData();
+  }
+
+  goto() {
+    this.router.navigate(['app/cards-view']);
   }
 
   getDashboardData() {
