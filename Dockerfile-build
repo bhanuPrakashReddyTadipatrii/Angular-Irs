@@ -7,10 +7,10 @@ COPY . /app
 RUN node --max_old_space_size=9216 "node_modules/@angular/cli/bin/ng" build --configuration production
 RUN cp -r Dockerfile dist/
 RUN mv dist/unified-cathodic-protection dist/code
-RUN tar czvf ilens-ui.tar.gz dist/
+RUN tar czvf irs-ui.tar.gz dist/
 
 
 FROM nginx:latest
 WORKDIR /app
 COPY --from=builder /app/dist/code/ /usr/share/nginx/html
-COPY --from=builder /app/ilens-ui.tar.gz /app/
+COPY --from=builder /app/irs-ui.tar.gz /app/
