@@ -4,7 +4,7 @@
             <div class="card-header">ISSUE REGISTRATION FORM</div>
             <div class="card-body">
                 <ucp-dfm class="ucp-dfm" [DFMDATA]="dfmData" [fieldValueDependent]="true"
-                    *ngIf="dfmData?.headerContent?.length">
+                    *ngIf="dfmData?.headerContent?.length" (emitInstantChanges)="onProtocolConfigChanges($event)">
                 </ucp-dfm>
             </div>
         </div>

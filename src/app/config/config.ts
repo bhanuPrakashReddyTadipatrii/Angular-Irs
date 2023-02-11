@@ -6,7 +6,8 @@ export class Config {
          // IRS Endpoints
 
          VERIFY_OTP: Config.BASE_POINT_API + 'otp/otp_validate',
-         GET_OTP: Config.BASE_POINT_API + 'otp/otp_trigger'
+         GET_OTP: Config.BASE_POINT_API + 'otp/otp_trigger',
+        //  PARSE_UPLOADED_FILE: Config.BASE_POINT_DCP_API + 'ilens_config/plc_mapping',
 
     }
     public static getRandomColor() {

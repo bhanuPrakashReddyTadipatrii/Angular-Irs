@@ -369,4 +369,8 @@ export class AppService {
     return this.postService(Config.API.VERIFY_OTP, data);
   }
 
+  parseUploadedFile(payload: any): Observable<any> {
+    return this._httplayer.post(Config.API.PARSE_UPLOADED_FILE, payload);
+  }
+
 }
