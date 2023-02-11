@@ -139,7 +139,7 @@ export class IssueRegistrationComponent implements OnInit {
   onProtocolConfigChanges(event: any) {
     try {
       if (event && event.field) {
-        this.onFileUpload(event.event, event.field && event.fileTypes && event.fileTypes.length ? event.fileTypes : ['.eas', '.EAS']);
+        this.onFileUpload(event.event, event.field && event.fileTypes && event.fileTypes.length ? event.fileTypes : ['.img', '.jpeg', '.jpg', '.png', '.mp4']);
       }
     } catch (error) {
       console.error(error);
@@ -152,16 +152,15 @@ export class IssueRegistrationComponent implements OnInit {
       this.issueRegUpload = {};
       this.issueRegUpload['isValid'] = false;
       const size = event.target.files[0].size / 1024 / 1024;
-      if (size > 5) {
+      if (size > 50) {
         this.issueRegUpload['isValid'] = false;
-        this.toastLoad.toast('error', 'Maximium file size', 'Cannot upload files more than 5 MB.', true);
+        this.toastLoad.toast('error', 'Maximium file size', 'Cannot upload files more than 50 MB.', true);
         return;
       }
       if (event.target['value']) {
         const fileList: FileList = event.target.files;
         let fileExt = JSON.parse(JSON.stringify(event.target['value']));
         fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
-        const validFileTypes = ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
         if (fileList.length > 0) {
           const file: File = fileList[0];
           if (validExts.indexOf(fileExt) > -1) {
@@ -174,9 +173,6 @@ export class IssueRegistrationComponent implements OnInit {
             current.issueRegUpload['isValid'] = true;
             reader.onload = function () {
               current.issueRegUpload['csvUploadFile'] = reader.result;
-              const formData = new FormData();
-              formData.append('file', current.issueRegUpload['selectedFile']);
-              current.parseUploadedFile(formData);
             };
             reader.onerror = function (error) {
               console.error('Error: ', error);
@@ -195,27 +191,9 @@ export class IssueRegistrationComponent implements OnInit {
   }
 
 
-  parseUploadedFile(payload: any) {
-    try {
-      this.appService.parseUploadedFile(payload).subscribe((resp: any) => {
-        if (resp && resp['status'] === 'success') {
-          this.uploadedFileList = { list: resp['data'], type: 'plcTags' };
-        } else {
-          this.toastLoad.toast('error', 'Error', resp['message'] || 'Error while uploading file.', true);
-        }
-      }, (error) => {
-        console.error(error);
-        this.toastLoad.toast('error', 'Error', 'Error while uploading file.', true);
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   saveData(event) {
     try {
-      console.log("event", event);
-      console.log(this.uploadedFileList);
+      this.dfmData['bodyContent'] = JSON.parse(JSON.stringify(event));
       const inputJSON = {
         incident_id: '',
         name: event.name,
@@ -228,6 +206,7 @@ export class IssueRegistrationComponent implements OnInit {
       }
       this.appService.registerIssue(inputJSON).pipe(takeUntil(this.destroy$)).subscribe((res) => {
         if (res && res['status'] === 'success') {
+          this.dfmData['bodyContent']['incident_id'] = res['data'];
           this.saveFile(res);
         } else {
           this.toastLoad.toast('error', 'Error', res['message'], true);
@@ -240,7 +219,16 @@ export class IssueRegistrationComponent implements OnInit {
 
   saveFile(res) {
     try {
-
+      const formData = new FormData();
+      formData.append('file', this.issueRegUpload['selectedFile']);
+      formData.append('user_id', localStorage.getItem('user_id'));
+      formData.append('category', this.dfmData['bodyContent']['category']);
+      formData.append('incident_id', this.dfmData['bodyContent']['incident_id']);
+      this.appService.registerIssue(formData).pipe(takeUntil(this.destroy$)).subscribe((res) => {
+        if (res && res['status'] === 'success') {
+          this.cancel();
+        }
+      })
     } catch (error) {
       console.error(error);
     }

@@ -18,7 +18,7 @@ variables:
   PROD_ACR: "azrilensprod.azurecr.io/ilens/release/versions"
   HELM_CHART: /home/gitlab-runner/kubernetes/ilens/$QA_ENV/ucp_ui
   PROXY_CONFIG: proxy-configmap.yml
-  DEPLOYMENT_YML: ucp-webapp.yml
+  DEPLOYMENT_YML: irs-ui.yml
   TIMEOUT: 960s
 
 
@@ -360,7 +360,6 @@ dev-build-deployment:
     - mv $BUILD_VOLUME_PATH/irs-ui.tar.gz $BUILD_VOLUME_PATH/$CI_PROJECT_NAME.tar.gz
     - echo Storage Path= $STORAGE_PATH
     - echo File Name= $CI_PROJECT_NAME.tar.gz
-    - az storage blob upload  --account-name $ACCOUNT_NAME --account-key $ACCESS_KEY --container-name $STORAGE_PATH --name $CI_PROJECT_NAME.tar.gz --file $BUILD_VOLUME_PATH/$CI_PROJECT_NAME.tar.gz
     - echo "Deploying to the dev server..."
     - sshpass -p $OFC_PASSWD ssh $OFC_USERNAME@$OFC_HOSTNAME "mkdir -p /tmp/$CI_PROJECT_NAME/tar/ /tmp/$CI_PROJECT_NAME/untar/"
     - sshpass -p $OFC_PASSWD scp $BUILD_VOLUME_PATH/$CI_PROJECT_NAME.tar.gz $OFC_USERNAME@$OFC_HOSTNAME:/tmp/$CI_PROJECT_NAME/tar/
