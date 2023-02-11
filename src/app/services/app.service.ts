@@ -216,9 +216,8 @@ export class AppService {
     return this.postService(Config.API.GET_SURVEY_SHEET_DETAILS, data);
     // return this.getService('assets/jsons/surveys.json');
   }
-  getSampleTemplateData(data): Observable<any> 
-  {
-    return this.getService(Config.API.GET_SAMPLE_TEMP_DATA,data);
+  getSampleTemplateData(data): Observable<any> {
+    return this.getService(Config.API.GET_SAMPLE_TEMP_DATA, data);
   }
 
   //-----------------------------Surveys--------------------------------------------// 
@@ -274,7 +273,7 @@ export class AppService {
   }
 
   defaultDisplayOptions(data): Observable<any> {
-    return this.getService(Config.API.FETCH_DISPLAY_OPTIONS_FILTERS,data);
+    return this.getService(Config.API.FETCH_DISPLAY_OPTIONS_FILTERS, data);
     // return this.getService('assets/jsons/display-options.json',data);
   }
 
@@ -318,13 +317,13 @@ export class AppService {
 
   getMapOptions(): Observable<any> {
     return this.getService(Config.API.GET_MAP_OPTIONS);
-  } 
+  }
 
   getSelectedFiltersAndColDefs(data): Observable<any> {
     return this.getService(Config.API.GET_SELECTED_FILTERS_AND_COLDEFS, data);
     // return this.getService('assets/jsons/table-json-col.json', data);
   }
-  
+
   //----------------------------------------Simulate Component--------------------------------//
 
   getSimulateMapData(data): Observable<any> {
@@ -371,6 +370,14 @@ export class AppService {
 
   parseUploadedFile(payload: any): Observable<any> {
     return this._httplayer.post(Config.API.PARSE_UPLOADED_FILE, payload);
+  }
+
+  getCardsData(payload: any): Observable<any> {
+    return this._httplayer.post(Config.API.GET_CARDS_DATA, payload);
+  }
+
+  registerIssue(payload: any): Observable<any> {
+    return this._httplayer.post(Config.API.REGISTER_ISSUE, payload);
   }
 
 }

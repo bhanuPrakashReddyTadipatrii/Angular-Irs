@@ -1,4 +1,9 @@
+import { ToasterService } from './../../shared/toastr/toaster.service';
 import { Component, OnInit } from '@angular/core';
+import { Config } from 'src/app/config/config';
+import { AppService } from 'src/app/services/app.service';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'ucp-cards-view-page',
@@ -222,8 +227,9 @@ export class CardsViewPageComponent implements OnInit {
   public popupContent: any = {};
 
   public commentText: any = '';
+  public destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor() { }
+  constructor(public appService: AppService, public _toastLoad: ToasterService) { }
 
   ngOnInit(): void {
   }
@@ -264,6 +270,36 @@ export class CardsViewPageComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+    this._toastLoad.toast('success','Success', 'Copied to Clipboard', true);
+  }
+
+  getCardsData() {
+    try {
+      this.appService.getCardsData({}).pipe(takeUntil(this.destroy$)).subscribe((res) => {
+        if (res && res['status'] === 'success') {
+          res.data.tableData.bodyContent.map((el) => {
+            if (el.asset_model_icon && !el.asset_model_icon.includes('data:image/png;base64,')) {
+              if (el.asset_model_icon !== '') {
+                el.asset_model_icon = Config.API.GET_THINGS_IMAGE_PATH + '?filename=' + el.asset_model_icon + '?timestamp' + new Date().toISOString();
+              } else {
+                el.asset_model_icon = 'assets/images/asset_placeholder.png';
+              }
+            }
+            if (!el.asset_model_icon) {
+              el.asset_model_icon = 'assets/images/asset_placeholder.png';
+            }
+          });
+        }
+      })
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.complete();
+    this.destroy$.unsubscribe();
   }
 
 }

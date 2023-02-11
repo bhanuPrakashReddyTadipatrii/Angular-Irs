@@ -1,5 +1,8 @@
+import { ToasterService } from './../../shared/toastr/toaster.service';
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'ucp-issue-registration',
@@ -16,7 +19,7 @@ export class IssueRegistrationComponent implements OnInit {
           {
             "disabled": false,
             "gridWidth": "12",
-            "key": "issue_title",
+            "key": "name",
             "label": "Issue Title",
             "placeholder": "Enter Issue Title",
             "required": true,
@@ -27,12 +30,64 @@ export class IssueRegistrationComponent implements OnInit {
           {
             "disabled": false,
             "gridWidth": "12",
-            "key": "issue_description",
+            "key": "description",
             "label": "Description",
             "placeholder": "Description",
             "required": true,
             "type": "textarea",
             "rows": 5,
+            "value": ""
+          },
+          {
+            "disabled": false,
+            "gridWidth": "12",
+            "key": "category",
+            "label": "Category",
+            "placeholder": "Category",
+            "required": true,
+            "type": "select",
+            "options": [
+              {
+                "value": "air pollution",
+                "label": "Air Pollution"
+              },
+              {
+                "value": "electricity",
+                "label": "Electricity"
+              },
+              {
+                "value": "fire accident",
+                "label": "Fire Transport"
+              },
+              {
+                "value": "garbage",
+                "label": "Garbage"
+              },
+              {
+                "value": "potholes",
+                "label": "Potholes"
+              },
+              {
+                "value": "public_transport",
+                "label": "Public Transport"
+              },
+              {
+                "value": "road accident",
+                "label": "Road Transport"
+              },
+              {
+                "value": "sewage",
+                "label": "Sewage"
+              },
+              {
+                "value": "water",
+                "label": "Water"
+              },
+              {
+                "value": "others",
+                "label": "Others"
+              }
+            ],
             "value": ""
           },
           {
@@ -68,12 +123,15 @@ export class IssueRegistrationComponent implements OnInit {
     },
   };
   issueRegUpload = {};
+  imgContent: any = [];
+  imageChangedEvent: any;
   uploadedFileList: any;
+  public destroy$: Subject<boolean> = new Subject<boolean>();
 
 
 
 
-  constructor(public appService: AppService) { }
+  constructor(public appService: AppService, public toastLoad: ToasterService) { }
 
   ngOnInit(): void {
   }
@@ -96,7 +154,7 @@ export class IssueRegistrationComponent implements OnInit {
       const size = event.target.files[0].size / 1024 / 1024;
       if (size > 5) {
         this.issueRegUpload['isValid'] = false;
-        // this._toastLoad.toast('error', 'Maximium file size', 'Cannot upload files more than 5 MB.', true);
+        this.toastLoad.toast('error', 'Maximium file size', 'Cannot upload files more than 5 MB.', true);
         return;
       }
       if (event.target['value']) {
@@ -118,7 +176,6 @@ export class IssueRegistrationComponent implements OnInit {
               current.issueRegUpload['csvUploadFile'] = reader.result;
               const formData = new FormData();
               formData.append('file', current.issueRegUpload['selectedFile']);
-              console.log('formData :', formData);
               current.parseUploadedFile(formData);
             };
             reader.onerror = function (error) {
@@ -126,7 +183,7 @@ export class IssueRegistrationComponent implements OnInit {
             };
           } else {
             this.issueRegUpload['isValid'] = false;
-            // this._toastLoad.toast('error', 'File type', 'Cannot upload files other than specified.', true);
+            this.toastLoad.toast('error', 'File type', 'Cannot upload files other than specified.', true);
           }
         } else {
           this.issueRegUpload['isValid'] = false;
@@ -144,15 +201,63 @@ export class IssueRegistrationComponent implements OnInit {
         if (resp && resp['status'] === 'success') {
           this.uploadedFileList = { list: resp['data'], type: 'plcTags' };
         } else {
-          // this._toastLoad.toast('error', 'Error', resp['message'] || 'Error while uploading file.', true);
+          this.toastLoad.toast('error', 'Error', resp['message'] || 'Error while uploading file.', true);
         }
       }, (error) => {
         console.error(error);
-        // this._toastLoad.toast('error', 'Error', 'Error while uploading file.', true);
+        this.toastLoad.toast('error', 'Error', 'Error while uploading file.', true);
       });
     } catch (error) {
       console.error(error);
     }
+  }
+
+  saveData(event) {
+    try {
+      console.log("event", event);
+      console.log(this.uploadedFileList);
+      const inputJSON = {
+        incident_id: '',
+        name: event.name,
+        description: event.description,
+        category: event.category,
+        status: 'in_progress',
+        posted_on: new Date().getTime(),
+        created_on: new Date().getTime(),
+        comments: [],
+      }
+      this.appService.registerIssue(inputJSON).pipe(takeUntil(this.destroy$)).subscribe((res) => {
+        if (res && res['status'] === 'success') {
+          this.saveFile(res);
+        } else {
+          this.toastLoad.toast('error', 'Error', res['message'], true);
+        }
+      })
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  saveFile(res) {
+    try {
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  cancel() {
+    try {
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.complete();
+    this.destroy$.unsubscribe();
   }
 
 
