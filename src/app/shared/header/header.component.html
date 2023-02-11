@@ -88,35 +88,33 @@
               </span>
               <span class="material-icons-outlined" *ngIf="fullScreenActive">
                 close_fullscreen
-              </span>
+                </span>
             </a>
           </li>
         </ul>
         <div class="dropdown d-flex">
-          <button class="btn-account d-none d-md-flex" type="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+          <button class="btn-account d-none d-md-flex" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="user-avatar user-avatar-md">
-              <img [src]="storedUserDetails['profile_url'] || 'assets/images/profile.png'" alt=""
-                onerror="onerror=null; src='assets/images/profile.png'">
-            </span>
+              <img [src]="storedUserDetails['profile_url'] || 'assets/images/profile.png'" alt="" onerror="onerror=null; src='assets/images/profile.png'">
+            </span> 
             <span class="account-summary pr-lg-4 d-none d-lg-block">
-              <span class="account-name">{{storedUserDetails['full_name'] || ''}}</span>
+              <span class="account-name">{{storedUserDetails['full_name'] || ''}}</span> 
               <span class="account-description">{{storedUserDetails['user_role_name'] || ''}}</span>
             </span>
           </button>
-          <div class="dropdown-menu">
-            <div class="dropdown-arrow ml-3"></div>
-            <h6 class="dropdown-header d-none d-md-block d-lg-none"> {{storedUserDetails['full_name'] || ''}} </h6>
-            <a class="dropdown-item" href="javascript:void(0)" (click)="fetchUser()">
-              <span class="dropdown-icon oi oi-account-logout"></span> Profile</a>
-            <!-- <a class="dropdown-item" href="javascript:void(0)" (click)="changePassword()">
+            <div class="dropdown-menu">
+              <div class="dropdown-arrow ml-3"></div>
+              <h6 class="dropdown-header d-none d-md-block d-lg-none"> {{getRole() || ''}} </h6>
+              <a class="dropdown-item" href="javascript:void(0)" (click)="fetchUser()">
+                <span class="dropdown-icon oi oi-account-logout"></span> Profile</a>
+              <!-- <a class="dropdown-item" href="javascript:void(0)" (click)="changePassword()">
                   <span class="dropdown-icon oi oi-account-logout"></span> Change Password</a> -->
-            <a class="dropdown-item" href="javascript:void(0)" (click)="logOut()">
-              <span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
-          </div>
-        </div>
+              <a class="dropdown-item" href="javascript:void(0)" (click)="logOut()">
+                <span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
+            </div>
       </div>
     </div>
+  </div>
   </div>
 </header>
 
@@ -179,8 +177,8 @@
 
                 <div class="form-group col-4 pl-0" *ngIf="userDetails?.user_id">
                   <label class="form-design required">Role</label>
-                  <input type="text" class="form-control" placeholder="Enter Role"
-                    [(ngModel)]="profileData['role']" formControlName="role" ucpWhiteSpaceRestrictor
+                  <input type="text" class="form-control" placeholder="Enter Role" [(ngModel)]="profileData['role']"
+                    formControlName="role" ucpWhiteSpaceRestrictor
                     [ngClass]="{ 'is-invalid': f['role'].dirty && f['role']['errors'] }">
                   <div *ngIf="f['role']['errors'] && f['role'].dirty" class="invalid-feedback pt-1">
                     <span *ngIf="f['role']['errors']['required']">
