@@ -18,7 +18,7 @@ variables:
   PROD_ACR: "azrilensprod.azurecr.io/ilens/release/versions"
   HELM_CHART: /home/gitlab-runner/kubernetes/ilens/$QA_ENV/ucp_ui
   PROXY_CONFIG: proxy-configmap.yml
-  DEPLOYMENT_YML: ucp-webapp.yml
+  DEPLOYMENT_YML: irs-ui.yml
   TIMEOUT: 960s
 
 
