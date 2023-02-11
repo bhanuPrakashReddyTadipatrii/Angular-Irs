@@ -6,7 +6,7 @@ RUN npm install
 COPY . /app
 RUN node --max_old_space_size=9216 "node_modules/@angular/cli/bin/ng" build --configuration production
 RUN cp -r Dockerfile dist/
-RUN mv dist/irs_ui dist/code
+RUN mv dist/unified-cathodic-protection dist/code
 RUN tar czvf irs-ui.tar.gz dist/
 
 
