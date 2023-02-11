@@ -1,17 +1,21 @@
 <div class="container">
     <div class="row m-4">
+        <div class="col-md-12 mr-0 ml-auto mb-3">
+            <button type="button" class="btn btn-primary mr-3 " (click)="emergencyHelp()">Emergency</button>
+            <button type="button" class="btn btn-outline-primary" (click)="routeTo()">Register An Issue</button>
+        </div>
         <div class="d-flex justify-content-center align-items-center" style="flex-direction: column;">
             <ng-container *ngFor="let cardData of cardsViewData">
                 <div class="card card-width">
                     <div class="card-header d-flex" style="gap: 6rem;">
-                        <div>{{cardData.incident_name}}</div>
+                        <div>{{cardData.name}}</div>
                         <div>{{cardData.posted_on}}</div>
-                        <div>{{cardData.authority}}</div>
+                        <div>{{cardData.role}}</div>
                         <div>{{cardData.status}}</div>
                     </div>
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">{{cardData.incident_desc}}</p>
+                        <p class="card-text">{{cardData.description}}</p>
                     </div>
                     <div class="card-footer">
                         <div class="actions_footer d-flex gap-1 pl-3 cursor-pointer">
@@ -76,15 +80,20 @@
             </div>
             <div class="modal-body" style="overflow-y: auto;">
                 <div class="row comments-popup p-1 m-1">
-                    <ng-container *ngFor="let data of popupContent.comments">
-                        <div class="">
-                            <div class="card">
-                                <div class="card-body">
-                                    {{data.comment_desc}}
+                    <ng-container *ngIf="popupContent.comments?.length; else parameterLabel">
+                        <ng-container *ngFor="let data of popupContent.comments">
+                            <div class="">
+                                <div class="card">
+                                    <div class="card-body">
+                                        {{data.comment_desc}}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </ng-container>
                     </ng-container>
+                    <ng-template #parameterLabel>
+                        <label class="p-1 mt-1" style="display: flex;">No Comments Available</label>
+                    </ng-template>
                 </div>
             </div>
             <div class="modal-footer">

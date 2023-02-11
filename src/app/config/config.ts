@@ -8,8 +8,10 @@ export class Config {
          VERIFY_OTP: Config.BASE_POINT_API + 'otp/otp_validate',
          GET_OTP: Config.BASE_POINT_API + 'otp/otp_trigger',
 
-         GET_CARDS_DATA: Config.BASE_POINT_API + '',
+         GET_CARDS_DATA: Config.BASE_POINT_API + 'dashboard/incident_list',
          REGISTER_ISSUE: Config.BASE_POINT_API + 'incident/create',
+         UPLOAD_FILE_ISSUE: Config.BASE_POINT_API + 'incident/upload',
+         FETCH_USER: Config.BASE_POINT_API + 'otp/user_profile',
 
          DASHBOARD_LIST: Config.BASE_POINT_API + 'dashboard/list',
         //  PARSE_UPLOADED_FILE: Config.BASE_POINT_DCP_API + 'ilens_config/plc_mapping',

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ucp-issue-registration',
@@ -95,9 +96,9 @@ export class IssueRegistrationComponent implements OnInit {
             "gridWidth": "12",
             "key": "issue_url",
             "label": "Image / Video",
-            "required": false,
+            "required": true,
             "type": "file",
-            "value": ""
+            "value": "",
           }
         ],
         "layoutType": "section",
@@ -127,13 +128,27 @@ export class IssueRegistrationComponent implements OnInit {
   imageChangedEvent: any;
   uploadedFileList: any;
   public destroy$: Subject<boolean> = new Subject<boolean>();
+  locationCoords: { lat: string; long: string; };
 
 
 
 
-  constructor(public appService: AppService, public toastLoad: ToasterService) { }
+  constructor(public appService: AppService, public toastLoad: ToasterService, private router: Router,) { }
 
   ngOnInit(): void {
+    navigator.permissions.query({
+      name: 'geolocation',
+    }).then((result) => {
+      if (result.state === 'prompt') {
+        navigator.geolocation.getCurrentPosition((loc) => {
+          const coOrdinates = {
+            lat: loc.coords.latitude.toString(),
+            long: loc.coords.longitude.toString(),
+          };
+          this.locationCoords = coOrdinates;
+        });
+      }
+    });
   }
 
   onProtocolConfigChanges(event: any) {
@@ -199,10 +214,11 @@ export class IssueRegistrationComponent implements OnInit {
         name: event.name,
         description: event.description,
         category: event.category,
-        status: 'in_progress',
+        status: 'In Progress',
         posted_on: new Date().getTime(),
         created_on: new Date().getTime(),
         comments: [],
+        coOrds: this.locationCoords
       }
       this.appService.registerIssue(inputJSON).pipe(takeUntil(this.destroy$)).subscribe((res) => {
         if (res && res['status'] === 'success') {
@@ -220,11 +236,12 @@ export class IssueRegistrationComponent implements OnInit {
   saveFile(res) {
     try {
       const formData = new FormData();
-      formData.append('file', this.issueRegUpload['selectedFile']);
-      formData.append('user_id', localStorage.getItem('user_id'));
+      formData.append('file_data', this.issueRegUpload['selectedFile']);
+      formData.append('phone_number', localStorage.getItem('phone_number') || '9491262936');
       formData.append('category', this.dfmData['bodyContent']['category']);
       formData.append('incident_id', this.dfmData['bodyContent']['incident_id']);
-      this.appService.registerIssue(formData).pipe(takeUntil(this.destroy$)).subscribe((res) => {
+      formData.append('coOrds', JSON.stringify(this.locationCoords));
+      this.appService.uploadFile(formData).pipe(takeUntil(this.destroy$)).subscribe((res) => {
         if (res && res['status'] === 'success') {
           this.cancel();
         }
@@ -236,7 +253,7 @@ export class IssueRegistrationComponent implements OnInit {
 
   cancel() {
     try {
-
+      this.router.navigate(['app/cards-view']);
     } catch (error) {
       console.error(error);
     }
