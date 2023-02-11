@@ -18,7 +18,7 @@ variables:
   PROD_ACR: "azrilensprod.azurecr.io/ilens/release/versions"
   HELM_CHART: /home/gitlab-runner/kubernetes/ilens/$QA_ENV/ucp_ui
   PROXY_CONFIG: proxy-configmap.yml
-  DEPLOYMENT_YML: ucp-webapp.yml
+  DEPLOYMENT_YML: irs-ui.yml
   TIMEOUT: 960s
 
 
@@ -365,8 +365,8 @@ dev-build-deployment:
     - sshpass -p $OFC_PASSWD ssh $OFC_USERNAME@$OFC_HOSTNAME "mkdir -p /tmp/$CI_PROJECT_NAME/tar/ /tmp/$CI_PROJECT_NAME/untar/"
     - sshpass -p $OFC_PASSWD scp $BUILD_VOLUME_PATH/$CI_PROJECT_NAME.tar.gz $OFC_USERNAME@$OFC_HOSTNAME:/tmp/$CI_PROJECT_NAME/tar/
     - sshpass -p $OFC_PASSWD ssh $OFC_USERNAME@$OFC_HOSTNAME "tar xzvf /tmp/$CI_PROJECT_NAME/tar/$CI_PROJECT_NAME.tar.gz -C /tmp/$CI_PROJECT_NAME/untar/"
-    - sshpass -p $OFC_PASSWD ssh $OFC_USERNAME@$OFC_HOSTNAME "rm -rf /usr/share/nginx/html/iLens/ucp_dev/*"
-    - sshpass -p $OFC_PASSWD ssh $OFC_USERNAME@$OFC_HOSTNAME "cp -r /tmp/$CI_PROJECT_NAME/untar/dist/code/* /usr/share/nginx/html/iLens/ucp_dev/"
+    - sshpass -p $OFC_PASSWD ssh $OFC_USERNAME@$OFC_HOSTNAME "rm -rf /usr/share/nginx/html/iLens/irs/*"
+    - sshpass -p $OFC_PASSWD ssh $OFC_USERNAME@$OFC_HOSTNAME "cp -r /tmp/$CI_PROJECT_NAME/untar/dist/code/* /usr/share/nginx/html/iLens/irs/"
   after_script:
     - sshpass -p $OFC_PASSWD ssh $OFC_USERNAME@$OFC_HOSTNAME "rm -rf /tmp/$CI_PROJECT_NAME"
     - QA=$($MYSQL_CONNECTION -N -e "SELECT qa FROM $VERSION_DB.$DB_TABLE where module_name = '$CI_PROJECT_NAME' AND type = 'UI' AND category = 'Server' AND os = 'docker'")
