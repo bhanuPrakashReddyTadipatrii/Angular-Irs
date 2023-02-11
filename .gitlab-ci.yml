@@ -197,9 +197,9 @@ qa-build-deployment:
     - BUILD_VOLUME_PATH=/home/gitlab-runner/ui-build/QA/v$PROD.$QA.$DEV
     - docker build -t $IMAGE_URL -f Dockerfile-build .
     - docker push $IMAGE_URL
-    - docker run --rm -v $BUILD_VOLUME_PATH:/mnt/out "$IMAGE_URL" /bin/cp /app/ilens-ui.tar.gz /mnt/out/
+    - docker run --rm -v $BUILD_VOLUME_PATH:/mnt/out "$IMAGE_URL" /bin/cp /app/irs-ui.tar.gz /mnt/out/
     - sudo chown -R gitlab-runner $BUILD_VOLUME_PATH
-    - mv $BUILD_VOLUME_PATH/ilens-ui.tar.gz $BUILD_VOLUME_PATH/$CI_PROJECT_NAME.tar.gz
+    - mv $BUILD_VOLUME_PATH/irs-ui.tar.gz $BUILD_VOLUME_PATH/$CI_PROJECT_NAME.tar.gz
     - echo Storage Path= $STORAGE_PATH
     - echo File Name= $CI_PROJECT_NAME.tar.gz
     - az storage blob upload  --account-name $ACCOUNT_NAME --account-key $ACCESS_KEY --container-name $STORAGE_PATH --name $CI_PROJECT_NAME.tar.gz --file $BUILD_VOLUME_PATH/$CI_PROJECT_NAME.tar.gz
@@ -355,9 +355,9 @@ dev-build-deployment:
     - BUILD_VOLUME_PATH=/home/gitlab-runner/ui-build/dev/v$PROD.$QA.$DEV
     - docker build -t $IMAGE_URL -f Dockerfile-build .
     - docker push $IMAGE_URL
-    - docker run --rm -v $BUILD_VOLUME_PATH:/mnt/out "$IMAGE_URL" /bin/cp /app/ilens-ui.tar.gz /mnt/out/
+    - docker run --rm -v $BUILD_VOLUME_PATH:/mnt/out "$IMAGE_URL" /bin/cp /app/irs-ui.tar.gz /mnt/out/
     - sudo chown -R gitlab-runner $BUILD_VOLUME_PATH
-    - mv $BUILD_VOLUME_PATH/ilens-ui.tar.gz $BUILD_VOLUME_PATH/$CI_PROJECT_NAME.tar.gz
+    - mv $BUILD_VOLUME_PATH/irs-ui.tar.gz $BUILD_VOLUME_PATH/$CI_PROJECT_NAME.tar.gz
     - echo Storage Path= $STORAGE_PATH
     - echo File Name= $CI_PROJECT_NAME.tar.gz
     - az storage blob upload  --account-name $ACCOUNT_NAME --account-key $ACCESS_KEY --container-name $STORAGE_PATH --name $CI_PROJECT_NAME.tar.gz --file $BUILD_VOLUME_PATH/$CI_PROJECT_NAME.tar.gz
