@@ -280,16 +280,16 @@ export class CardsViewPageComponent implements OnInit {
       this.appService.getCardsData({}).pipe(takeUntil(this.destroy$)).subscribe((res) => {
         if (res && res['status'] === 'success') {
           this.cardsViewData = res['data'];
-          res.data.map((el) => {
-            if (el.asset_model_icon && !el.asset_model_icon.includes('data:image/png;base64,')) {
-              if (el.asset_model_icon !== '') {
-                el.asset_model_icon = Config.API.GET_THINGS_IMAGE_PATH + '?filename=' + el.asset_model_icon + '?timestamp' + new Date().toISOString();
+          this.cardsViewData.map((el) => {
+            if (el.file_path && !el.file_path.includes('data:image/png;base64,')) {
+              if (el.file_path !== '') {
+                el.file_path = Config.API.GET_THINGS_IMAGE_PATH + '?filename=' + el.file_path + '?timestamp' + new Date().toISOString();
               } else {
-                el.asset_model_icon = 'assets/images/asset_placeholder.png';
+                el.file_path = 'assets/images/asset_placeholder.png';
               }
             }
-            if (!el.asset_model_icon) {
-              el.asset_model_icon = 'assets/images/asset_placeholder.png';
+            if (!el.file_path) {
+              el.file_path = 'assets/images/asset_placeholder.png';
             }
           });
         }

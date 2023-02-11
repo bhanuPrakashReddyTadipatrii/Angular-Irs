@@ -12,6 +12,7 @@ export class Config {
          REGISTER_ISSUE: Config.BASE_POINT_API + 'incident/create',
          UPLOAD_FILE_ISSUE: Config.BASE_POINT_API + 'incident/upload',
          FETCH_USER: Config.BASE_POINT_API + 'otp/user_profile',
+         GET_THINGS_IMAGE_PATH: Config.BASE_POINT_API + 'incident/get_file',
 
          DASHBOARD_LIST: Config.BASE_POINT_API + 'dashboard/list',
         //  PARSE_UPLOADED_FILE: Config.BASE_POINT_DCP_API + 'ilens_config/plc_mapping',
