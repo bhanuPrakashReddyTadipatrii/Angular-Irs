@@ -283,13 +283,13 @@ export class CardsViewPageComponent implements OnInit {
           this.cardsViewData.map((el) => {
             if (el.file_path && !el.file_path.includes('data:image/png;base64,')) {
               if (el.file_path !== '') {
-                el.file_path = Config.API.GET_THINGS_IMAGE_PATH + '?filename=' + el.file_path + '?timestamp' + new Date().toISOString();
+                el.file = Config.API.GET_THINGS_IMAGE_PATH + '?filename=' + el.file_path + '?timestamp' + new Date().toISOString();
               } else {
-                el.file_path = 'assets/images/asset_placeholder.png';
+                el.file = 'assets/images/default.png';
               }
             }
             if (!el.file_path) {
-              el.file_path = 'assets/images/asset_placeholder.png';
+              el.file = 'assets/images/default.png';
             }
           });
         }

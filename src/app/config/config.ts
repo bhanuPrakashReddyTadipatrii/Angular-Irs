@@ -2,6 +2,7 @@ import { environment } from './../../environments/environment';
 
 export class Config {
   public static get BASE_POINT_API(): string { return environment.BASE_POINT_API; }
+  
   public static API: any = {
     // IRS Endpoints
 
