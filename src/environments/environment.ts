@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_POINT_API: '/irs/',
+  BASE_POINT_API: '/unstoppable/',
   encryptionEnabled: false,
 };
 

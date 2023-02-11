@@ -211,6 +211,10 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  getRole() {
+    return localStorage.getItem('role') || 'Admin';
+  }
+
   changeProject(projectId) {
     try {
       if (!projectId || (projectId === this.getProjectDetails('project_id'))) {
