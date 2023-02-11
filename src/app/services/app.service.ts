@@ -355,9 +355,6 @@ export class AppService {
   }
 
   //----------------------------------------Header Component---------------------------------------//
-  getProfileImage(): Observable<any> {
-    return this.getService(Config.API.GET_PROFILE_IMAGE);
-  }
 
 
   // IRS Endpoints
@@ -380,6 +377,10 @@ export class AppService {
 
   registerIssue(payload: any): Observable<any> {
     return this._httplayer.post(Config.API.REGISTER_ISSUE, payload);
+  }
+
+  uploadFile(payload: any): Observable<any> {
+    return this._httplayer.post(Config.API.UPLOAD_FILE_ISSUE, payload);
   }
 
 }

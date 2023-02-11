@@ -39,13 +39,12 @@ export class HeaderComponent implements OnInit {
     saveProfileImage: false
   }
   public profileForm: FormGroup = new FormGroup({
-    name: new FormControl({ value: null, disabled: false }, [Validators.nullValidator]),
+    first_name: new FormControl({ value: null, disabled: false }, [Validators.nullValidator]),
     username: new FormControl({ value: null, disabled: false }, [Validators.nullValidator]),
-    email: new FormControl({ value: null, disabled: false }, [Validators.nullValidator]),
-    phonenumber: new FormControl({ value: null, disabled: false }, [Validators.nullValidator]),
-    userrole: new FormControl({ value: null, disabled: true }, [Validators.nullValidator]),
+    department_name: new FormControl({ value: null, disabled: false }, [Validators.nullValidator]),
+    phone: new FormControl({ value: null, disabled: false }, [Validators.nullValidator]),
+    role: new FormControl({value: null, disabled: false}, [Validators.nullValidator]),
     user_id: new FormControl({ value: null, disabled: false }, [Validators.nullValidator]),
-    access_group_ids: new FormControl({ value: null, disabled: true }, [Validators.nullValidator]),
 
   });
   public passwordForm: FormGroup = new FormGroup({
@@ -55,10 +54,10 @@ export class HeaderComponent implements OnInit {
   });
 
   public profileData: any = {
-    name: '',
+    first_name: '',
     username: '',
-    phonenumber: [],
-    userrole: null,
+    phone: [],
+    role: '',
     user_id: '',
     access_group_ids: [],
   };
@@ -68,7 +67,7 @@ export class HeaderComponent implements OnInit {
     newPassword: '',
     username: ''
   };
-  public allFields: any = ['name', 'username', 'password', 'confirmPassword', 'newPassword', 'email', 'phonenumber', 'userrole', 'access_group_ids'];
+  public allFields: any = ['first_name', 'username', 'password', 'confirmPassword', 'newPassword', 'department_name', 'phone','role' ];
   public passwordValidator = [
     {
       label: 'One lowercase letter',
@@ -118,12 +117,12 @@ export class HeaderComponent implements OnInit {
     profile_url: null,
   };
   public themes: any = {
-    'default-skin' : {
+    'default-skin': {
       theme: 'default-skin',
       tableClass: 'ag-theme-alphine',
       label: 'Light Theme'
     },
-    'dark-theme' : {
+    'dark-theme': {
       theme: 'dark-theme',
       tableClass: 'ag-theme-dark',
       label: 'Dark Theme'
@@ -153,7 +152,7 @@ export class HeaderComponent implements OnInit {
       // }
       // this.viewAllProjects();
     }
-    this.updateUserDetails();
+    this.storedUserDetails['profile_url'] = 'assets/images/profile.png'
     this.elem = document.documentElement;
 
     let themes = JSON.parse(this._auth.getLocalStorage('theme'));
@@ -162,31 +161,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  updateUserDetails() {
-    try {
-      this.userDetails = this._auth.getUserDetails();
-      this.storedUserDetails = {
-        full_name: this.userDetails?.full_name || '',
-        user_role_name: this.userDetails?.user_role_name || '',
-        profile_url: '',
-      };
-      this.appservice.getProfileImage().pipe(takeUntil(this.destroy$)).subscribe(
-        (serviceData) => {
-          if (serviceData.status === "success") {
-            this.storedUserDetails['profile_url'] = serviceData.data || undefined;
-            this.profile_url = serviceData.data || undefined;
-          } else {
-            this.storedUserDetails['profile_url'] = 'assets/images/profile.png';
-          }
-        }, (error) => {
-          console.error(error);
-          this.storedUserDetails['profile_url'] = 'assets/images/profile.png';
-        });
-    } catch (err) {
-      this.storedUserDetails['profile_url'] = 'assets/images/profile.png';
-      console.error(err);
-    }
-  }
 
   viewAllProjects() {
     try {
@@ -348,7 +322,7 @@ export class HeaderComponent implements OnInit {
     const validateObject = {};
     const passwordValidateObj = {};
     for (let ind = 0; ind < this.allFields?.length; ind++) {
-      if (this.allFields[ind] === 'email') {
+      if (this.allFields[ind] === 'department_name') {
         validateObject[this.allFields[ind]] = new FormControl(
           { value: this.profileData[this.allFields[ind]] || null, disabled: false }, [Validators.required, Validators.pattern('^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}$')],
         );
@@ -390,9 +364,9 @@ export class HeaderComponent implements OnInit {
   fetchUser() {
     try {
       this.loader.fetch = true;
-      this.appservice.fetchUser({ user_id: this.userDetails?.user_id }).pipe(takeUntil(this.destroy$)).subscribe(respData => {
+      this.appservice.fetchUser({}).pipe(takeUntil(this.destroy$)).subscribe(respData => {
         if (respData && respData['status'] === 'success') {
-          this.updateUserDetails();
+          this.storedUserDetails['profile_url'] = 'assets/images/profile.png'
           this.profileData = respData?.data;
           this.profileData = { ...this.profileData };
           this.loader.fetch = false;
@@ -494,11 +468,11 @@ export class HeaderComponent implements OnInit {
             const userDet: any = this._auth.getUserDetails();
             if (userDet) {
               this._auth.storeUserDetails(userDet);
-          }
-          this.updateUserDetails();
+            }
+            this.storedUserDetails['profile_url'] = 'assets/images/profile.png'
             this.toasterService.toast('success', 'Success', respData['message'] || 'User Profile updated successfully.');
           }
-          
+
           this.loader.saveUser = false;
         } else {
           this.loader.saveUser = false;
@@ -525,10 +499,10 @@ export class HeaderComponent implements OnInit {
         this.loader.saveProfileImage = false;
         this.openModal('closeProfile');
         const userDet: any = this._auth.getUserDetails();
-          if (userDet) {
-            this._auth.storeUserDetails(userDet);
-          }
-          this.updateUserDetails();
+        if (userDet) {
+          this._auth.storeUserDetails(userDet);
+        }
+        this.storedUserDetails['profile_url'] = 'assets/images/profile.png'
       } else {
         this.loader.saveProfileImage = false;
         this.toasterService.toast('error', 'Error', respData['message'] || 'Error while updating User Profile.');

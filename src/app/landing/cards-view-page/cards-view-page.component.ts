@@ -232,6 +232,7 @@ export class CardsViewPageComponent implements OnInit {
   constructor(public appService: AppService, public _toastLoad: ToasterService) { }
 
   ngOnInit(): void {
+    this.getCardsData();
   }
 
   openCommentsPopup(data, key) {
@@ -277,7 +278,8 @@ export class CardsViewPageComponent implements OnInit {
     try {
       this.appService.getCardsData({}).pipe(takeUntil(this.destroy$)).subscribe((res) => {
         if (res && res['status'] === 'success') {
-          res.data.tableData.bodyContent.map((el) => {
+          this.cardsViewData = res['data'];
+          res.data.map((el) => {
             if (el.asset_model_icon && !el.asset_model_icon.includes('data:image/png;base64,')) {
               if (el.asset_model_icon !== '') {
                 el.asset_model_icon = Config.API.GET_THINGS_IMAGE_PATH + '?filename=' + el.asset_model_icon + '?timestamp' + new Date().toISOString();

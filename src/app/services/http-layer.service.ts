@@ -123,7 +123,7 @@ export class HttpLayerService {
       // data['language'] = localStorage.getItem('lang') || 'en';
       // data['project_id'] = this.getProjectId(data);
       data['tz'] = this.browserTz;
-      data['user_id'] = localStorage.getItem('user_id');
+      data['phone_number'] = localStorage.getItem('phone_number') || '9491262936';
       const contentType = this.detectContentType('POST', url, data);
       return this._http.post(url, this.getSignedToken(data, contentType), contentType === 'application/json' ? this.httpOptions : values)
         .pipe(catchError((error) => {
@@ -147,7 +147,7 @@ export class HttpLayerService {
     try {
       this.monitoring.pendingRequestsNumber++;
       let payload: any = {tz: this.browserTz};
-      payload['user_id'] = localStorage.getItem('user_id');
+      payload['phone_number'] = localStorage.getItem('phone_number') || '9491262936';
       if (data) {
         payload = { ...data, ...payload};
       }
