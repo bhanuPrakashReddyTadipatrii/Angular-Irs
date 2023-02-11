@@ -1,5 +1,9 @@
 <div class="container">
     <div class="row m-4">
+        <div class="col-md-12 mr-0 ml-auto mb-3">
+            <button type="button" class="btn btn-primary mr-3 " (click)="emergencyHelp()">Emergency</button>
+            <button type="button" class="btn btn-outline-primary" (click)="routeTo()">Register An Issue</button>
+        </div>
         <div class="d-flex justify-content-center align-items-center" style="flex-direction: column;">
             <ng-container *ngFor="let cardData of cardsViewData">
                 <div class="card card-width">

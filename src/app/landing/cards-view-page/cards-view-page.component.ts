@@ -4,6 +4,7 @@ import { Config } from 'src/app/config/config';
 import { AppService } from 'src/app/services/app.service';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ucp-cards-view-page',
@@ -229,7 +230,7 @@ export class CardsViewPageComponent implements OnInit {
   public commentText: any = '';
   public destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(public appService: AppService, public _toastLoad: ToasterService) { }
+  constructor(public appService: AppService, public _toastLoad: ToasterService, private router: Router,) { }
 
   ngOnInit(): void {
     this.getCardsData();
@@ -271,7 +272,7 @@ export class CardsViewPageComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
-    this._toastLoad.toast('success','Success', 'Copied to Clipboard', true);
+    this._toastLoad.toast('success', 'Success', 'Copied to Clipboard', true);
   }
 
   getCardsData() {
@@ -293,6 +294,22 @@ export class CardsViewPageComponent implements OnInit {
           });
         }
       })
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  emergencyHelp() {
+    try {
+      this.router.navigate(['app/registration']);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  routeTo() {
+    try {
+      this.router.navigate(['app/registration']);
     } catch (error) {
       console.error(error);
     }
